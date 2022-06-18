@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Information Page</title>
+    <link rel="stylesheet" href="./styles/checkout.css">
+</head>
+<body>
+   <div id="CheckoutBodyDiv">
+       <div id="CheckoutLeft">
+           <img src="https://cdn.shopify.com/s/files/1/0034/7901/1441/files/200x150-01.png?32925" alt=""/>
+           <div>
+               <div class="gotocartpageagin">Cart</div>
+               <div>></div>
+               <div>Information</div>
+               <div>></div>
+               <div>Shipping</div>
+               <div>></div>
+               <div>Payment</div>
+           </div>
+           <div>
+               <div>Contact information</div>
+               <div> Already have an account? Log in</div>
+           </div>
+           <input type="email" placeholder="Email" name="email" id="infoemail"/>
+           <div>
+               <input type="checkbox"/>
+               <div>Get order updates on WhatsApp</div>
+           </div>
+           <div>Shipping address</div>
+           <div>
+               <input type="text" placeholder="First name (optional)" name="name" id="infofname"/>
+               <input type="text" placeholder="Last name" name="name" id="infolname"/>
+           </div>
+           <input type="text" placeholder="Address" name="address" id="infoaddress"/>
+           <input type="text" placeholder="Apartment, suite, etc. (optional)" id="infoapartments"/>
+           <input type="text" placeholder="Country/region" name="country" id="infocountry"/>
+           <div>
+               <input type="number" placeholder="Pincode" name="pincode" id="infopincode"/>
+               <input type="text" placeholder="City" name="city" id="infocity"/>
+           </div>
+           <div>Delivery Available</div>
+           <input type="text" placeholder="State" name="state" id="infostate"/>
+           <div>
+               <div>+</div>
+               <input type="number" placeholder="Phone number for order updates" name="mobile" id="infonumber1"/>
+           </div>
+           <div>
+            <div>+</div>
+            <input type="number" placeholder="Alternate mobile" name="mobile" id="infonumber2"/>
+            </div>
+            <div>
+                <input type="checkbox"/>
+                <div>Save this information for next time</div>
+            </div>
+            <div>
+                <div class="gotocartpageagin2">< Return to cart</div>
+                <button id="gotoshippingpage">Continue to shipping</button>
+            </div>
+            <hr/>
+            <div>All rights reserved deyga.in</div>
+       </div>
+       <div id="CheckoutRight" >
+            <div id="onlyProducts"></div>
+            <hr/>
+            <div>
+                <input type="text" placeholder="Gift card or discount code"/>
+                <button>Apply</button>
+            </div>
+            <div id="discountcode">Your discount code - masai30 for 30% discount</div>
+            <hr/>
+            <div id="subtotalprice">
+                <div>Subtotal</div>
+                <div>₹</div>
+                <div></div>
+            </div>
+            <div>
+                <div>Shipping</div>
+                <div>Calculated at next step</div>
+            </div>
+            <hr/>
+            <div id="taxes">
+                <div>Total<p>Including ₹175.54 in taxes</p></div>
+                <div>INR</div>
+                <div>₹</div>
+                <div></div>
+            </div>
+      </div>
+       
+   </div>
+   <div id="CheckoutRightMost"></div>
+</body>
+</html>
+
+<script>
+
+    let informationPageCartArr = JSON.parse(localStorage.getItem("cart")) || [];
+    //console.log(informationPageCartArr);
+
+    function informationDisplay(informationPageCartArr){
+        document.getElementById('onlyProducts').innerHTML = null;
+
+        informationPageCartArr.map((el)=>{
+            let mainbox = document.createElement("div");
+
+            let productImages = document.createElement("img");
+            productImages.src = el.image;
+
+            let quantityInInformationPage = document.createElement("div");
+            quantityInInformationPage.innerText = el.quantity;
+
+
+            let productName = document.createElement("div");
+            productName.innerText = el.name;
+
+            let sym = document.createElement("div");
+            sym.innerText = "₹";
+            let mrp = el.mrp.slice(6,el.mrp.length)
+            let productPrice = document.createElement("div");
+            productPrice.innerText = mrp*el.quantity;
+
+            mainbox.append(productImages,quantityInInformationPage,productName,sym,productPrice);
+            document.getElementById('onlyProducts').append(mainbox)
+        })
+    }
+
+    informationDisplay(informationPageCartArr);
+
+
+  let totalPriceCart = informationPageCartArr.reduce((acc,el)=>{
+      return acc+(el.quantity*(el.mrp.slice(6,el.mrp.length)));
+
+  },0)
+
+  document.querySelector("#taxes>div:last-child").innerText = totalPriceCart;
+  document.querySelector("#subtotalprice>div:last-child").innerText = totalPriceCart
+
+</script>
+
+<script type="module">
+
+   
+     document.getElementById("gotoshippingpage").addEventListener("click",()=>{
+
+        let infoemail = document.getElementById("infoemail").value;
+        let infofname = document.getElementById("infofname").value;
+        let infolname = document.getElementById("infolname").value;
+        let infoaddress = document.getElementById("infoaddress").value;
+        let infoapartments = document.getElementById("infoapartments").value;
+        let infocountry = document.getElementById("infocountry").value;
+        let infopincode = document.getElementById("infopincode").value;
+        let infocity = document.getElementById("infocity").value;
+        let infostate = document.getElementById("infostate").value;
+        let infonumber1 = document.getElementById("infonumber1").value;
+        let infonumber2 = document.getElementById("infonumber2").value;
+
+        console.log(infoemail);
+
+        localStorage.setItem("myemail",JSON.stringify(infoemail));
+         localStorage.setItem("myaddress",JSON.stringify(infoaddress));
+
+         if(infoemail!=""&&infolname!=""&&infoaddress!=""&&infocountry!=""&&infopincode!=""&&infocity!=""&&infostate!=""&&infonumber1!=""&&infonumber2!=""){
+             window.location.href="./Shipping.html";
+         }
+         else{
+             alert("Please fill all required informations!");
+         }
+     })
+
+    document.querySelector(".gotocartpageagin").addEventListener("click",()=>{
+        window.location.href="./cartPage2.html"
+    })
+    document.querySelector(".gotocartpageagin2").addEventListener("click",()=>{
+        window.location.href="./cartPage2.html"
+    })
+
+</script>
+
+
+
+
+
+

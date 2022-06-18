@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles/navbar_footer.css">
+    <title>Document</title>
+    <style>
+        body{
+    margin: 0;
+    font-family: 'Barlow', sans-serif !important;
+}
+#mainblog-img{
+    margin-top: 50px;
+}
+
+#mainblog-img>img{
+    width: 100%;
+}
+
+#bodyblog{
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    width: 80%;
+    margin: auto;
+    gap: 20px;
+    margin-top: 40px;
+}
+#bodyblog>div{
+    height: 400px;
+    padding: 10px;
+}
+
+#bodyblog>div>p{
+    font-size: 14px;
+}
+
+#overflow>img{
+    width: 100%;
+    height: 200px;
+}
+
+#overflow:hover{
+    overflow: hidden;
+}
+#overflow>img:hover{
+    transform: scaleY(1.5);
+    transition-duration: 5s;
+}
+#pageslider{
+    display: flex;
+    width: 80%;
+    margin: auto;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 50px;
+}
+#pageslider>div{
+    margin-top: 50px;
+    font-size: large;
+    width: 50px;
+    text-align: center;
+    border-bottom: 1px solid grey;
+    cursor: pointer;
+}
+
+#pageslider>div:hover{
+    border-bottom: 5px solid black;
+}
+#pageslider>div>p{
+    color: grey;
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+}
+#setAtt>p{
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+    </style>
+     <style>
+        #stickyImages{
+         margin-left: 97.5%;
+         position: sticky;
+         /* right: 0; */
+         top: 40%;
+         /* margin-top: -50%; */
+        
+         }
+         #stickyImages>img{
+             width: 33px;
+             height: 32px;
+             border-radius: 50%;
+             display: block;
+             margin-top: 3px;
+         }
+         #stickyImages>img:last-child{
+             width: 45px;
+             height: 45px;
+             margin-left: -6px;
+             margin-top: -5px;
+         }
+         #mainblog-img{
+             margin-top: -10%;
+         }
+         </style>
+
+</head>
+<body>
+    <div id="navbar"></div>
+    <div id="stickyImages">
+        <img src="https://lh3.googleusercontent.com/stk7qIhvTn-6p1x3eYOfqnNCdIkNjyIoZPlZtwiDCzdhxEYc8Gsm1obY0zYdR13NfW_UkF4=s88" alt=""/>
+        <img src="https://lh3.googleusercontent.com/7GC8KgKN3PBmRKrqYOpBvozvAkrDknIwHhpDyMlDhEo_xEEEmHN81MTm7dNQvMyg4CcZ=s87" alt=""/>
+        <img src="https://lh3.googleusercontent.com/viOmLsqBaf_hyffXvvUFInfNNDwwQp6UpqQkPQU6uQFK-eE2MJnRGVdetr2Df6Q1twm85w=s87" alt=""/>
+        <img src="https://lh3.googleusercontent.com/AGtkZJFXY39I8G7s0dXFAGzgVuvr_m5Li-5v2TDlpqWdQtXOmf9WG13REwpOBuKKDXD70A=s87" alt=""/>
+        <img src="https://cdn.shopify.com/s/files/1/0034/7901/1441/t/139/assets/ping-svg2.svg?v=1619612966" alt=""/>
+    </div>
+    <div id="mainblog-img">
+        <img src="https://cdn.shopify.com/s/files/1/0034/7901/1441/files/1400x425_x800.jpg?v=1598356786" alt="">
+    </div>
+    <div id="bodyblog"></div>
+    <div id="pageslider">
+        <div> <p>1</p></div>
+        <div> <p>2</p></div>
+        <div> <p>3</p></div>
+        <div> <p>4</p></div>
+        <div><p>...</p></div>
+        <div> <p>8</p></div>
+    </div>
+    <div id="footer"></div>
+</body>
+</html>
+
+<script type="module">
+
+let data=[
+    {url:"https://cdn.shopify.com/s/files/1/0034/7901/1441/articles/hair_mod_400x.jpg?v=1636454475",
+     date:"Mar 28, 2022",
+     header:"ACE YOUR HAIR CARE REGIME WITH THESE HAIR ESSENTIALS",
+     para:"A perfect hairstyle needs healthy hair to cease the game completely. However the pollutants in the air today are too harsh that you barely get any ...",},
+     {url:"https://cdn.shopify.com/s/files/1/0034/7901/1441/articles/blog_-_acne_400x.jpg?v=1642423302",
+     date:"Mar 27, 2022",
+     header:"COMEDONAL ACNE: CAUSES & REMEDIES",
+     para:"The severity and treatment of acne depend on which type of acne you have. There are various categories of acne, and for each one the treatment is d...",},
+     {url:"https://cdn.shopify.com/s/files/1/0034/7901/1441/articles/Laser-Hair-Therapy_400x.png?v=1643285877",
+     date:"Mar 25, 2022",
+     header:"HAIR THERAPY RIGHT AT YOUR HOME WITH DEYGA’S HAIR THERAPY COMBO",
+     para:"Just like any other therapy session, your hair also need a hair therapy session. No no you don’t have to rush to any clinic and spend hours to rega...",},
+     {url:"https://cdn.shopify.com/s/files/1/0034/7901/1441/articles/skincare_759getty_400x.jpg?v=1645526997",
+     date:"Mar 29, 2022",
+     header:"GIFT OF VITAMIN F TO YOUR SKIN",
+     para:"Let’s go over what vitamin F is, where to find it, the benefits of using it, and how to incorporate it into your beauty routine.     ",},
+     {url:"https://cdn.shopify.com/s/files/1/0034/7901/1441/articles/Skin-Care-Practices_400x.jpg?v=1646132011",
+     date:"Mar 28, 2022",
+     header:"DO YOU REALLY NEED TO CHANGE YOUR SKINCARE GAME ACCORDING TO THE WEATHER",
+     para:"Adapting to seasonal changes, entails more than simply switching from light clothing to layers",},
+     {url:"https://cdn.shopify.com/s/files/1/0034/7901/1441/articles/W_Jan_Build-Custom-Skincare-Routine-1_Hero_1400x800_8e2f0bfe-9d21-48b7-9b5d-d242a473cb9d_400x.jpg?v=1646132131",
+     date:"Mar 28, 2022",
+     header:"BEING MINIMAL IN SKINCARE ROUTINE IS NO CRIME",
+     para:"The minimalist approach to skincare means reducing the number of products in your routine to the absolute bare minimum. Minimalist skincare is prec...",},
+     {url:"https://cdn.shopify.com/s/files/1/0034/7901/1441/articles/IMG_9165_400x.jpg?v=1646132581",
+     date:"Mar 28, 2022",
+     header:"JASMINE & ITS EXQUISITE BEAUTY BENEFITS",
+     para:"Jasmine is good for your all over health. From releasing your stress with its relaxing smell to making your skin supple & naturally glowing, it...     ",},
+     {url:"https://cdn.shopify.com/s/files/1/0034/7901/1441/articles/vitamin-a-feature_400x.jpg?v=1646132755",
+     date:"Mar 26, 2022",
+     header:"VITAMIN A FOR SKIN",
+     para:"Vitamin A helps our immune system, skin, hair, bones, and the surface tissues that make up our interior organs. So, while the superpower portion of...",},
+     {url:"https://cdn.shopify.com/s/files/1/0034/7901/1441/articles/face-washing-101_banner_400x.jpg?v=1646135619",
+     date:"Mar 28, 2022",
+     header:"HOW TO CHOOSE THE RIGHT ONE: FACE CLEANSER",
+     para:"Cleansers, even the most basic, can be difficult to distinguish. So, if you've ever struggled to discover a face cleanser that is suitable for your...",},
+     {url:"https://cdn.shopify.com/s/files/1/0034/7901/1441/articles/1950671_400x.jpg?v=1646393753",
+     date:"Mar 28, 2022",
+     header:"ATTENTION! THESE SIGNS MAY UNFOLD TRUTH ABOUT VITAMIN DEFICIENCY",
+     para:"Our diet provides the carbs, sugars, proteins, vitamins, and minerals that our bodies require. It's practically impossible to eat a perfect diet al...",},
+     {url:"https://cdn.shopify.com/s/files/1/0034/7901/1441/articles/gettyimages-178382420-1613170870_400x.jpg?v=1647511109",
+     date:"Mar 25, 2022",
+     header:"GET RID OF CROW’S FEET AROUND YOUR EYES WITH DEYGA’S UNDER EYE CREAM",
+     para:"Think of those crow’s feet under your eyes as a pesky reminder for you that you must be tired, lack sleep and have more screen time. Although these...",},
+     {url:"https://cdn.shopify.com/s/files/1/0034/7901/1441/articles/image5-1_400x.jpg?v=1646812434",
+     date:"Mar 28, 2022",
+     header:"ARE SHAMPOO AND CONDITIONER ENOUGH FOR A GOOD HAIR DAY?",
+     para:"There are numerous hair care products that you all should use in your hair routines to keep healthy and lustrous hair. There are several reasons wh...     ",},
+     {url:"https://cdn.shopify.com/s/files/1/0034/7901/1441/articles/rosehip-oil-1296x728-header_400x.jpg?v=1646393935",
+     date:"Mar 29, 2022",
+     header:"ROSEHIP SEED OIL: THE ULTIMATE REMEDY TO CURE DRY SKIN",
+     para:"Roses when die on rosebushes leave behind a fruit. A fruit that is proven to have more vitamin C than a lemon. That ‘not-so-common’ fruit is called...",},
+     {url:"https://cdn.shopify.com/s/files/1/0034/7901/1441/articles/White-Hair_1024x1024_7e69e2a4-5040-4cee-8623-f653ceccc8f1_400x.jpg?v=1645012643",
+     date:"Mar 28, 2022",
+     header:"DEYGA’S PREMATURE GREYING OIL IS THE POWERFUL COMBAT FOR YOUR EARLY GREYS",
+     para:"Growing up we always thought that grey hair depict old age. even in the early teens....",},
+     {url:"https://cdn.shopify.com/s/files/1/0034/7901/1441/articles/Facial-Serums_400x.png?v=1646131250",
+     date:"Mar 30, 2022",
+     header:"DO YOU NEED FACE SERUM? OH SO CONFUSING! RIGHT?",
+     para:"Serum can also moisturise our skin in a way that water-based lotions can't, giving us a radiant glow right away. Vitamins, minerals, proteins, and ...     ",},
+] 
+
+data.map((elem)=>{
+    var div1 = document.createElement("div");
+    div1.setAttribute("id","overflow")
+    var div = document.createElement("div");
+    div.setAttribute("id","setAtt")
+    var image = document.createElement("img");
+    image.src=elem.url;
+    var date = document.createElement("p");
+    date.innerText=elem.date;
+    date.style.color="#929fac";
+    var header = document.createElement("div");
+    header.innerText=elem.header;
+    header.style.fontSize="12px"
+    var para = document.createElement("p");
+    para.innerText = elem.para;
+    para.style.color="#929fac";
+    para.style.fontSize="13px"
+    var ancor = document.createElement("a");
+    ancor.innerText="Read More";
+    ancor.style.color="grey";
+    ancor.style.fontSize = "13px"
+    ancor.setAttribute("id","blogancor1");
+    div1.append(image)
+    div.append(div1 ,date,header,para,ancor);
+    document.getElementById("bodyblog").append(div)
+});
+
+import {navbar,footer} from "./components/navbar.js"
+    document.getElementById('navbar').innerHTML=navbar();
+    document.getElementById('footer').innerHTML = footer();
+
+
+    import {navbarJs} from "./scripts/navbarJsPart.js"
+    navbarJs();
+    
+    
+</script>
+
+
+
+<script type="module">
+    document.getElementById('navbar1').addEventListener("click",()=>{
+        window.location.href = "./skincare.html"
+    })
+
+    document.querySelector("#navbar00>div:first-child").addEventListener("click",()=>{
+        window.location.href = "./LoginPage.html"
+    })
+    document.querySelector("#navbar00>div:last-child").addEventListener("click",()=>{
+        window.location.href = "./SignupPage.html"
+    })
+    document.querySelector("#navbar00>div:nth-child(2)").addEventListener("click",()=>{
+        window.location.href = "./whishlist.html"
+    })
+    document.getElementById("GoToIngredients").addEventListener("click",()=>{
+        window.location.href = "./Ingredients.html"
+    })
+    document.getElementById("GpToBlog").addEventListener("click",()=>{
+        window.location.href="./blogpage.html"
+    })
+
+    document.getElementById('navbar2').addEventListener("click",()=>{
+        window.location.href = "./haircare.html"
+    })
+    document.getElementById('navbar3').addEventListener("click",()=>{
+        window.location.href = "./bathbody.html"
+    })
+    document.getElementById('navbar4').addEventListener("click",()=>{
+        window.location.href = "./oralcare.html"
+    })
+    document.getElementById('navbar5').addEventListener("click",()=>{
+        window.location.href = "./wellness.html"
+    })
+    document.getElementById('navbar6').addEventListener("click",()=>{
+        window.location.href = "./babycare.html"
+    })
+    document.getElementById('navbar7').addEventListener("click",()=>{
+        window.location.href = "./men.html"
+    })
+    document.getElementById('navbar8').addEventListener("click",()=>{
+        window.location.href = "./combo.html"
+    })
+    document.getElementById('navbar9').addEventListener("click",()=>{
+        window.location.href = "./gifting.html"
+    })
+    document.getElementById('navbar10').addEventListener("click",()=>{
+        window.location.href = "./offers.html"
+    })
+
+   document.getElementById("gotoalwayshome").addEventListener("click",()=>{
+       window.location.href="./index.html"
+   })
+
+</script>
+
+
+
+

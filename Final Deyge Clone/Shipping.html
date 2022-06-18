@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout Page</title>
+    <link rel="stylesheet" href="./styles/shipping.css">
+    <!-- <link rel="stylesheet" href="./styles/checkout.css"> -->
+    <style>
+        #putfreeorNot{
+            margin-left: 42px;
+            font-size: 20px;
+            font-weight: 600;
+            color: black;
+        }
+    </style>
+</head>
+<body>
+   <div id="CheckoutBodyDiv">
+       <div id="CheckoutLeft">
+           <img src="https://cdn.shopify.com/s/files/1/0034/7901/1441/files/200x150-01.png?32925" alt=""/>
+           <div>
+               <div id="cartpagemejao">Cart</div>
+               <div>></div>
+               <div id="infopagemejao">Information</div>
+               <div>></div>
+               <div>Shipping</div>
+               <div>></div>
+               <div>Payment</div>
+           </div>
+           <div>
+               <div>
+                   <div>Contact</div>
+                   <div id="putemail">email</div>
+                   <div id="infopagemejao1">Change</div>
+               </div>
+               <hr/>
+               <div>
+                   <div>Ship to</div>
+                   <div id="putaddress">address</div>
+                   <div id="infopagemejao2">Change</div>
+               </div>
+           </div>
+           <div>Shipping address</div>
+           <div>
+            <div id="freejimmyjimmy">
+                 <button></button>
+                <div>Free Shipping (Pay Online)</div>
+                <div>Free</div>
+            </div>
+            <hr/>
+            <div id="money89">
+                <button></button>
+                <div>Cash on Delivery<p>Save upto Rs.59 on Prepaid orders</p></div>
+                <div>₹89.00</div>
+            </div>
+        </div>
+            <div id="checkoutbtndiv">
+                <div id="infopagemejao3">< Return to information</div>
+                <button id="paymentkro">Continue to payment</button>
+            </div>
+            <hr style="margin-top: 100px;"/>
+            <div>All rights reserved deyga.in</div>
+       </div>
+       <div id="CheckoutRight">
+        <div id="onlyProducts"></div>
+        <hr/>
+        <div>
+            <input type="text" placeholder="Gift card or discount code"/>
+            <button>Apply</button>
+        </div>
+        <div id="discountcode">Your discount code - masai30 for 30% discount</div>
+        <hr/>
+        <div id="subtotalprice">
+            <div>Subtotal</div>
+            <div>₹</div>
+            <div></div>
+        </div>
+        <div>
+            <div>Shipping</div>
+            <div id="putfreeorNot"></div>
+        </div>
+        <hr/>
+        <div id="taxes">
+            <div>Total<p>Including ₹175.54 in taxes</p></div>
+            <div>INR</div>
+            <div>₹</div>
+            <div id="updateprice"></div>
+        </div>
+       </div>
+   </div>
+   <div id="CheckoutRightMost"></div>
+   
+</body>
+</html>
+
+<script>
+
+    let informationPageCartArr = JSON.parse(localStorage.getItem("cart")) || [];
+    //console.log(informationPageCartArr);
+
+    function informationDisplay(informationPageCartArr){
+        document.getElementById('onlyProducts').innerHTML = null;
+
+        informationPageCartArr.map((el)=>{
+            let mainbox = document.createElement("div");
+
+            let productImages = document.createElement("img");
+            productImages.src = el.image;
+
+            let quantityInInformationPage = document.createElement("div");
+            quantityInInformationPage.innerText = el.quantity;
+
+
+            let productName = document.createElement("div");
+            productName.innerText = el.name;
+
+            let sym = document.createElement("div");
+            sym.innerText = "₹";
+            let mrp = el.mrp.slice(6,el.mrp.length)
+            let productPrice = document.createElement("div");
+            productPrice.innerText = mrp*el.quantity;
+
+            mainbox.append(productImages,quantityInInformationPage,productName,sym,productPrice);
+            document.getElementById('onlyProducts').append(mainbox)
+        })
+    }
+
+    informationDisplay(informationPageCartArr);
+
+
+  let totalPriceCart = informationPageCartArr.reduce((acc,el)=>{
+      return acc+(el.quantity*(el.mrp.slice(6,el.mrp.length)));
+
+  },0)
+
+  document.querySelector("#taxes>div:last-child").innerText = totalPriceCart;
+  document.querySelector("#subtotalprice>div:last-child").innerText = totalPriceCart
+  
+</script>
+
+<script type="module">
+     
+
+     let shippingemail = JSON.parse(localStorage.getItem("myemail"));
+     let shippingaddress = JSON.parse(localStorage.getItem("myaddress"));
+
+     document.getElementById("putemail").innerText = shippingemail;
+     document.getElementById("putaddress").innerText = shippingaddress;
+
+    document.getElementById("cartpagemejao").addEventListener("click",()=>{
+        window.location.href="./cartPage2.html"
+    })
+    document.getElementById("infopagemejao").addEventListener("click",()=>{
+        window.location.href="./information.html"
+    })
+    document.getElementById("infopagemejao1").addEventListener("click",()=>{
+        window.location.href="./information.html"
+    })
+    document.getElementById("infopagemejao2").addEventListener("click",()=>{
+        window.location.href="./information.html"
+    })
+    document.getElementById("infopagemejao3").addEventListener("click",()=>{
+        window.location.href="./information.html"
+    })
+    let totalPriceCart1 = informationPageCartArr.reduce((acc,el)=>{
+        
+        return acc+(el.quantity*(el.mrp.slice(6,el.mrp.length)));
+  
+       },0)
+
+    document.getElementById("freejimmyjimmy").addEventListener("click",()=>{
+
+        document.querySelector("#freejimmyjimmy>button").style.backgroundColor = "#A17C5F"
+        document.querySelector("#money89>button").style.backgroundColor = "white"
+        localStorage.setItem("freeOrNot","Free");
+        document.getElementById("putfreeorNot").innerText = "Free"
+        document.getElementById("updateprice").innerText = totalPriceCart1
+    })
+    
+    document.getElementById("money89").addEventListener("click",()=>{
+
+        document.querySelector("#money89>button").style.backgroundColor = "#A17C5F"
+        document.querySelector("#freejimmyjimmy>button").style.backgroundColor = "white"
+        localStorage.setItem("freeOrNot","₹89.00");
+        document.getElementById("putfreeorNot").innerText = "₹89.00"
+        document.getElementById("updateprice").innerText = totalPriceCart1+89;
+    })
+
+    let freeornotokay = localStorage.getItem("freeOrNot");
+
+    
+
+    if(freeornotokay=="Free"){
+        document.getElementById("putfreeorNot").innerText = "Free"
+        document.getElementById("updateprice").innerText = totalPriceCart1
+    }
+    else{
+        document.getElementById("putfreeorNot").innerText = "₹89.00"
+        document.getElementById("updateprice").innerText = totalPriceCart1+89;
+    }
+   
+
+  document.getElementById("paymentkro").addEventListener("click",()=>{
+      window.location.href="./payment.html"
+  })
+
+    
+
+</script>
+
+
+
+
+
+
+

@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Offer Page</title>
+    <link rel="stylesheet" href="./styles/navbar_footer.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="./styles/products.css">
+    <link rel="stylesheet" href="./styles/card.css">
+   
+    <script src="https://code.jquery.com/jquery-3.5.0.js"></script>
+    <style>
+        #middle_container1{
+            height: 200px;
+            width: 99%;
+            border: 1px solid black;
+            font-size: 30px;
+            margin: auto;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+      
+    </style>
+     <style>
+        #stickyImages{
+         margin-left: 97.5%;
+         position: sticky;
+         /* right: 0; */
+         top: 40%;
+         /* margin-top: -50%; */
+        
+         }
+         #stickyImages>img{
+             width: 33px;
+             height: 32px;
+             border-radius: 50%;
+             display: block;
+             margin-top: 3px;
+         }
+         #stickyImages>img:last-child{
+             width: 45px;
+             height: 45px;
+             margin-left: -6px;
+             margin-top: -5px;
+         }
+         #backhome{
+             margin-top: -11.5%;
+         }
+         </style>
+</head>
+<body>
+    
+    <div id="navbar"></div>
+    <div id="stickyImages">
+        <img src="https://lh3.googleusercontent.com/stk7qIhvTn-6p1x3eYOfqnNCdIkNjyIoZPlZtwiDCzdhxEYc8Gsm1obY0zYdR13NfW_UkF4=s88" alt=""/>
+        <img src="https://lh3.googleusercontent.com/7GC8KgKN3PBmRKrqYOpBvozvAkrDknIwHhpDyMlDhEo_xEEEmHN81MTm7dNQvMyg4CcZ=s87" alt=""/>
+        <img src="https://lh3.googleusercontent.com/viOmLsqBaf_hyffXvvUFInfNNDwwQp6UpqQkPQU6uQFK-eE2MJnRGVdetr2Df6Q1twm85w=s87" alt=""/>
+        <img src="https://lh3.googleusercontent.com/AGtkZJFXY39I8G7s0dXFAGzgVuvr_m5Li-5v2TDlpqWdQtXOmf9WG13REwpOBuKKDXD70A=s87" alt=""/>
+        <img src="https://cdn.shopify.com/s/files/1/0034/7901/1441/t/139/assets/ping-svg2.svg?v=1619612966" alt=""/>
+    </div>
+    <div id="backhome"><a href="index.html">Home > Offers</a></div>
+
+     <div class="upperimage">
+         <h2 class="title">Offers</h1>
+         <img class="ppupperimg" src="https://cdn.shopify.com/s/files/1/0034/7901/1441/collections/Banner-01_x600.jpg?v=1648444301%20600w,%20//cdn.shopify.com/s/files/1/0034/7901/1441/collections/Banner-01_800x.jpg?v=1648444301%20800w,%20//cdn.shopify.com/s/files/1/0034/7901/1441/collections/Banner-01_1200x.jpg?v=1648444301%201200w,%20//cdn.shopify.com/s/files/1/0034/7901/1441/collections/Banner-01_1400x.jpg?v=1648444301%201400w,%20//cdn.shopify.com/s/files/1/0034/7901/1441/collections/Banner-01_1600x.jpg?v=1648444301%201600w" >
+     </div>
+ 
+     <hr style="margin-bottom: 5%;">
+     <div class="short">
+         <select name="cars" id="cars" onchange="sortItems()">
+             <option value="Kalyani">Sort</option>
+             <option value="Suraj">Best Seller </option>
+             <option value="Puja">Alphabetically A-Z</option>
+             <option value="Ajay">Alphabetically Z-A</option>
+             <option value="Shubham">Price-High to Low</option>
+             <option value="Mohit">Price-Low to High</option>
+           </select>
+     </div>
+     <hr>
+    
+ <div id="middle_container" ></div>
+<hr>
+ <div id="middle_container1">Recently viewed</div>
+
+ <div id="slider">
+    <div id="sliderappend">
+        <div id="one"></div>
+        <div id="two"></div>
+    </div>
+    <!-- <div id="indicator"> -->
+        <button id="btn1"><</button>
+        <button id="btn2">></button>
+    <!-- </div> -->
+</div>
+
+ <div id="footer"></div>
+</body>
+</html>
+<script type="module">
+
+    import {navbar,footer} from "./components/navbar.js"
+    document.getElementById('navbar').innerHTML=navbar();
+    document.getElementById('footer').innerHTML = footer();
+
+    import {navbarJs} from "./scripts/navbarJsPart.js"
+    navbarJs();
+    
+    
+</script>
+<script>
+     let cardarry = [
+       {id:1, name:"Beetroot Lip Balm",offer:"14% Off",
+        image:"https://cdn.shopify.com/s/files/1/0034/7901/1441/products/904_0003_Beetroot_07aa7e6f-c52b-42d1-8839-a4678e5b2ef3_400x.jpg?v=1641838454",
+        image2:"https://cdn.shopify.com/s/files/1/0034/7901/1441/products/02-in-and-out_400x.jpg?v=1645614549",
+        review:"1961 reviews",mrp:"MRP ₹ 249.00",del:"₹290.00" },
+        {id:2, name:"Almond Milk Body Lotion",offer:"29% Off",
+        image:"https://cdn.shopify.com/s/files/1/0034/7901/1441/products/Untitled-11_400x.jpg?v=1641111206",
+        image2:"https://cdn.shopify.com/s/files/1/0034/7901/1441/products/Untitled-1_400x.jpg?v=1641111206",
+        review:"17 reviews",mrp:"MRP ₹ 390.00",del:"₹550.00" },
+        {id:3, name:"Under Eye Cream",offer:"19% Off",
+        image:"https://cdn.shopify.com/s/files/1/0034/7901/1441/products/904_0002_undereye_400x.jpg?v=1641464118",
+        image2:"https://cdn.shopify.com/s/files/1/0034/7901/1441/products/01_10_e879376e-30f0-4f54-ac6d-9bc950f07bd7_400x.jpg?v=1647416613",
+        review:"53 reviews",mrp:"MRP ₹ 480.00",del:"₹590.00" },
+        {id:4, name:"Charcoal Bath Bar",offer:"15% Off",
+        image:"https://cdn.shopify.com/s/files/1/0034/7901/1441/products/ICONS-05_400x.jpg?v=1648210587",
+        image2:"https://cdn.shopify.com/s/files/1/0034/7901/1441/products/Charcoal-soap_400x.jpg?v=1648210587",
+        review:"566 reviews",mrp:"MRP ₹ 349.00",del:"₹410.00" },
+        {id:5, name:"Hair Growth Oil",offer:"9% Off",
+        image:"https://cdn.shopify.com/s/files/1/0034/7901/1441/products/Hairgrowth_400x.jpg?v=1647928745",
+        image2:"https://cdn.shopify.com/s/files/1/0034/7901/1441/products/01_11_1a8b25f0-9c3b-4804-8f8c-191012cf3399_400x.jpg?v=1647928745",
+        review:"291 reviews",mrp:"MRP ₹ 549.00",del:"₹600.00" },
+        {id:6, name:"Rose & Mulethi Skin Brightening Pack",offer:"9% Off",
+        image:"https://cdn.shopify.com/s/files/1/0034/7901/1441/products/r_m_400x.jpg?v=1648210466",
+        image2:"https://cdn.shopify.com/s/files/1/0034/7901/1441/products/J8A6253_400x.jpg?v=1648210466",
+        review:"217 reviews",mrp:"MRP ₹ 499.00",del:"₹550.00" },
+        {id:7, name:"Foot Butter",offer:"11% Off",
+        image:"https://cdn.shopify.com/s/files/1/0034/7901/1441/products/FOOT_20BUTTER_400x.jpg?v=1641031475",
+        image2:"https://cdn.shopify.com/s/files/1/0034/7901/1441/products/J8A5661_400x.jpg?v=1641031475",
+        review:"50 reviews",mrp:"MRP ₹ 490.00",del:"₹550.00" },
+        {id:8, name:"Nourished Lips Combo",offer:"17% Off",
+        image:"https://cdn.shopify.com/s/files/1/0034/7901/1441/products/Nourished_20Lips_20Combo_20_1_904x1156_1_400x.jpg?v=1641839189",
+        image2:"https://cdn.shopify.com/s/files/1/0034/7901/1441/products/Nourished_20Lips_20Combo_904x1156_1_400x.jpg?v=1641839189",
+        review:"31 reviews",mrp:"MRP ₹ 479.00",del:"₹580.00" },
+        {id:9, name:"Vanilla Body Lotion",offer:"29% Off",
+        image:"https://cdn.shopify.com/s/files/1/0034/7901/1441/products/J8A5445_e221da18-db47-4eef-9ee4-f4b62a0767e0_400x.jpg?v=1641111680",
+        image2:"https://cdn.shopify.com/s/files/1/0034/7901/1441/products/J8A5424_5a3acf3b-7eda-415b-b5de-09932c683c25_400x.jpg?v=1641111679",
+        review:"5 reviews",mrp:"MRP ₹ 390.00",del:"₹550.00" },
+        {id:10, name:"Unscented Body Lotion",offer:"29% Off",
+        image:"https://cdn.shopify.com/s/files/1/0034/7901/1441/products/J8A5314_d2d40f9a-7de0-4dcb-ace6-e6cb6795cd9e_400x.jpg?v=1641111921",
+        image2:"https://cdn.shopify.com/s/files/1/0034/7901/1441/products/UnscentedWBG_400x.jpg?v=1641111921",
+        review:"1 review",mrp:"MRP ₹ 390.00",del:"₹550.00" },
+        {id:11, name:"Soft Lip Combo",offer:"17% Off",
+        image:"https://cdn.shopify.com/s/files/1/0034/7901/1441/products/softlipscombo_1_400x.jpg?v=1641839230",
+        image2:"https://cdn.shopify.com/s/files/1/0034/7901/1441/products/Soft_20Lips_20Combo_904x1156_904x1156_4a160e99-2c4c-4e66-a63a-3b7b881f369d_400x.jpg?v=1642443278",
+        review:"16 reviews",mrp:"MRP ₹ 479.00",del:"₹580.00" },
+        {id:12, name:"Strawberry Lip Scrub",offer:"14% Off",
+        image:"https://cdn.shopify.com/s/files/1/0034/7901/1441/products/Strawberry_400x.jpg?v=1647863204",
+        image2:"https://cdn.shopify.com/s/files/1/0034/7901/1441/products/J8A5980_400x.jpg?v=1647863204",
+        review:"62 reviews",mrp:"MRP ₹ 249.00",del:"₹290.00" },
+        {id:13, name:"Mint Lip Scrub",offer:"14% Off",
+        image:"https://cdn.shopify.com/s/files/1/0034/7901/1441/products/Mint_400x.jpg?v=1647863062",
+        image2:"https://cdn.shopify.com/s/files/1/0034/7901/1441/products/J8A6498_400x.jpg?v=1647863062",
+        review:"8 reviews",mrp:"MRP ₹ 249.00",del:"₹290.00" },
+        {id:14, name:"Shea Butter Lip Balm",offer:"14% Off",
+        image:"https://cdn.shopify.com/s/files/1/0034/7901/1441/products/05_400x.jpg?v=1642512099",
+        image2:"https://cdn.shopify.com/s/files/1/0034/7901/1441/products/J8A5188_b352b249-6408-4003-bd92-e9f4be1f8dbc_400x.jpg?v=1642512099",
+        review:"4 reviews",mrp:"MRP ₹ 249.00",del:"₹290.00" },
+        {id:15, name:"Chocolate Lip Balm",offer:"14% Off",
+        image:"https://cdn.shopify.com/s/files/1/0034/7901/1441/products/01_1_400x.jpg?v=1642512000",
+        image2:"https://cdn.shopify.com/s/files/1/0034/7901/1441/products/J8A5383_400x.jpg?v=1642512000",
+        review:"6 reviews",mrp:"MRP ₹ 249.00",del:"₹290.00" },
+        {id:16, name:"Vanilla Lip Balm",offer:"",
+        image:"https://cdn.shopify.com/s/files/1/0034/7901/1441/products/06_400x.jpg?v=1642512175",
+        image2:"https://cdn.shopify.com/s/files/1/0034/7901/1441/products/J8A5224_400x.jpg?v=1642512175",
+        review:"6 reviews",mrp:"MRP ₹ 249.00",del:"₹290.00" },
+  ];
+
+  let parent=document.querySelector("#middle_container");
+
+let cartProductsArr = JSON.parse(localStorage.getItem("cart")) || [];
+
+function displaydata(cardarry){
+parent.innerHTML=null;
+
+cardarry.forEach(function(elem){
+    
+
+    let div=document.createElement("div")
+    div.setAttribute("class",("upper_container"))
+
+    let myDiv = document.createElement("div")
+    myDiv.setAttribute("id","gotoparticulatpage")
+    // myDiv.addEventListener("click",()=>{
+    //     hey(elem)
+    // })
+
+    myDiv.addEventListener("click",()=>{
+        
+        productInfo(elem)
+        window.location.href="./../particularProduct.html"
+    })
+
+    names=document.createElement("p")
+    names.setAttribute("class","namess") 
+   
+    names.innerText=elem.name;
+    names.style.fontSize="17px";
+    names.style.color="#000000";
+    
+    let imgs=document.createElement("img")
+    imgs.src=elem.image;
+    imgs.setAttribute("id","pic")
+ 
+    $(imgs).hover(function () {
+           
+           imgs.src = elem.image2;
+               }, function () {
+                   // out
+                    imgs.src = elem.image;
+               }
+            );
+           $("#pic").hover(function () {
+    //stuff to do on mouse enter
+    imgs.src = elem.image2;
+}, 
+function () {
+    //stuff to do on mouse leave
+    imgs.src = elem.image;
+});
+    let div1=document.createElement("div")
+     div1.setAttribute("id","stardiv")
+   
+ 
+    let wish=document.createElement("i")
+    wish.setAttribute("class","fa fa-heart-o")
+    wish.setAttribute("id","suraj")
+    wish.style.fontSize="28px";
+     wish.style.border="1px solid white"
+     wish.addEventListener("click",()=>{
+         window.location.href = "./../blogpage.html"
+     });
+
+
+    let reiv=document.createElement("div")
+    reiv.innerText=elem.review;
+    reiv.style.marginLeft="2px";
+    
+    let rate=document.createElement("span")
+    rate.setAttribute("class","fa fa-star checked");
+
+    let rate2=document.createElement("span")
+    rate2.setAttribute("class","fa fa-star checked");
+
+    let rate3=document.createElement("span")
+    rate3.setAttribute("class","fa fa-star checked");
+
+    let rate4=document.createElement("span")
+    rate4.setAttribute("class","fa fa-star checked");
+
+    let rate5=document.createElement("span")
+    rate5.setAttribute("class","fa fa-star checked");
+
+    let div2=document.createElement("div")
+    div2.setAttribute("id","priceAndDel")
+    
+
+    let mrp=document.createElement("div")
+    mrp.setAttribute("id","price")
+    mrp.innerText=elem.mrp;
+
+    let del=document.createElement("del")
+    del.innerText=elem.del;
+    del.style.marginLeft="20px";
+
+    let cart=document.createElement("button");
+    cart.innerText="Add To Cart";
+    cart.setAttribute("class","cart_button")
+    cart.addEventListener("click",()=>{
+        addToCartFunction(elem);
+        window.location.href="./../cartPage2.html"
+    })
+    
+   // divwish.append(wish)
+    div1.append(rate,rate2,rate3,rate4,rate5,reiv)
+    
+    div2.append(mrp,del)
+    myDiv.append(imgs,wish,names,div1,div2)
+    div.append(myDiv,cart)
+    // div.append(imgs,wish,names,div1,div2,cart)
+    parent.append(div)
+})
+}
+
+displaydata(cardarry)
+
+
+let count = 1;
+let productInfo = (elem)=>{
+    
+     localStorage.setItem("qty",count)
+    localStorage.setItem("particularPro",JSON.stringify(elem));
+}
+
+
+function sortItems(){
+    var sorting = document.querySelector("#cars").value;
+    //console.log(sorting)
+
+   if(sorting=="Puja"){
+        cardarry.sort((a, b) => {
+            let fa = a.name.toLowerCase(),
+            fb = b.name.toLowerCase();
+
+            if (fa < fb) {
+                return -1;
+            }
+            if (fa > fb) {
+                return 1;
+            }
+            return 0;
+        });
+        displaydata(cardarry);
+   }
+
+   if(sorting=="Ajay"){
+        cardarry.sort((a, b) => {
+            let fa = a.name.toLowerCase(),
+            fb = b.name.toLowerCase();
+
+            if (fa < fb) {
+                return 1;
+            }
+            if (fa > fb) {
+                return -1;
+            }
+            return 0;
+        });
+        displaydata(cardarry);
+   }
+    
+   if(sorting=="Mohit"){
+        function swap(cardarry,a,b){
+        let temp = cardarry[a]
+        cardarry[a] = cardarry[b];
+        cardarry[b] = temp
+        }
+
+        for(let i=0;i<cardarry.length;i++){
+        for(let j=0;j<cardarry.length-i-1;j++){
+        
+            let a = +cardarry[j].mrp.slice(6,cardarry[j].mrp.length-2)
+            let b = +cardarry[j+1].mrp.slice(6,cardarry[j+1].mrp.length-2)
+            
+            if(a>b){
+            
+            swap(cardarry,j,j+1)
+            }
+           }
+        }
+
+        displaydata(cardarry);
+   }
+   if(sorting=="Shubham"){
+        function swap(cardarry,a,b){
+        let temp = cardarry[a]
+        cardarry[a] = cardarry[b];
+        cardarry[b] = temp
+        }
+
+        for(let i=0;i<cardarry.length;i++){
+        for(let j=0;j<cardarry.length-i-1;j++){
+        
+            let a = +cardarry[j].mrp.slice(6,cardarry[j].mrp.length-2)
+            let b = +cardarry[j+1].mrp.slice(6,cardarry[j+1].mrp.length-2)
+            
+            if(a<b){
+            
+            swap(cardarry,j,j+1)
+            }
+           }
+        }
+
+        displaydata(cardarry);
+   }
+   
+   if(sorting=="Suraj"){
+        function swap(cardarry,a,b){
+        let temp = cardarry[a]
+        cardarry[a] = cardarry[b];
+        cardarry[b] = temp
+        }
+
+        for(let i=0;i<cardarry.length;i++){
+        for(let j=0;j<cardarry.length-i-1;j++){
+        
+            let a = +cardarry[j].review.slice(0,cardarry[j].review.length-7)
+            let b = +cardarry[j+1].review.slice(0,cardarry[j+1].review.length-7)
+            
+            if(a<b){
+            
+            swap(cardarry,j,j+1)
+            }
+           }
+        }
+        //console.log(cardarry)
+        //console.log(arr);
+
+        displaydata(cardarry);
+   }
+};
+
+
+
+function addToCartFunction(elem){
+     let maintainDuplicateArr = JSON.parse(localStorage.getItem("cart")) || [];
+     //if(maintainDuplicateArr.inc)
+     let flag = false;
+     for(let i=0;i<maintainDuplicateArr.length;i++){
+         if(elem.id==maintainDuplicateArr[i].id){
+             flag=true;
+         }
+     }
+
+     if(flag==false){
+
+        //old
+        elem.quantity = 1;
+        //console.log(elem.quantity);
+
+        cartProductsArr.push(elem);
+        localStorage.setItem("cart",JSON.stringify(cartProductsArr));
+     }
+}
+</script>
+
+<script src="./scripts/card.js"></script>
+
+
+<script type="module">
+    document.getElementById('navbar1').addEventListener("click",()=>{
+        window.location.href = "./skincare.html"
+    })
+
+    document.querySelector("#navbar00>div:first-child").addEventListener("click",()=>{
+        window.location.href = "./LoginPage.html"
+    })
+    document.querySelector("#navbar00>div:last-child").addEventListener("click",()=>{
+        window.location.href = "./SignupPage.html"
+    })
+    document.querySelector("#navbar00>div:nth-child(2)").addEventListener("click",()=>{
+        window.location.href = "./whishlist.html"
+    })
+    document.getElementById("GoToIngredients").addEventListener("click",()=>{
+        window.location.href = "./Ingredients.html"
+    })
+    document.getElementById("GpToBlog").addEventListener("click",()=>{
+        window.location.href="./blogpage.html"
+    })
+
+    document.getElementById('navbar2').addEventListener("click",()=>{
+        window.location.href = "./haircare.html"
+    })
+    document.getElementById('navbar3').addEventListener("click",()=>{
+        window.location.href = "./bathbody.html"
+    })
+    document.getElementById('navbar4').addEventListener("click",()=>{
+        window.location.href = "./oralcare.html"
+    })
+    document.getElementById('navbar5').addEventListener("click",()=>{
+        window.location.href = "./wellness.html"
+    })
+    document.getElementById('navbar6').addEventListener("click",()=>{
+        window.location.href = "./babycare.html"
+    })
+    document.getElementById('navbar7').addEventListener("click",()=>{
+        window.location.href = "./men.html"
+    })
+    document.getElementById('navbar8').addEventListener("click",()=>{
+        window.location.href = "./combo.html"
+    })
+    document.getElementById('navbar9').addEventListener("click",()=>{
+        window.location.href = "./gifting.html"
+    })
+    document.getElementById('navbar10').addEventListener("click",()=>{
+        window.location.href = "./offers.html"
+    })
+
+   document.getElementById("gotoalwayshome").addEventListener("click",()=>{
+       window.location.href="./index.html"
+   })
+
+</script>

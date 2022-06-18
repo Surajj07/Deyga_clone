@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ingredients</title>
+    <!-- <link rel="stylesheet" href="./styles/navbar_footer.css"> -->
+    <link rel="stylesheet" href="./styles/navbar_footer copy.css">
+    <style>
+       
+        .zoomImage{
+           
+            transform: scale(1);
+            transition: 1s ease-in-out;
+           
+        }
+        .zoomImage:hover{
+           
+            transform: scale(1.15);
+        }
+    
+    </style>
+</head>
+<body>
+    <div id="navbar"></div>
+    <div id="stickyImages">
+        <img src="https://lh3.googleusercontent.com/stk7qIhvTn-6p1x3eYOfqnNCdIkNjyIoZPlZtwiDCzdhxEYc8Gsm1obY0zYdR13NfW_UkF4=s88" alt=""/>
+        <img src="https://lh3.googleusercontent.com/7GC8KgKN3PBmRKrqYOpBvozvAkrDknIwHhpDyMlDhEo_xEEEmHN81MTm7dNQvMyg4CcZ=s87" alt=""/>
+        <img src="https://lh3.googleusercontent.com/viOmLsqBaf_hyffXvvUFInfNNDwwQp6UpqQkPQU6uQFK-eE2MJnRGVdetr2Df6Q1twm85w=s87" alt=""/>
+        <img src="https://lh3.googleusercontent.com/AGtkZJFXY39I8G7s0dXFAGzgVuvr_m5Li-5v2TDlpqWdQtXOmf9WG13REwpOBuKKDXD70A=s87" alt=""/>
+        <img src="https://cdn.shopify.com/s/files/1/0034/7901/1441/t/139/assets/ping-svg2.svg?v=1619612966" alt=""/>
+    </div>
+    <img id="IngredientsImage" src="https://cdn.shopify.com/s/files/1/0034/7901/1441/files/Ingredients-v2_x800.jpg?v=1601912763" alt=""/>
+    <div id="IngredientsDiv2">
+        <div>Our Ingredient are pure, natural and safe.</div>
+        <div>The goodness of the succulent aloe vera plant can help treat burns, acne and dry skin. It is nature's very own hydrant that helps you attain flawless skin and hair.</div>
+    </div>
+    <div id="IngredientsHoverDiv">
+        <div>
+            <button>ALL</button>
+            <button id="acne">ACNE</button>
+            <button>AGEING SKIN</button>
+            <button>BALDNESS</button>
+            <button>CHAPPED LIPS</button>
+            <button>CRACKED FOOT</button>
+            <button>CRACKED LIPS</button>
+            <button>DAMAGED HAIR</button>
+            <button>DANDRUFF</button>
+            <button>DARK SPOT</button>
+            <button>DULL SKIN</button>
+        </div>
+        <div>
+            <button>FACIAL PIGMENTATION</button>
+            <button>FRIZZY HAIR</button>
+            <button>GREY HAIR</button>
+            <button>HAIR FALL</button>
+            <button>MELASMA</button>
+            <button>OPEN PORES</button>
+            <button>SPLIT END</button>
+            <button>WRINKLES</button>
+        </div>
+    </div>
+    <div id="IngredientsContainer"></div>
+    
+    <div id="footer"></div>
+    
+</body>
+</html>
+
+<script type="module">   // Navbar & Footer
+
+    import {navbar,footer} from "./components/navbar.js"
+    document.getElementById('navbar').innerHTML=navbar();
+    document.getElementById('footer').innerHTML = footer();
+
+    import {navbarJs} from "./scripts/navbarJsPart.js"
+    navbarJs();
+    
+    
+</script>
+
+<script type="module">
+    let IngredientsData = [
+        
+        {id:12,image_url:"http://cdn.shopify.com/s/files/1/0034/7901/1441/files/Untitled_design_33_a7b65074-bf00-464e-bc9f-c51adee45832.png?v=1599655902",name:"Flax Seed"},
+        
+        {id:36,image_url:"http://cdn.shopify.com/s/files/1/0034/7901/1441/files/Untitled_design_8_dd36737d-b11a-4906-855e-602a9a1ea0ea.png?v=1599646726",name:"Argan"},
+       
+    ]
+
+    const IngredientsDisplay = (IngredientsData)=>{
+
+        document.querySelector("#IngredientsContainer").innerHTML = null;
+
+        IngredientsData.map((el)=>{
+            let box = document.createElement("div");
+
+            let image = document.createElement("img");
+            image.src = el.image_url;
+            image.setAttribute("class","zoomImage")
+
+            let title = document.createElement("div");
+            title.innerText = el.name;
+
+            box.append(image,title);
+            document.querySelector("#IngredientsContainer").append(box)
+        })
+    }
+
+    IngredientsDisplay(IngredientsData);
+
+</script>
+
+
+
+<script type="module">
+    document.getElementById('navbar1').addEventListener("click",()=>{
+        window.location.href = "./skincare.html"
+    })
+
+    document.querySelector("#navbar00>div:first-child").addEventListener("click",()=>{
+        window.location.href = "./LoginPage.html"
+    })
+    document.querySelector("#navbar00>div:last-child").addEventListener("click",()=>{
+        window.location.href = "./SignupPage.html"
+    })
+    document.querySelector("#navbar00>div:nth-child(2)").addEventListener("click",()=>{
+        window.location.href = "./whishlist.html"
+    })
+    document.getElementById("GoToIngredients").addEventListener("click",()=>{
+        window.location.href = "./Ingredients.html"
+    })
+    document.getElementById("GpToBlog").addEventListener("click",()=>{
+        window.location.href="./blogpage.html"
+    })
+
+    document.getElementById('navbar2').addEventListener("click",()=>{
+        window.location.href = "./haircare.html"
+    })
+    document.getElementById('navbar3').addEventListener("click",()=>{
+        window.location.href = "./bathbody.html"
+    })
+    document.getElementById('navbar4').addEventListener("click",()=>{
+        window.location.href = "./oralcare.html"
+    })
+    document.getElementById('navbar5').addEventListener("click",()=>{
+        window.location.href = "./wellness.html"
+    })
+    document.getElementById('navbar6').addEventListener("click",()=>{
+        window.location.href = "./babycare.html"
+    })
+    document.getElementById('navbar7').addEventListener("click",()=>{
+        window.location.href = "./men.html"
+    })
+    document.getElementById('navbar8').addEventListener("click",()=>{
+        window.location.href = "./combo.html"
+    })
+    document.getElementById('navbar9').addEventListener("click",()=>{
+        window.location.href = "./gifting.html"
+    })
+    document.getElementById('navbar10').addEventListener("click",()=>{
+        window.location.href = "./offers.html"
+    })
+
+   document.getElementById("gotoalwayshome").addEventListener("click",()=>{
+       window.location.href="./index.html"
+   })
+
+</script>
+<script type="module">
+    document.getElementById("acne").addEventListener("click",()=>{
+        window.location.href="./acne.html"
+    })
+</script>
+
+
+
+
+
+
+
+
+
+

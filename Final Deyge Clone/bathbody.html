@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bath & Body</title>
+    <link rel="stylesheet" href="./styles/navbar_footer.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="./styles/products.css">
+    <link rel="stylesheet" href="./styles/card.css">
+
+   
+    <script src="https://code.jquery.com/jquery-3.5.0.js"></script>
+    <style>
+        #stickyImages{
+         margin-left: 97.5%;
+         position: sticky;
+         /* right: 0; */
+         top: 40%;
+         /* margin-top: -50%; */
+        
+         }
+         #stickyImages>img{
+             width: 33px;
+             height: 32px;
+             border-radius: 50%;
+             display: block;
+             margin-top: 3px;
+         }
+         #stickyImages>img:last-child{
+             width: 45px;
+             height: 45px;
+             margin-left: -6px;
+             margin-top: -5px;
+         }
+         #backhome{
+             margin-top: -11.5%;
+         }
+         </style>
+</head>
+<body>
+    
+    <div id="navbar"></div>
+    <div id="stickyImages">
+        <img src="https://lh3.googleusercontent.com/stk7qIhvTn-6p1x3eYOfqnNCdIkNjyIoZPlZtwiDCzdhxEYc8Gsm1obY0zYdR13NfW_UkF4=s88" alt=""/>
+        <img src="https://lh3.googleusercontent.com/7GC8KgKN3PBmRKrqYOpBvozvAkrDknIwHhpDyMlDhEo_xEEEmHN81MTm7dNQvMyg4CcZ=s87" alt=""/>
+        <img src="https://lh3.googleusercontent.com/viOmLsqBaf_hyffXvvUFInfNNDwwQp6UpqQkPQU6uQFK-eE2MJnRGVdetr2Df6Q1twm85w=s87" alt=""/>
+        <img src="https://lh3.googleusercontent.com/AGtkZJFXY39I8G7s0dXFAGzgVuvr_m5Li-5v2TDlpqWdQtXOmf9WG13REwpOBuKKDXD70A=s87" alt=""/>
+        <img src="https://cdn.shopify.com/s/files/1/0034/7901/1441/t/139/assets/ping-svg2.svg?v=1619612966" alt=""/>
+    </div>
+    <div id="backhome"><a href="index.html">Home >Bath & Body</a></div>
+     <div class="upperimage">
+         <h2 class="title">Bath & Body</h1>
+        
+     </div>
+ 
+     <hr style="margin-bottom: 5%;">
+     <div class="short">
+         <select name="cars" id="cars" onchange="sortItems()">
+             <option value="Kalyani">Sort</option>
+             <option value="Suraj">Best Seller </option>
+             <option value="Puja">Alphabetically A-Z</option>
+             <option value="Ajay">Alphabetically Z-A</option>
+             <option value="Shubham">Price-High to Low</option>
+             <option value="Mohit">Price-Low to High</option>
+           </select>
+     </div>
+     <hr>
+    
+ <div id="middle_container" ></div>
+
+ <hr>
+ <div id="middle_container1">Recently viewed</div>
+
+ <div id="slider">
+    <div id="sliderappend">
+        <div id="one"></div>
+        <div id="two"></div>
+    </div>
+    <!-- <div id="indicator"> -->
+        <button id="btn1"><</button>
+        <button id="btn2">></button>
+    <!-- </div> -->
+</div>
+
+ <div id="footer"></div>
+</body>
+</html>
+<script type="module">
+
+    import {navbar,footer} from "./components/navbar.js"
+    document.getElementById('navbar').innerHTML=navbar();
+    document.getElementById('footer').innerHTML = footer();
+
+    import {navbarJs} from "./scripts/navbarJsPart.js"
+    navbarJs();
+    
+    
+</script>
+<script>
+     let cardarry = [
+        {id:1, name:"Charcoal Bath Bar",
+        image:"https://cdn.shopify.com/s/files/1/0034/7901/1441/products/ICONS-05_400x.jpg?v=1648210587",
+        image2:"https://cdn.shopify.com/s/files/1/0034/7901/1441/products/Charcoal-soap_400x.jpg?v=1648210587",
+        review:"566 reviews",mrp:"MRP ₹ 349.00",del:"₹410.00" },
+        {id:2, name:"Coconut Milk Shampoo Bar",
+        image:"https://cdn.shopify.com/s/files/1/0034/7901/1441/products/Shampoo-Bar_400x.jpg?v=1647864464",
+        image2:"https://cdn.shopify.com/s/files/1/0034/7901/1441/products/Shampoo-Bar_400x.jpg?v=1647864464",
+        review:"62 reviews",mrp:"MRP ₹ 390.00",del:"" },
+        {id:3, name:"Shea Saffron Bath Bar",
+        image:"https://cdn.shopify.com/s/files/1/0034/7901/1441/products/SheaSaffronBathBar_400x.jpg?v=1647864001",
+        image2:"https://cdn.shopify.com/s/files/1/0034/7901/1441/products/SheaSaffronBathBar_400x.jpg?v=1647864001",
+        review:"21 reviews",mrp:"MRP ₹ 390.00",del:"" },
+        {id:4, name:"Body Scrub",
+        image:"https://cdn.shopify.com/s/files/1/0034/7901/1441/products/BodyScrub_400x.jpg?v=1647862779",
+        image2:"https://cdn.shopify.com/s/files/1/0034/7901/1441/products/J8A6336_400x.jpg?v=1647862779",
+        review:"9 reviews",mrp:"MRP ₹ 450.00",del:"" },
+        {id:5, name:"Loofah",
+        image:"https://cdn.shopify.com/s/files/1/0034/7901/1441/products/Shoot_3_4_1000x1000_ee8c9638-79ac-4a9a-bbc1-36f7ab80b3f5_400x.jpg?v=1641031536",
+        image2:"https://cdn.shopify.com/s/files/1/0034/7901/1441/products/Shoot_3_4_1000x1000_ee8c9638-79ac-4a9a-bbc1-36f7ab80b3f5_400x.jpg?v=1641031536",
+        review:"14 reviews",mrp:"MRP ₹ 50.00",del:"" },
+        {id:6, name:"Baby Bath Bar",
+        image:"https://cdn.shopify.com/s/files/1/0034/7901/1441/products/BabyBathBar_400x.jpg?v=1647863891",
+        image2:"https://cdn.shopify.com/s/files/1/0034/7901/1441/products/Baby_Soap_c52c3f11-1708-4a04-afd4-c051e9e5b252_400x.jpg?v=1647863891",
+        review:"7 reviews",mrp:"MRP ₹ 390.00",del:"" },
+        
+    ]
+    let parent=document.querySelector("#middle_container");
+
+let cartProductsArr = JSON.parse(localStorage.getItem("cart")) || [];
+
+function displaydata(cardarry){
+parent.innerHTML=null;
+
+cardarry.forEach(function(elem){
+    
+
+    let div=document.createElement("div")
+    div.setAttribute("class",("upper_container"))
+
+    let myDiv = document.createElement("div")
+    myDiv.setAttribute("id","gotoparticulatpage")
+    // myDiv.addEventListener("click",()=>{
+    //     hey(elem)
+    // })
+
+    myDiv.addEventListener("click",()=>{
+        
+        productInfo(elem)
+        window.location.href="./../particularProduct.html"
+    })
+
+    names=document.createElement("p")
+    names.setAttribute("class","namess") 
+   
+    names.innerText=elem.name;
+    names.style.fontSize="17px";
+    names.style.color="#000000";
+    
+    let imgs=document.createElement("img")
+    imgs.src=elem.image;
+    imgs.setAttribute("id","pic")
+ 
+    $(imgs).hover(function () {
+           
+           imgs.src = elem.image2;
+               }, function () {
+                   // out
+                    imgs.src = elem.image;
+               }
+            );
+           $("#pic").hover(function () {
+    //stuff to do on mouse enter
+    imgs.src = elem.image2;
+}, 
+function () {
+    //stuff to do on mouse leave
+    imgs.src = elem.image;
+});
+    let div1=document.createElement("div")
+     div1.setAttribute("id","stardiv")
+   
+ 
+    let wish=document.createElement("i")
+    wish.setAttribute("class","fa fa-heart-o")
+    wish.setAttribute("id","suraj")
+    wish.style.fontSize="28px";
+     wish.style.border="1px solid white"
+     wish.addEventListener("click",()=>{
+         window.location.href = "./../blogpage.html"
+     });
+
+
+    let reiv=document.createElement("div")
+    reiv.innerText=elem.review;
+    reiv.style.marginLeft="2px";
+    
+    let rate=document.createElement("span")
+    rate.setAttribute("class","fa fa-star checked");
+
+    let rate2=document.createElement("span")
+    rate2.setAttribute("class","fa fa-star checked");
+
+    let rate3=document.createElement("span")
+    rate3.setAttribute("class","fa fa-star checked");
+
+    let rate4=document.createElement("span")
+    rate4.setAttribute("class","fa fa-star checked");
+
+    let rate5=document.createElement("span")
+    rate5.setAttribute("class","fa fa-star checked");
+
+    let div2=document.createElement("div")
+    div2.setAttribute("id","priceAndDel")
+    
+
+    let mrp=document.createElement("div")
+    mrp.setAttribute("id","price")
+    mrp.innerText=elem.mrp;
+
+    let del=document.createElement("del")
+    del.innerText=elem.del;
+    del.style.marginLeft="20px";
+
+    let cart=document.createElement("button");
+    cart.innerText="Add To Cart";
+    cart.setAttribute("class","cart_button")
+    cart.addEventListener("click",()=>{
+        addToCartFunction(elem);
+        window.location.href="./../cartPage2.html"
+    })
+    
+   // divwish.append(wish)
+    div1.append(rate,rate2,rate3,rate4,rate5,reiv)
+    
+    div2.append(mrp,del)
+    myDiv.append(imgs,wish,names,div1,div2)
+    div.append(myDiv,cart)
+    // div.append(imgs,wish,names,div1,div2,cart)
+    parent.append(div)
+})
+}
+
+displaydata(cardarry)
+
+
+let count = 1;
+let productInfo = (elem)=>{
+    
+     localStorage.setItem("qty",count)
+    localStorage.setItem("particularPro",JSON.stringify(elem));
+}
+
+
+function sortItems(){
+    var sorting = document.querySelector("#cars").value;
+    //console.log(sorting)
+
+   if(sorting=="Puja"){
+        cardarry.sort((a, b) => {
+            let fa = a.name.toLowerCase(),
+            fb = b.name.toLowerCase();
+
+            if (fa < fb) {
+                return -1;
+            }
+            if (fa > fb) {
+                return 1;
+            }
+            return 0;
+        });
+        displaydata(cardarry);
+   }
+
+   if(sorting=="Ajay"){
+        cardarry.sort((a, b) => {
+            let fa = a.name.toLowerCase(),
+            fb = b.name.toLowerCase();
+
+            if (fa < fb) {
+                return 1;
+            }
+            if (fa > fb) {
+                return -1;
+            }
+            return 0;
+        });
+        displaydata(cardarry);
+   }
+    
+   if(sorting=="Mohit"){
+        function swap(cardarry,a,b){
+        let temp = cardarry[a]
+        cardarry[a] = cardarry[b];
+        cardarry[b] = temp
+        }
+
+        for(let i=0;i<cardarry.length;i++){
+        for(let j=0;j<cardarry.length-i-1;j++){
+        
+            let a = +cardarry[j].mrp.slice(6,cardarry[j].mrp.length-2)
+            let b = +cardarry[j+1].mrp.slice(6,cardarry[j+1].mrp.length-2)
+            
+            if(a>b){
+            
+            swap(cardarry,j,j+1)
+            }
+           }
+        }
+
+        displaydata(cardarry);
+   }
+   if(sorting=="Shubham"){
+        function swap(cardarry,a,b){
+        let temp = cardarry[a]
+        cardarry[a] = cardarry[b];
+        cardarry[b] = temp
+        }
+
+        for(let i=0;i<cardarry.length;i++){
+        for(let j=0;j<cardarry.length-i-1;j++){
+        
+            let a = +cardarry[j].mrp.slice(6,cardarry[j].mrp.length-2)
+            let b = +cardarry[j+1].mrp.slice(6,cardarry[j+1].mrp.length-2)
+            
+            if(a<b){
+            
+            swap(cardarry,j,j+1)
+            }
+           }
+        }
+
+        displaydata(cardarry);
+   }
+   
+   if(sorting=="Suraj"){
+        function swap(cardarry,a,b){
+        let temp = cardarry[a]
+        cardarry[a] = cardarry[b];
+        cardarry[b] = temp
+        }
+
+        for(let i=0;i<cardarry.length;i++){
+        for(let j=0;j<cardarry.length-i-1;j++){
+        
+            let a = +cardarry[j].review.slice(0,cardarry[j].review.length-7)
+            let b = +cardarry[j+1].review.slice(0,cardarry[j+1].review.length-7)
+            
+            if(a<b){
+            
+            swap(cardarry,j,j+1)
+            }
+           }
+        }
+        //console.log(cardarry)
+        //console.log(arr);
+
+        displaydata(cardarry);
+   }
+};
+
+
+
+function addToCartFunction(elem){
+     let maintainDuplicateArr = JSON.parse(localStorage.getItem("cart")) || [];
+     //if(maintainDuplicateArr.inc)
+     let flag = false;
+     for(let i=0;i<maintainDuplicateArr.length;i++){
+         if(elem.id==maintainDuplicateArr[i].id){
+             flag=true;
+         }
+     }
+
+     if(flag==false){
+
+        //old
+        elem.quantity = 1;
+        //console.log(elem.quantity);
+
+        cartProductsArr.push(elem);
+        localStorage.setItem("cart",JSON.stringify(cartProductsArr));
+     }
+}
+
+
+</script>
+<script src="./scripts/card.js"></script>
+
+
+<script type="module">
+    document.getElementById('navbar1').addEventListener("click",()=>{
+        window.location.href = "./skincare.html"
+    })
+
+    document.querySelector("#navbar00>div:first-child").addEventListener("click",()=>{
+        window.location.href = "./LoginPage.html"
+    })
+    document.querySelector("#navbar00>div:last-child").addEventListener("click",()=>{
+        window.location.href = "./SignupPage.html"
+    })
+    document.querySelector("#navbar00>div:nth-child(2)").addEventListener("click",()=>{
+        window.location.href = "./whishlist.html"
+    })
+    document.getElementById("GoToIngredients").addEventListener("click",()=>{
+        window.location.href = "./Ingredients.html"
+    })
+    document.getElementById("GpToBlog").addEventListener("click",()=>{
+        window.location.href="./blogpage.html"
+    })
+
+    document.getElementById('navbar2').addEventListener("click",()=>{
+        window.location.href = "./haircare.html"
+    })
+    document.getElementById('navbar3').addEventListener("click",()=>{
+        window.location.href = "./bathbody.html"
+    })
+    document.getElementById('navbar4').addEventListener("click",()=>{
+        window.location.href = "./oralcare.html"
+    })
+    document.getElementById('navbar5').addEventListener("click",()=>{
+        window.location.href = "./wellness.html"
+    })
+    document.getElementById('navbar6').addEventListener("click",()=>{
+        window.location.href = "./babycare.html"
+    })
+    document.getElementById('navbar7').addEventListener("click",()=>{
+        window.location.href = "./men.html"
+    })
+    document.getElementById('navbar8').addEventListener("click",()=>{
+        window.location.href = "./combo.html"
+    })
+    document.getElementById('navbar9').addEventListener("click",()=>{
+        window.location.href = "./gifting.html"
+    })
+    document.getElementById('navbar10').addEventListener("click",()=>{
+        window.location.href = "./offers.html"
+    })
+
+   document.getElementById("gotoalwayshome").addEventListener("click",()=>{
+       window.location.href="./index.html"
+   })
+
+</script>

@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cart Main Page</title>
+    <link rel="stylesheet" href="./styles/right.css">
+    <link rel="stylesheet" href="./styles/cart1.css">
+
+    <style>
+        #cartMainContainer{
+            height: 450px;
+            overflow-y: scroll;
+            width: 100%;
+        }
+        #carttitle{
+            background-color: white !important;
+            color: black !important;
+        }
+    </style>
+</head>
+<body>
+    <div class="wrapper" >
+        <input type="checkbox" id="btn" hidden>
+        <label for="btn" class="menu-btn">
+          <i class="fas fa-bars"></i>
+          <i class="fas fa-times"></i>
+          
+        </label>
+        <nav id="sidebar" >
+          <div class="title" id="carttitle">Cart</div>
+        
+     <hr/>
+    
+     <div id="cartMainContainer" ></div>
+     <hr/>
+     <h5>Add Order Note</h5>
+     <div>Shipping & taxes calculated at checkout</div>
+     
+     <div id="hellocheckout">
+         <div>Checkout</div>
+         <div id="showTotalPrice"></div>
+     </div>
+        </nav>
+      </div>
+</body>
+</html>
+<script type="module">
+
+    let cartItemsArr = JSON.parse(localStorage.getItem("cart")) || [];
+    console.log("cartItemsArr",cartItemsArr)
+
+    const cartDisplay = (cartItemsArr)=>{
+        document.getElementById('cartMainContainer').innerHTML = null;
+
+        cartItemsArr.map((el)=>{
+
+            let cartDiv = document.createElement("div");
+
+            let productImg = document.createElement("img");
+            productImg.src = el.image;
+
+            let nameAndPriceDiv = document.createElement("div");
+
+            let title = document.createElement("div");
+            title.innerText = el.name;
+
+            let price1 = el.mrp.slice(6,el.mrp.length-3);
+            let price = document.createElement("div");
+            price.innerText = `Rs. ${price1}`;
+            //console.log(price.innerText.slice(4,price.innerText.length));
+
+            nameAndPriceDiv.append(title,price);
+            
+            let QuantityAndRemoveDiv = document.createElement("div");
+
+            let QuantityDiv = document.createElement("div");
+
+            let decdiv = document.createElement("div");
+            decdiv.innerText = "-"
+            decdiv.addEventListener("click",()=>{
+                decquantity(el);
+            })
+
+            let Quantity = document.createElement("div");
+            Quantity.innerText = el.quantity;
+            Quantity.setAttribute("id","qty")
+
+            let incdiv = document.createElement("div");
+            incdiv.innerText = "+"
+            incdiv.addEventListener("click",()=>{
+                incquantity(el);
+            })
+
+            QuantityDiv.append(decdiv,Quantity,incdiv)
+            QuantityDiv.style.width="100px"
+
+            let removeDiv = document.createElement("div");
+            removeDiv.innerText = "Remove"
+            removeDiv.setAttribute("id","removeHover")
+            removeDiv.addEventListener("click",()=>{
+                deleteProductFromCart(el.id);
+            })
+
+            QuantityAndRemoveDiv.append(QuantityDiv,removeDiv)
+
+            let totalPriceDiv = document.createElement("div");
+            let rs = document.createElement("div");
+            rs.innerText = "Rs.";
+            let priceWithQuantity = document.createElement("div");
+            priceWithQuantity.innerText = (el.quantity)*(price1);
+
+            totalPriceDiv.append(rs,priceWithQuantity)
+
+
+            cartDiv.append(productImg,nameAndPriceDiv,QuantityAndRemoveDiv,totalPriceDiv);
+            document.getElementById('cartMainContainer').append(cartDiv);
+
+        })
+
+    }
+
+   cartDisplay(cartItemsArr)
+
+   let totalPrice = cartItemsArr.reduce((acc,ele)=>{
+          return acc+((ele.quantity)*(ele.mrp.slice(6,ele.mrp.length-3)))
+    },0)
+    console.log(totalPrice);
+
+     document.getElementById('showTotalPrice').innerText = totalPrice;
+
+    
+    
+
+   
+   const deleteProductFromCart = (id)=>{
+
+      let filteredArr = JSON.parse(localStorage.getItem("cart")) || [];
+
+      let deletedArr = filteredArr.filter((el)=>{
+         document.getElementById('showTotalPrice').innerText = totalPrice-el.quantity*(el.mrp.slice(6,el.mrp.length-3))
+        //  document.getElementById('countCartItems').innerText = totalquantityofcartproducts-el.quantity;
+         return el.id!=id;
+      })
+
+      
+      localStorage.setItem("cart",JSON.stringify(deletedArr));
+      cartDisplay(deletedArr);
+
+    }
+
+
+   let incquantity=(ele)=>{
+       
+        ele.quantity++;
+        let target = cartItemsArr.map(el=>el.id == ele.id?{...el,quantity:ele.quantity++}:el)
+        localStorage.setItem("cart",JSON.stringify(target))
+        cartDisplay(target);
+
+        let totalPrice = target.reduce((acc,ele)=>{
+          return acc+((ele.quantity)*(ele.mrp.slice(6,ele.mrp.length-3)))
+        },0)
+
+        document.getElementById('showTotalPrice').innerText = totalPrice;
+
+        let totalquantityofcartproducts = target.reduce((acc,ele)=>{
+           return acc+(ele.quantity);
+        },0)
+
+        // document.getElementById('countCartItems').innerText = totalquantityofcartproducts
+   }
+   
+    let decquantity = (ele)=>{
+        if(ele.quantity>=2){
+          ele.quantity--;
+       }
+        let target = cartItemsArr.map(el=>el.id == ele.id?{...el,quantity:ele.quantity++}:el)
+        localStorage.setItem("cart",JSON.stringify(target))
+        cartDisplay(target);
+
+        let totalPrice = target.reduce((acc,ele)=>{
+          return acc+((ele.quantity)*(ele.mrp.slice(6,ele.mrp.length-3)))
+        },0)
+
+        document.getElementById('showTotalPrice').innerText = totalPrice;
+
+        let totalquantityofcartproducts = target.reduce((acc,ele)=>{
+           return acc+(ele.quantity);
+        },0)
+
+        // document.getElementById('countCartItems').innerText = totalquantityofcartproducts
+    }     
+      
+    
+
+</script>
+
+
+

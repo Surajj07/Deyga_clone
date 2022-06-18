@@ -1,0 +1,318 @@
+/* checkoutPageCSS */
+*{
+    padding: 0;
+    margin: 0;
+    font-family: sans-serif;
+}
+#CheckoutBodyDiv{
+    width: 70%;
+    /* height: 800px; */
+    /* border: 3px solid dodgerblue; */
+    /* margin: auto; */
+    display: flex;
+    margin-left: 15%;
+}
+
+#CheckoutLeft{
+    width: 57%;
+    /* height: 100%; */
+    border-right: 1px solid gray;
+    margin-right: 2px;
+    padding-left: 5px;
+}
+#CheckoutRight{
+    width: 42%;
+    /* height: 100%; */
+    /* border: 2px solid green; */
+    background-color: rgb(250,250,250);
+    /* box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 5px; */
+    padding-left: 40px;
+}
+
+#CheckoutLeft>img{
+    width: 79.86px;
+    height: 60px;
+    margin-left: 40%;
+    margin-top: 40px;
+    
+}
+#CheckoutLeft>div:nth-child(2){
+    display: flex;
+    font-size: 12px;
+    color: #A17C5F;
+    width: 100%;
+    justify-content: center;
+}
+#CheckoutLeft>div:nth-child(2)>div:nth-child(2),#CheckoutLeft>div:nth-child(2)>div:nth-child(4),#CheckoutLeft>div:nth-child(2)>div:nth-child(6){
+    margin-left: 7px;
+    margin-right: 7px;
+}
+#CheckoutLeft>div:nth-child(3){
+    display: flex;
+    width: 90%;
+    /* border: 1px solid red; */
+    justify-content: space-between;
+    margin-top: 25px;
+}
+#CheckoutLeft>div:nth-child(3)>div:first-child{
+    font-size: 18px;
+    color: #333333;
+}
+#CheckoutLeft>div:nth-child(3)>div:last-child{
+   font-size: 14px;
+   color: #545454;
+}
+#CheckoutLeft>div:nth-child(3)>div:last-child:hover{
+    color: #A17C5F;
+}
+#CheckoutLeft>input:nth-child(13),#CheckoutLeft>input:nth-child(4),#CheckoutLeft>input:nth-child(8),#CheckoutLeft>input:nth-child(9),#CheckoutLeft>input:nth-child(10){
+    width: 90%;
+    height: 35px;
+    /* border: 2px solid whitesmoke; */
+    margin-top: 15px;
+    padding-left: 10px;
+    box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;
+    border: none;
+    border-radius: 5px;
+    outline: #A17C5F;
+}
+#CheckoutLeft>div:nth-child(5),#CheckoutLeft>div:nth-child(16){
+   display: flex;
+   font-size: 14px;
+   color: #545454;
+   gap:8px;
+   margin-top: 10px;
+}
+#CheckoutLeft>div:nth-child(6){
+    font-size: 18px;
+    color: #333333;
+    margin-top: 35px;
+}
+#CheckoutLeft>div:nth-child(7),#CheckoutLeft>div:nth-child(11){
+    width: 90%;
+    display: flex;
+    gap: 3%;
+}
+#CheckoutLeft>div:nth-child(7)>input{
+    width: 49%;
+    height: 35px;
+    /* border: 2px solid whitesmoke; */
+    margin-top: 15px;
+    padding-left: 10px;
+    box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;
+    border: none;
+    border-radius: 5px;
+    outline: #A17C5F;
+}
+#CheckoutLeft>div:nth-child(11)>input{
+    height: 35px;
+    /* border: 2px solid whitesmoke; */
+    margin-top: 15px;
+    padding-left: 10px;
+    box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;
+    border: none;
+    border-radius: 5px;
+    outline: #A17C5F;
+}
+#CheckoutLeft>div:nth-child(11)>input:first-child{
+    width: 40%;
+}
+#CheckoutLeft>div:nth-child(11)>input:last-child{
+    width: 20%;
+}
+#CheckoutLeft>div:nth-child(12){
+    color: green;
+    font-size: 14px;
+    margin-top: 3px;
+}
+#CheckoutLeft>div:nth-child(14),#CheckoutLeft>div:nth-child(15){
+    display: flex;
+    margin-top: 15px;
+    width: 90%;
+}
+#CheckoutLeft>div:nth-child(14)>input,#CheckoutLeft>div:nth-child(15)>input{
+    height: 35px;
+    /* border: 2px solid whitesmoke; */
+    margin-top: 15px;
+    padding-left: 10px;
+    box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;
+    border: none;
+    border-radius: 5px;
+    outline: #A17C5F;
+    width: 98%;
+}
+#CheckoutLeft>div:nth-child(14)>div,#CheckoutLeft>div:nth-child(15)>div{
+    height: 35px;
+    margin-top: 15px;
+    box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;
+    background-color: rgb(238,238,238);
+    width: 6%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#CheckoutLeft>div:nth-child(17),#checkoutbtndiv{
+  display: flex;
+  width: 90%;
+  justify-content: space-between;
+  margin-top: 15px;
+}
+#CheckoutLeft>div:nth-child(17)>div,#checkoutbtndiv>div{
+    color: #A17C5F;
+    font-size: 14px;
+    margin-top: 30px;
+}
+#CheckoutLeft>div:nth-child(17)>button,#checkoutbtndiv>button{
+    color: white;
+    background-color: rgb(69,69,69);
+    border-radius: 5px;
+    border: 1px solid rgb(69,69,69);
+    font-size: 17px;
+    font-weight: 500;
+    height: 50px;
+    margin-top: 20px;
+    width: 200px;
+}
+#CheckoutLeft>hr{
+    margin-top: 50px;
+    width: 90%;
+    color: gray;
+}
+#CheckoutLeft>div:last-child{
+    margin-top: 10px;
+    width: 90%;
+    color: #737373;
+    font-size: 12px;
+    margin-bottom: 20px;
+}
+body{
+    display: flex;
+}
+#CheckoutRightMost{
+    width: 15%;
+    background-color: rgb(250,250,250);
+    margin-left: -5px;
+}
+
+
+
+
+/* rightsideCSS */
+
+#onlyProducts{
+    width: 95%;
+    height: 330px;
+    /* border: 3px solid red; */
+    overflow-y: scroll;
+    /* padding-left: 20px; */
+    margin-top: 50px;
+}
+#onlyProducts>div{
+    font-size: 14px;
+    color: #323232;
+    display: flex;
+    align-items: center;
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+#onlyProducts>div>img{
+    width: 64px;
+    height: 74px;
+    margin-right: 25px;
+}
+#onlyProducts>div>div:nth-child(3){
+    margin-right: 40px;
+    width: 40%;
+}
+#onlyProducts>div>div:nth-child(2){
+    width: 17px;
+    height: 17px;
+    border-radius: 50%;
+    font-size: 12px;
+    /* border: 1px solid black; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: -60px;
+    margin-left: -30px;
+    color: white;
+    background-color: gray;
+}
+#onlyProducts+hr,#discountcode+hr{
+    margin-top: 20px;
+    width: 95%;
+
+}
+#CheckoutRight>div:nth-child(3){
+    display: flex;
+    margin-top: 20px;
+}
+#CheckoutRight>div:nth-child(3)>input{
+    height: 46px;
+    font-size: 13px;
+    outline: #A17C5F;
+    width: 250px;
+    border-radius: 5px;
+    border: none;
+    box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;
+    padding-left: 6px;
+}
+#CheckoutRight>div:nth-child(3)>button{
+    font-size: 14px;
+    width: 84px;
+    height: 48px;
+    margin-left: 50px;
+    background-color: rgb(200,200,200);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-weight: 600;
+
+}
+#discountcode{
+    font-size: 11px;
+    margin-top: 3px;
+    color: deeppink;
+}
+#subtotalprice{
+    display: flex;
+    font-size: 14px;
+    margin-top: 15px;
+}
+#subtotalprice>div:first-child{
+    margin-right: 260px;
+}
+#subtotalprice+div{
+    display: flex;
+    /* justify-content: space-around; */
+    font-size: 14px;
+    margin-top: 7px;
+    margin-bottom: 10px;
+}
+#subtotalprice+div>div:first-child{
+    margin-right: 220px;
+    color: #535353;
+}
+#subtotalprice+div>div:last-child{
+    font-size: 12px;
+    color: #717171;
+}
+#taxes{
+    display: flex;
+    align-items: center;
+    margin-top: 20px;
+}
+#taxes>div:first-child{
+    color: #323232;
+    font-size: 16px;
+    margin-right: 140px;
+}
+#taxes>div:first-child>p,#taxes>div:nth-child(2){
+    font-size: 12px;
+    color: #717171;
+}
+#taxes>div:nth-child(3),#taxes>div:nth-child(4){
+    font-size: 24px;
+    color: #323232;
+    
+}

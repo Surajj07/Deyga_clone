@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment Page</title>
+    <link rel="stylesheet" href="./styles/payment.css">
+</head>
+<body>
+   <div id="CheckoutBodyDiv">
+       <div id="CheckoutLeft">
+           <img src="https://cdn.shopify.com/s/files/1/0034/7901/1441/files/200x150-01.png?32925" alt=""/>
+           <div>
+               
+               <div id="bhagoInformationPage">Information</div>
+               <div>></div>
+               <div id="bhagoJaldiShipingPage">Shipping</div>
+               <div>></div>
+               <div>Payment</div>
+           </div>
+           <div>
+               <div>
+                   <div>Contact</div>
+                   <div id="paymentemail">email</div>
+                   <div id="bhagoInformationPage1">Change</div>
+               </div>
+               <hr/>
+               <div>
+                   <div>Ship to</div>
+                   <div id="paymentaddress">address</div>
+                   <div id="bhagoInformationPage2">Change</div>
+               </div>
+               <hr/>
+               <div>
+                <div>Method</div>
+                <div id="paymentfreeornotokay">Free shipping</div>
+                <div id="bhagoInformationPage3">Change</div>
+            </div>
+           </div>
+           <div>Payment<p>All transactions are secure and encrypted.</p></div>
+           <div>
+               <div>
+                   <button></button>
+                   <img src="https://cdn.shopify.com/s/files/applications/da825af95b32afff690c3d64fb3750a0.svg?height=24&format=png&1646833827" alt=""/>
+                   <div>
+                       <img src="https://brandlogos.net/wp-content/uploads/2013/06/visa-us-vector-logo-400x400.png" alt=""/>
+                       <img src="https://lh3.googleusercontent.com/y4EnGi3k4iRrWJEwIH8ALNjjRlI5_l_I-UFjXmUqwAW9J1CSfCc_fib_RE9y2kj4SFXJbw=s58" alt=""/>
+                       <img src="https://lh3.googleusercontent.com/F18BPirdL2ww00vpOxl7b_YUBskdQZ_7988eIXesKr-qujvldVLyrvycMn_uR6VkMFHQ9U0=s64" alt=""/>
+                       <img src="https://lh3.googleusercontent.com/G0xwP9RWcUaYblyp9tD9yZsJIogiOHHTijqDAeUOiD8X1j-gs8wYqHxCqp2bI7aeSlY4gQ=s69" alt=""/>
+                       <div>and more...</div>
+                   </div>
+               </div>
+               <div>
+                   <div>
+                        <div>After clicking “Complete order”, you will be redirected to Cashfree</div>
+                        <div>Payments - UPI, Cards, Wallets, Paypal, Netbanking to complete</div>
+                        <div>your purchase securely.</div>
+                   </div>
+                   
+               </div>
+               <div>
+                    
+                    <button></button>
+                    <div>PayU India</div>
+                    <div>
+                        <img src="https://brandlogos.net/wp-content/uploads/2013/06/visa-us-vector-logo-400x400.png" alt=""/>
+                        <img src="https://lh3.googleusercontent.com/y4EnGi3k4iRrWJEwIH8ALNjjRlI5_l_I-UFjXmUqwAW9J1CSfCc_fib_RE9y2kj4SFXJbw=s58" alt=""/>
+                        <img src="https://lh3.googleusercontent.com/4n9zhW_M2qbvx_BvrgxrMD7oleSCoyhDIuCR1FQzuE3Cadm9nxeHJd3yYvyMggbRi28Z1Iw=s79" alt=""/>
+                        <img src="https://lh3.googleusercontent.com/F18BPirdL2ww00vpOxl7b_YUBskdQZ_7988eIXesKr-qujvldVLyrvycMn_uR6VkMFHQ9U0=s64" alt=""/>
+                        <div>and more...</div>
+                    </div>
+                    
+               </div>
+           </div>
+           <div>Billing address<p>Select the address that matches your card or payment method.</p></div>
+           <div>
+            <div>
+                 <button></button>
+                <div>Same as shipping address</div>
+               
+            </div>
+            <hr/>
+            <div>
+                <button></button>
+                <div>Use a different billing address</div>
+                
+            </div>
+        </div>
+            <div id="checkoutbtndiv">
+                <div id="gotoinfopagefastly">< Return to information</div>
+                <button id="gotofinalpaymentpage">Complete order</button>
+            </div>
+            <hr style="margin-top: 100px;"/>
+            <div>All rights reserved deyga.in</div>
+       </div>
+       <div id="CheckoutRight">
+        <div id="onlyProducts"></div>
+        <hr/>
+        <div>
+            <input type="text" placeholder="Gift card or discount code"/>
+            <button>Apply</button>
+        </div>
+        <div id="discountcode">Your discount code - masai30 for 30% discount</div>
+        <hr/>
+        <div id="subtotalprice">
+            <div>Subtotal</div>
+            <div>₹</div>
+            <div></div>
+        </div>
+        <div>
+            <div>Shipping</div>
+            <div id="putfreeorNot"></div>
+        </div>
+        <hr/>
+        <div id="taxes">
+            <div>Total<p>Including ₹175.54 in taxes</p></div>
+            <div>INR</div>
+            <div>₹</div>
+            <div id="updateprice"></div>
+        </div>
+       </div>
+   </div>
+   <div id="CheckoutRightMost"></div>
+   
+</body>
+</html>
+
+
+<script>
+
+    let informationPageCartArr = JSON.parse(localStorage.getItem("cart")) || [];
+    //console.log(informationPageCartArr);
+
+    function informationDisplay(informationPageCartArr){
+        document.getElementById('onlyProducts').innerHTML = null;
+
+        informationPageCartArr.map((el)=>{
+            let mainbox = document.createElement("div");
+
+            let productImages = document.createElement("img");
+            productImages.src = el.image;
+
+            let quantityInInformationPage = document.createElement("div");
+            quantityInInformationPage.innerText = el.quantity;
+
+
+            let productName = document.createElement("div");
+            productName.innerText = el.name;
+
+            let sym = document.createElement("div");
+            sym.innerText = "₹";
+            let mrp = el.mrp.slice(6,el.mrp.length)
+            let productPrice = document.createElement("div");
+            productPrice.innerText = mrp*el.quantity;
+
+            mainbox.append(productImages,quantityInInformationPage,productName,sym,productPrice);
+            document.getElementById('onlyProducts').append(mainbox)
+        })
+    }
+
+    informationDisplay(informationPageCartArr);
+
+
+  let totalPriceCart = informationPageCartArr.reduce((acc,el)=>{
+      return acc+(el.quantity*(el.mrp.slice(6,el.mrp.length)));
+
+  },0)
+
+  document.querySelector("#taxes>div:last-child").innerText = totalPriceCart;
+  document.querySelector("#subtotalprice>div:last-child").innerText = totalPriceCart
+  
+</script>
+
+
+<script>
+     let shippingemail = JSON.parse(localStorage.getItem("myemail"));
+     let shippingaddress = JSON.parse(localStorage.getItem("myaddress"));
+     document.getElementById("paymentemail").innerText = shippingemail;
+     document.getElementById("paymentaddress").innerText = shippingaddress;
+     let paymentfreeotnot = localStorage.getItem("freeOrNot");
+     document.getElementById("paymentfreeornotokay").innerText = paymentfreeotnot;
+     document.getElementById("putfreeorNot").innerText = paymentfreeotnot;
+     document.getElementById("putfreeorNot").style.marginLeft="34px"
+
+
+     
+     document.getElementById("bhagoInformationPage").addEventListener("click",()=>{
+         window.location.href="./information.html"
+     })
+     document.getElementById("bhagoJaldiShipingPage").addEventListener('click',()=>{
+         window.location.href="./Shipping.html"
+     })
+     document.getElementById("bhagoInformationPage1").addEventListener("click",()=>{
+         window.location.href="./information.html"
+     })
+     document.getElementById("bhagoInformationPage2").addEventListener("click",()=>{
+         window.location.href="./information.html"
+     })
+     document.getElementById("bhagoInformationPage3").addEventListener("click",()=>{
+         window.location.href="./information.html"
+     })
+     //gotoinfopagefastly
+     document.getElementById("gotoinfopagefastly").addEventListener("click",()=>{
+         window.location.href="./information.html"
+     })
+
+     document.getElementById("gotofinalpaymentpage").addEventListener("click",()=>{
+          window.location.href="finalpayment.html"
+     })
+
+</script>
+
+
+
+
+
+
+

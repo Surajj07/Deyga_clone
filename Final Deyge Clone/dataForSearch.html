@@ -1,0 +1,981 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Searched Items Page</title>
+    <link rel="stylesheet" href="./styles/navbar_footer.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+     
+
+   
+    <script src="https://code.jquery.com/jquery-3.5.0.js"></script>
+    
+    <style>
+        #stickyImages{
+         margin-left: 97.5%;
+         position: sticky;
+         /* right: 0; */
+         top: 40%;
+         /* margin-top: -50%; */
+        
+         }
+         #stickyImages>img{
+             width: 33px;
+             height: 32px;
+             border-radius: 50%;
+             display: block;
+             margin-top: 3px;
+         }
+         #stickyImages>img:last-child{
+             width: 45px;
+             height: 45px;
+             margin-left: -6px;
+             margin-top: -5px;
+         }
+         .ppupperimg{
+             margin-top: -13%;
+         }
+         </style>
+ 
+    <style> 
+        span{
+            color:orange
+        }
+        .ppupperimg{
+            height: 400px;
+            width:99%;
+        }
+        #middle_container{
+            display: grid;
+            grid-template-columns: repeat(4,23%);
+            gap: 10px;
+            width: 90%;
+            justify-content: space-between;
+            /* border: 1px solid black; */
+            margin: auto;
+        }
+        body{
+            overflow-x: hidden;
+        }
+
+        /* mainImg */
+        #middle_container>div>div>img{
+            width: 280px;
+            height: 340px;
+            margin: 10px;
+            border-radius: 7px;
+            
+        }
+        /* div1,div2 */
+        #middle_container>div>div>div{
+            display: flex;
+          
+            width: 70%;
+            margin-left: 70px;
+            
+        }
+        /* addToCart btn */
+        .cart_button{
+            height: 40px;
+            width:100px;
+            background-color: white;
+            border-radius: 5px;
+            margin-top: 20px;
+            border: 2px solid black;
+            border-radius: 45px;
+            width: 150px;
+            margin-bottom: 20px;
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 15px;
+         
+        }
+        .cart_button:hover{
+               background-color: black;
+               color: white;
+               border-radius: 45px;
+        }
+        /* div */
+        .upper_container{
+         
+            position: relative;
+            z-index: 0;
+            text-align: center;
+        }
+        .upper_container:hover{
+            box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
+            border-radius: 7px;
+        }
+        
+        /* heartIcon */
+        i{
+            width: 40px;
+            height: 33px;
+            display: flex;
+            align-items: center;
+            /* text-align: center; */
+            border-radius: 50%;
+            border: 3px solid black;
+            position: absolute;
+            top: 25px;
+            right: 30px;
+            background-color: white;
+        
+        }
+        #suraj:hover{
+            cursor: pointer;
+        }
+        #pic:hover{
+            cursor: pointer;
+        }
+        .short{
+            float: right;
+            margin-top: -45px;
+            margin-right: 20px;
+        }
+        select{
+            border: none;
+            outline: none;
+        }
+        .upperimage{
+            text-align: center;
+        }
+        #upperfooter{
+            height: 400px;
+            width: 99%;
+            /* border: 1px solid black; */
+            font-size: 10px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        #upperfooter01{
+            height: 200px;
+            width: 80%;
+        }
+        option{
+            height: 40px;
+            width: 80px;
+        }
+
+        /* div2 */
+        #priceAndDel{
+          margin-top: -1px;
+          font-size: 13px;
+        }
+
+        /* div1 */
+        #stardiv{
+            margin-top: 7px;
+        
+
+        }
+        /* review */
+        #stardiv>div{
+            margin-top: -3px;
+        }
+        /* price */
+        #priceAndDel>div{
+            margin-right: -13px;
+            
+        }
+        /* del */
+        del{
+            margin-left: -3px;
+            color: #737373;
+            font-weight: 600;
+        }
+        /* heartIcon */
+        #suraj{
+            
+            padding-top: 5px;
+        }
+        /* mainImg */
+       #pic{
+           width: 90%;
+           margin-right: 5px;
+       }
+      #backhome{
+          margin-top: 3%;
+          color: black;
+          margin-left: 2%;
+      }
+      #backhome>a{
+          color: black;
+      }
+      .gotoparticulatpage{
+          text-align: center;
+        
+      }
+      /* .namess{
+          text-align: center;
+          border: 1px solid black;
+          width: 80px;
+
+      } */
+    </style>
+</head>
+<body>
+    <div id="navbar"></div>
+    <div id="stickyImages">
+        <img src="https://lh3.googleusercontent.com/stk7qIhvTn-6p1x3eYOfqnNCdIkNjyIoZPlZtwiDCzdhxEYc8Gsm1obY0zYdR13NfW_UkF4=s88" alt=""/>
+        <img src="https://lh3.googleusercontent.com/7GC8KgKN3PBmRKrqYOpBvozvAkrDknIwHhpDyMlDhEo_xEEEmHN81MTm7dNQvMyg4CcZ=s87" alt=""/>
+        <img src="https://lh3.googleusercontent.com/viOmLsqBaf_hyffXvvUFInfNNDwwQp6UpqQkPQU6uQFK-eE2MJnRGVdetr2Df6Q1twm85w=s87" alt=""/>
+        <img src="https://lh3.googleusercontent.com/AGtkZJFXY39I8G7s0dXFAGzgVuvr_m5Li-5v2TDlpqWdQtXOmf9WG13REwpOBuKKDXD70A=s87" alt=""/>
+        <img src="https://cdn.shopify.com/s/files/1/0034/7901/1441/t/139/assets/ping-svg2.svg?v=1619612966" alt=""/>
+    </div>
+   <div id="backhome"><a href="homepage.html">Home</a></div>
+    <div class="upperimage">
+        <!-- <h2 class="title">Skin Care</h1> -->
+        <img class="ppupperimg" src="https://cdn.shopify.com/s/files/1/0034/7901/1441/collections/BANNER-02_3_x600.jpg?v=1647860211%20600w,%20//cdn.shopify.com/s/files/1/0034/7901/1441/collections/BANNER-02_3_800x.jpg?v=1647860211%20800w,%20//cdn.shopify.com/s/files/1/0034/7901/1441/collections/BANNER-02_3_1200x.jpg?v=1647860211%201200w,%20//cdn.shopify.com/s/files/1/0034/7901/1441/collections/BANNER-02_3_1400x.jpg?v=1647860211%201400w,%20//cdn.shopify.com/s/files/1/0034/7901/1441/collections/BANNER-02_3_1600x.jpg?v=1647860211%201600w" >
+    </div>
+
+    <hr style="margin-bottom: 5%;">
+    <div class="short">
+        <select name="cars" id="cars" onchange="sortItems()">
+            <option value="Kalyani">Sort</option>
+            <option value="Suraj">Best Seller </option>
+            <option value="Puja">Alphabetically A-Z</option>
+            <option value="Ajay">Alphabetically Z-A</option>
+            <option value="Shubham">Price-High to Low</option>
+            <option value="Mohit">Price-Low to High</option>
+          </select>
+    </div>
+    <hr>
+   
+<div id="middle_container" ></div>
+
+
+
+    <div id="footer" style="margin-top: 50px;"></div>
+
+    
+</body>
+</html>
+
+<script type="module">
+
+    import {navbar,footer} from "./components/navbar.js"
+    document.getElementById('navbar').innerHTML=navbar();
+    document.getElementById('footer').innerHTML = footer();
+
+    import {navbarJs} from "./scripts/navbarJsPart.js"
+    navbarJs();
+    
+    
+</script>
+
+<script type="module">  //All datas
+
+    let searchArr = [
+    {id:1, name:"Hair Growth Oil",
+        image:"https://cdn.shopify.com/s/files/1/0034/7901/1441/products/Hairgrowth_400x.jpg?v=1647928745",
+        image2:"https://cdn.shopify.com/s/files/1/0034/7901/1441/products/01_11_1a8b25f0-9c3b-4804-8f8c-191012cf3399_400x.jpg?v=1647928745",
+        review:"291 reviews",mrp:"MRP ₹ 549.00",del:"₹600.00" },
+        {id:2, name:"Aloe Vera Gel",
+        image:"https://cdn.shopify.com/s/files/1/0034/7901/1441/products/Aloe-vera-Gel_1_400x.jpg?v=1647947302",
+        image2:"https://cdn.shopify.com/s/files/1/0034/7901/1441/products/01_1_b105980f-cffc-485c-a18e-b80dbdab8056_400x.jpg?v=1647947302",
+        review:"717 reviews",mrp:"MRP ₹ 390.00",del:"" },
+        {id:3, name:"Hair Serum (Liquid Gold)",
+        image:"https://cdn.shopify.com/s/files/1/0034/7901/1441/products/Hair_20Serum_20_Liquid_20Gold_2030ml_400x.jpg?v=1641031500",
+        image2:"https://cdn.shopify.com/s/files/1/0034/7901/1441/products/J8A5584_400x.jpg?v=1641031500",
+        review:"46 reviews",mrp:"MRP ₹ 730.00",del:"" },
+        {id:4, name:"Hair Butter",
+        image:"https://cdn.shopify.com/s/files/1/0034/7901/1441/products/HAIR_20BUTTER_400x.jpg?v=1641031487",
+        image2:"https://cdn.shopify.com/s/files/1/0034/7901/1441/products/J8A6182_400x.jpg?v=1641031487",
+        review:"10 reviews",mrp:"MRP ₹ 550.00",del:"" },
+        {id:5, name:"Anti Dandruff Oil",
+        image:"https://cdn.shopify.com/s/files/1/0034/7901/1441/products/AntiDandruff_400x.jpg?v=1647928249",
+        image2:"https://cdn.shopify.com/s/files/1/0034/7901/1441/products/J8A6740_400x.jpg?v=1647928249",
+        review:"56 reviews",mrp:"MRP ₹ 549.00",del:"₹600.00" },
+        {id:6, name:"Coconut Milk Shampoo Bar",
+        image:"https://cdn.shopify.com/s/files/1/0034/7901/1441/products/Shampoo-Bar_400x.jpg?v=1647864464",
+        image2:"https://cdn.shopify.com/s/files/1/0034/7901/1441/products/Shampoo-Bar_400x.jpg?v=1647864464",
+        review:"62 reviews",mrp:"MRP ₹ 390.00",del:"" },
+        {id:7, name:"Neem Seed Oil",
+        image:"https://cdn.shopify.com/s/files/1/0034/7901/1441/products/Neemseed_400x.jpg?v=1647864887",
+        image2:"https://cdn.shopify.com/s/files/1/0034/7901/1441/products/Neemseed_400x.jpg?v=1647864887",
+        review:"51 reviews",mrp:"MRP ₹ 290.00",del:"" },
+        {id:8, name:"Pre-mature Greying Oil",
+        image:"https://cdn.shopify.com/s/files/1/0034/7901/1441/products/Premature_400x.jpg?v=1647928970",
+        image2:"https://cdn.shopify.com/s/files/1/0034/7901/1441/products/J8A6736_400x.jpg?v=1647928970",
+        review:"16 reviews",mrp:"MRP ₹ 600.00",del:"" },
+        {id:9, name:"Eyebrow Growth Oil",
+        image:"https://cdn.shopify.com/s/files/1/0034/7901/1441/products/Eye_20Brow_20Growth_20oil_400x.jpg?v=1641031468",
+        image2:"https://cdn.shopify.com/s/files/1/0034/7901/1441/products/Eye_20Brow_20Growth_20oil_400x.jpg?v=1641031468",
+        review:"14 reviews",mrp:"MRP ₹ 730.00",del:"" },
+        {id:10, name:"Herbal Hair Pack",
+        image:"https://cdn.shopify.com/s/files/1/0034/7901/1441/products/Untitleddesign_1_880205d9-ccc4-4ac0-b19b-487ea63663ac_400x.jpg?v=1645878237",
+        image2:"https://cdn.shopify.com/s/files/1/0034/7901/1441/products/Untitleddesign_1_880205d9-ccc4-4ac0-b19b-487ea63663ac_400x.jpg?v=1645878237",
+        review:"18 reviews",mrp:"MRP ₹ 550.00",del:"" },
+        {id:11, name:"Mustache and Beard Oil",
+        image:"https://cdn.shopify.com/s/files/1/0034/7901/1441/products/Untitleddesign_7_400x.png?v=1642829500",
+        image2:"https://cdn.shopify.com/s/files/1/0034/7901/1441/products/Untitleddesign_7_400x.png?v=1642829500",
+        review:"2 reviews",mrp:"MRP ₹ 590.00",del:"" },
+        {id:12, name:"Lemon Mist",
+        image:"https://cdn.shopify.com/s/files/1/0034/7901/1441/products/Lemon_400x.jpg?v=1647862222",
+        image2:"https://cdn.shopify.com/s/files/1/0034/7901/1441/products/J8A5458_400x.jpg?v=1647862222",
+        review:"9 reviews",mrp:"MRP ₹ 490.00",del:"" },
+        {id:13, name:"Hair Care Kit",
+        image:"https://cdn.shopify.com/s/files/1/0034/7901/1441/products/Hair_20Care_20Kit_400x.jpg?v=1641031490",
+        image2:"https://cdn.shopify.com/s/files/1/0034/7901/1441/products/Hair_20Care_20Kit_400x.jpg?v=1641031490",
+        review:"4 reviews",mrp:"MRP ₹ 2,159.00",del:"₹2,270.00" },
+        {id:14, name:"Bringaraj Deep Hair Treatment Oil",
+        image:"https://cdn.shopify.com/s/files/1/0034/7901/1441/products/Bringaraj_400x.jpg?v=1647928449",
+        image2:"https://cdn.shopify.com/s/files/1/0034/7901/1441/products/Bringaraj_20Deep_20Hair_20Treatment_20Oil_202_400x.jpg?v=1647928449",
+        review:"5 reviews",mrp:"MRP ₹ 600.00",del:"" },
+        {id:15, name:"Ylang Ylang Mist",
+        image:"https://cdn.shopify.com/s/files/1/0034/7901/1441/products/Ylangylang_400x.jpg?v=1647862456",
+        image2:"https://cdn.shopify.com/s/files/1/0034/7901/1441/products/J8A5501_400x.jpg?v=1647862456",
+        review:"1 review",mrp:"MRP ₹ 490.00",del:"" },
+        {id:16, name:"Moringa Oil",
+        image:"https://cdn.shopify.com/s/files/1/0034/7901/1441/products/Moringa_400x.jpg?v=1647864850",
+        image2:"https://cdn.shopify.com/s/files/1/0034/7901/1441/products/Moringa_400x.jpg?v=1647864850",
+        review:"1 review",mrp:"MRP ₹ 550.00",del:"" },
+        {id:1, name:"Charcoal Bath Bar",
+        image:"https://cdn.shopify.com/s/files/1/0034/7901/1441/products/ICONS-05_400x.jpg?v=1648210587",
+        image2:"https://cdn.shopify.com/s/files/1/0034/7901/1441/products/Charcoal-soap_400x.jpg?v=1648210587",
+        review:"566 reviews",mrp:"MRP ₹ 349.00",del:"₹410.00" },
+        {id:2, name:"Coconut Milk Shampoo Bar",
+        image:"https://cdn.shopify.com/s/files/1/0034/7901/1441/products/Shampoo-Bar_400x.jpg?v=1647864464",
+        image2:"https://cdn.shopify.com/s/files/1/0034/7901/1441/products/Shampoo-Bar_400x.jpg?v=1647864464",
+        review:"62 reviews",mrp:"MRP ₹ 390.00",del:"" },
+        {id:3, name:"Shea Saffron Bath Bar",
+        image:"https://cdn.shopify.com/s/files/1/0034/7901/1441/products/SheaSaffronBathBar_400x.jpg?v=1647864001",
+        image2:"https://cdn.shopify.com/s/files/1/0034/7901/1441/products/SheaSaffronBathBar_400x.jpg?v=1647864001",
+        review:"21 reviews",mrp:"MRP ₹ 390.00",del:"" },
+        {id:4, name:"Body Scrub",
+        image:"https://cdn.shopify.com/s/files/1/0034/7901/1441/products/BodyScrub_400x.jpg?v=1647862779",
+        image2:"https://cdn.shopify.com/s/files/1/0034/7901/1441/products/J8A6336_400x.jpg?v=1647862779",
+        review:"9 reviews",mrp:"MRP ₹ 450.00",del:"" },
+        {id:5, name:"Loofah",
+        image:"https://cdn.shopify.com/s/files/1/0034/7901/1441/products/Shoot_3_4_1000x1000_ee8c9638-79ac-4a9a-bbc1-36f7ab80b3f5_400x.jpg?v=1641031536",
+        image2:"https://cdn.shopify.com/s/files/1/0034/7901/1441/products/Shoot_3_4_1000x1000_ee8c9638-79ac-4a9a-bbc1-36f7ab80b3f5_400x.jpg?v=1641031536",
+        review:"14 reviews",mrp:"MRP ₹ 50.00",del:"" },
+        {id:6, name:"Baby Bath Bar",
+        image:"https://cdn.shopify.com/s/files/1/0034/7901/1441/products/BabyBathBar_400x.jpg?v=1647863891",
+        image2:"https://cdn.shopify.com/s/files/1/0034/7901/1441/products/Baby_Soap_c52c3f11-1708-4a04-afd4-c051e9e5b252_400x.jpg?v=1647863891",
+        review:"7 reviews",mrp:"MRP ₹ 390.00",del:"" },
+        {id:1, name:"Charcoal Tooth Whitening Powder",
+        image:"https://cdn.shopify.com/s/files/1/0034/7901/1441/products/CharcoalToothPowder_400x.jpg?v=1647863279",
+        image2:"https://cdn.shopify.com/s/files/1/0034/7901/1441/products/CharcoalToothPowder_400x.jpg?v=1647863279",
+        review:"17 reviews",mrp:"MRP ₹ 290.00",del:"" },
+        {id:2, name:"Tooth brush",
+        image:"https://cdn.shopify.com/s/files/1/0034/7901/1441/products/Tooth_20brusg_400x.jpg?v=1641031663",
+        image2:"https://cdn.shopify.com/s/files/1/0034/7901/1441/products/Tooth_20brusg_400x.jpg?v=1641031663",
+        review:"6 reviews",mrp:"MRP ₹ 140.00",del:"" },
+        {id:3, name:"Herbal Tooth & Gum Powder",
+        image:"https://cdn.shopify.com/s/files/1/0034/7901/1441/products/HerbalToothPowder_400x.jpg?v=1647863321",
+        image2:"https://cdn.shopify.com/s/files/1/0034/7901/1441/products/HerbalToothPowder_400x.jpg?v=1647863321",
+        review:"12 reviews",mrp:"MRP ₹ 290.00",del:"" },
+        {id:1, name:"Neem Seed Oil",
+        image:"https://cdn.shopify.com/s/files/1/0034/7901/1441/products/Neemseed_400x.jpg?v=1647864887",
+        image2:"https://cdn.shopify.com/s/files/1/0034/7901/1441/products/Neemseed_400x.jpg?v=1647864887",
+        review:"51 reviews",mrp:"MRP ₹ 290.00",del:"" },
+        {id:2, name:"Rosehip Seed Oil",
+        image:"https://cdn.shopify.com/s/files/1/0034/7901/1441/products/Rosehip_20Seed_20Oil_2030ml_400x.jpg?v=1641031590",
+        image2:"https://cdn.shopify.com/s/files/1/0034/7901/1441/products/J8A5548_64561906-62c9-4912-952f-8fa495a9b670_400x.jpg?v=1641031590",
+        review:"5 reviews",mrp:"MRP ₹ 550.00",del:"" },
+        {id:3, name:"Moringa Oil",
+        image:"https://cdn.shopify.com/s/files/1/0034/7901/1441/products/Moringa_400x.jpg?v=1647864850",
+        image2:"https://cdn.shopify.com/s/files/1/0034/7901/1441/products/Moringa_400x.jpg?v=1647864850",
+        review:"1 review",mrp:"MRP ₹ 550.00",del:"" },
+        {id:4, name:"Turmeric Essential Oil",
+        image:"https://cdn.shopify.com/s/files/1/0034/7901/1441/products/Turmeric_400x.jpg?v=1647865273",
+        image2:"https://cdn.shopify.com/s/files/1/0034/7901/1441/products/J8A6547_400x.jpg?v=1647865273",
+        review:"2 reviews",mrp:"MRP ₹ 340.00",del:"" },
+        {id:5, name:"Eucalyptus Essential Oil",
+        image:"https://cdn.shopify.com/s/files/1/0034/7901/1441/products/Eucalyptus_400x.jpg?v=1647865020",
+        image2:"https://cdn.shopify.com/s/files/1/0034/7901/1441/products/J8A6543_400x.jpg?v=1647865020",
+        review:"",mrp:"MRP ₹ 250.00",del:"" },
+        {id:6, name:"Sweet Orange Essential Oil",
+        image:"https://cdn.shopify.com/s/files/1/0034/7901/1441/products/SweetOrange_400x.jpg?v=1647865162",
+        image2:"https://cdn.shopify.com/s/files/1/0034/7901/1441/products/SweetOrange_400x.jpg?v=1647865162",
+        review:"",mrp:"MRP ₹ 270.00",del:"" },
+        {id:7, name:"Lemon Grass Essential Oil",
+        image:"https://cdn.shopify.com/s/files/1/0034/7901/1441/products/LemonGrass_400x.jpg?v=1647865131",
+        image2:"https://cdn.shopify.com/s/files/1/0034/7901/1441/products/J8A6549_20_1_400x.jpg?v=1647865131",
+        review:"2 reviews",mrp:"MRP ₹ 250.00",del:"" },
+        {id:8, name:"Citronella Essential Oil",
+        image:"https://cdn.shopify.com/s/files/1/0034/7901/1441/products/Citronella_400x.jpg?v=1647864979",
+        image2:"https://cdn.shopify.com/s/files/1/0034/7901/1441/products/J8A6546_400x.jpg?v=1647864979",
+        review:"",mrp:"MRP ₹ 250.00",del:"" },
+        {id:9, name:"Kalonji Oil",
+        image:"https://cdn.shopify.com/s/files/1/0034/7901/1441/products/Kalonji_400x.jpg?v=1647864821",
+        image2:"https://cdn.shopify.com/s/files/1/0034/7901/1441/products/J8A6573_400x.jpg?v=1647864821",
+        review:"",mrp:"MRP ₹ 550.00",del:"" },
+        {id:10, name:"Hemp Seed Cold Pressed Oil",
+        image:"https://cdn.shopify.com/s/files/1/0034/7901/1441/products/HempSeed_400x.jpg?v=1647864766",
+        image2:"https://cdn.shopify.com/s/files/1/0034/7901/1441/products/J8A6497_400x.jpg?v=1647864766",
+        review:"",mrp:"MRP ₹ 550.00",del:"" },
+        {id:1, name:"Baby Bath Bar",
+        image:"https://cdn.shopify.com/s/files/1/0034/7901/1441/products/BabyBathBar_400x.jpg?v=1647863891",
+        image2:"https://cdn.shopify.com/s/files/1/0034/7901/1441/products/Baby_Soap_c52c3f11-1708-4a04-afd4-c051e9e5b252_400x.jpg?v=1647863891",
+        review:"7 reviews",mrp:"MRP ₹ 390.00",del:"" },
+        {id:2, name:"Baby Butter",
+        image:"https://cdn.shopify.com/s/files/1/0034/7901/1441/products/Baby_20Butter_400x.jpg?v=1641031395",
+        image2:"https://cdn.shopify.com/s/files/1/0034/7901/1441/products/Baby_20Butter_400x.jpg?v=1641031395",
+        review:"5 reviews",mrp:"MRP ₹ 550.00",del:"" },
+        {id:3, name:"Baby Powder (Talc Free)",
+        image:"https://cdn.shopify.com/s/files/1/0034/7901/1441/products/BabyTalc_400x.jpg?v=1647863613",
+        image2:"https://cdn.shopify.com/s/files/1/0034/7901/1441/products/J8A6524_400x.jpg?v=1647863613",
+        review:"",mrp:"MRP ₹ 600.00",del:"" },
+        {id:4, name:"Babycare Combo",
+        image:"https://cdn.shopify.com/s/files/1/0034/7901/1441/products/Babycare_20Combo_400x.jpg?v=1641031397",
+        image2:"https://cdn.shopify.com/s/files/1/0034/7901/1441/products/Babycare_20Combo_400x.jpg?v=1641031397",
+        review:"",mrp:"MRP ₹ 899.00",del:"₹940.00" },
+        {id:1, name:"Charcoal Bath Bar",
+        image:"https://cdn.shopify.com/s/files/1/0034/7901/1441/products/ICONS-05_400x.jpg?v=1648210587",
+        image2:"https://cdn.shopify.com/s/files/1/0034/7901/1441/products/Charcoal-soap_400x.jpg?v=1648210587",
+        review:"566 reviews",mrp:"MRP ₹ 349.00",del:"₹410.00" },
+        {id:2, name:"Hair Growth Oil",
+        image:"https://cdn.shopify.com/s/files/1/0034/7901/1441/products/Hairgrowth_400x.jpg?v=1647928745",
+        image2:"https://cdn.shopify.com/s/files/1/0034/7901/1441/products/01_11_1a8b25f0-9c3b-4804-8f8c-191012cf3399_400x.jpg?v=1647928745",
+        review:"291 reviews",mrp:"MRP ₹ 549.00",del:"₹600.00" },
+        {id:3, name:"Coconut Milk Shampoo Bar",
+        image:"https://cdn.shopify.com/s/files/1/0034/7901/1441/products/Shampoo-Bar_400x.jpg?v=1647864464",
+        image2:"https://cdn.shopify.com/s/files/1/0034/7901/1441/products/Shampoo-Bar_400x.jpg?v=1647864464",
+        review:"62 reviews",mrp:"MRP ₹ 390.00",del:"" },
+        {id:4, name:"Charcoal Face Pack",
+        image:"https://cdn.shopify.com/s/files/1/0034/7901/1441/products/Charcoal-1_400x.jpg?v=1647862565",
+        image2:"https://cdn.shopify.com/s/files/1/0034/7901/1441/products/J8A6313_400x.jpg?v=1647862565",
+        review:"15 reviews",mrp:"MRP ₹ 550.00",del:"" },
+        {id:5, name:"Mustache and Beard Oil",
+        image:"https://cdn.shopify.com/s/files/1/0034/7901/1441/products/Untitleddesign_7_400x.png?v=1642829500",
+        image2:"https://cdn.shopify.com/s/files/1/0034/7901/1441/products/Untitleddesign_7_400x.png?v=1642829500",
+        review:"2 reviews",mrp:"MRP ₹ 590.00",del:"" },
+        {id:6, name:"Shea Butter Lip Balm",
+        image:"https://cdn.shopify.com/s/files/1/0034/7901/1441/products/05_400x.jpg?v=1642512099",
+        image2:"https://cdn.shopify.com/s/files/1/0034/7901/1441/products/J8A5188_b352b249-6408-4003-bd92-e9f4be1f8dbc_400x.jpg?v=1642512099",
+        review:"4 reviews",mrp:"MRP ₹ 249.00",del:"₹290.00" },
+        {id:1, name:"Nourished Lips Combo",
+        image:"https://cdn.shopify.com/s/files/1/0034/7901/1441/products/Nourished_20Lips_20Combo_20_1_904x1156_1_400x.jpg?v=1641839189",
+        image2:"https://cdn.shopify.com/s/files/1/0034/7901/1441/products/Nourished_20Lips_20Combo_904x1156_1_400x.jpg?v=1641839189",
+        review:"31 reviews",mrp:"MRP ₹ 479.00",del:"₹580.00" },
+        {id:2, name:"Clear Skin Combo",
+        image:"https://cdn.shopify.com/s/files/1/0034/7901/1441/products/Clear_20Skin_20Combo_20_1_904x11562_400x.jpg?v=1642793784",
+        image2:"https://cdn.shopify.com/s/files/1/0034/7901/1441/products/ClearSkinCombo_400x.jpg?v=1642793784",
+        review:"48 reviews",mrp:"MRP ₹ 729.00",del:"₹800.00" },
+        {id:3, name:"Hydro Boosting Combo",
+        image:"https://cdn.shopify.com/s/files/1/0034/7901/1441/products/NightCombo-edited_400x.jpg?v=1644841165",
+        image2:"https://cdn.shopify.com/s/files/1/0034/7901/1441/products/NightCombo-edited_400x.jpg?v=1644841165",
+        review:"4 reviews",mrp:"MRP ₹ 780.00",del:"₹980.00" },
+        {id:4, name:"Hair Strengthening Combo",
+        image:"https://cdn.shopify.com/s/files/1/0034/7901/1441/products/Hair_20Strengthening_20Combo_20_1_400x.jpg?v=1641031502",
+        image2:"https://cdn.shopify.com/s/files/1/0034/7901/1441/products/Hair_20Strengthening_20Combo_400x.jpg?v=1641031502",
+        review:"9 reviews",mrp:"MRP ₹ 1,249.00",del:"₹1,330.00" },
+        {id:5, name:"Healthy Glow Combo",
+        image:"https://cdn.shopify.com/s/files/1/0034/7901/1441/products/Healthy_20Glow_20Combo_20_1_400x.jpg?v=1641031512",
+        image2:"https://cdn.shopify.com/s/files/1/0034/7901/1441/products/Healthy_20Glow_20Combo_400x.jpg?v=1641031512",
+        review:"9 reviews",mrp:"MRP ₹ 899.00",del:"₹1,040.00" },
+        {id:6, name:"Mini Foot Spa Combo",
+        image:"https://cdn.shopify.com/s/files/1/0034/7901/1441/products/Mini_20Foot_20Spa_20Combo_20_1_400x.jpg?v=1641031541",
+        image2:"https://cdn.shopify.com/s/files/1/0034/7901/1441/products/Mini_20Foot_20Spa_20Combo_400x.jpg?v=1641031541",
+        review:"4 reviews",mrp:"MRP ₹ 969.00",del:"₹1,000.00" },
+        {id:7, name:"Acne Relief Combo",
+        image:"https://cdn.shopify.com/s/files/1/0034/7901/1441/products/acnereliefcombo_400x.jpg?v=1641034398",
+        image2:"https://cdn.shopify.com/s/files/1/0034/7901/1441/products/Acne_20Relief_20Combo_400x.jpg?v=1641034398",
+        review:"10 reviews",mrp:"MRP ₹ 969.00",del:"₹1,000.00" },
+        {id:8, name:"Soft Lip Combo",
+        image:"https://cdn.shopify.com/s/files/1/0034/7901/1441/products/softlipscombo_1_400x.jpg?v=1641839230",
+        image2:"https://cdn.shopify.com/s/files/1/0034/7901/1441/products/Soft_20Lips_20Combo_904x1156_904x1156_4a160e99-2c4c-4e66-a63a-3b7b881f369d_400x.jpg?v=1642443278",
+        review:"16 reviews",mrp:"MRP ₹ 479.00",del:"₹580.00" },
+        {id:9, name:"Anti Acne kit",
+        image:"https://cdn.shopify.com/s/files/1/0034/7901/1441/products/antiacnefinal_400x.jpg?v=1642793257",
+        image2:"https://cdn.shopify.com/s/files/1/0034/7901/1441/products/antiacnefinalwbg_400x.jpg?v=1642793257",
+        review:"33 reviews",mrp:"MRP ₹ 2,329.00",del:"₹2,480.00" },
+        {id:10, name:"Acne Vanishing Combo",
+        image:"https://cdn.shopify.com/s/files/1/0034/7901/1441/products/AcneVanishingCombo_1_712c3057-1cbf-45d2-a85e-3067339fd080_400x.jpg?v=1642792028",
+        image2:"https://cdn.shopify.com/s/files/1/0034/7901/1441/products/AcneVanishingCombo_1_712c3057-1cbf-45d2-a85e-3067339fd080_400x.jpg?v=1642792028",
+        review:"15 reviews",mrp:"MRP ₹ 1,290.00",del:"" },
+        {id:11, name:"Hair Care Kit",
+        image:"https://cdn.shopify.com/s/files/1/0034/7901/1441/products/Hair_20Care_20Kit_400x.jpg?v=1641031490",
+        image2:"https://cdn.shopify.com/s/files/1/0034/7901/1441/products/Hair_20Care_20Kit_400x.jpg?v=1641031490",
+        review:"4 reviews",mrp:"MRP ₹ 2,159.00",del:"₹2,270.00" },
+        {id:12, name:"Skin Brightening Kit",
+        image:"https://cdn.shopify.com/s/files/1/0034/7901/1441/products/Skin_20brightening_20Kit_400x.jpg?v=1641031621",
+        image2:"https://cdn.shopify.com/s/files/1/0034/7901/1441/products/Skin_20brightening_20Kit_400x.jpg?v=1641031621",
+        review:"4 reviews",mrp:"MRP ₹ 2,039.00",del:"₹2,140.00" },
+        {id:13, name:"Face Care Essentials Combo",
+        image:"https://cdn.shopify.com/s/files/1/0034/7901/1441/products/Facecare_20Essentials_20Combo_904x1156_412f8dc6-1d12-4f05-8495-68ac8068d9f4_400x.jpg?v=1641839035",
+        image2:"https://cdn.shopify.com/s/files/1/0034/7901/1441/products/Facecare_20Essentials_20Combo_904x1156_412f8dc6-1d12-4f05-8495-68ac8068d9f4_400x.jpg?v=1641839035",
+        review:"4 reviews",mrp:"MRP ₹ 1,029.00",del:"₹1,130.00" },
+        {id:14, name:"Super Cleanser Combo",
+        image:"https://cdn.shopify.com/s/files/1/0034/7901/1441/products/Super_20cleanser_20combo_400x.jpg?v=1641031646",
+        image2:"https://cdn.shopify.com/s/files/1/0034/7901/1441/products/Super_20cleanser_20combo_400x.jpg?v=1641031646",
+        review:"10 reviews",mrp:"MRP ₹ 720.00",del:"₹860.00" },
+        {id:15, name:"Tan Removal Kit",
+        image:"https://cdn.shopify.com/s/files/1/0034/7901/1441/products/Tan_20removal_20kit_400x.jpg?v=1641031655",
+        image2:"https://cdn.shopify.com/s/files/1/0034/7901/1441/products/Tan_20removal_20kit_400x.jpg?v=1641031655",
+        review:"4 reviews",mrp:"MRP ₹ 1,349.00",del:"₹1,460.00" },
+        {id:16, name:"Daily Essentials Combo",
+        image:"https://cdn.shopify.com/s/files/1/0034/7901/1441/products/DailyEssentialsCombo-1_906x1156_e0e1de17-c51b-40ae-ab44-63dc9c4d9380_400x.jpg?v=1643267227",
+        image2:"https://cdn.shopify.com/s/files/1/0034/7901/1441/products/DailyEssentialsCombo-1_906x1156_e0e1de17-c51b-40ae-ab44-63dc9c4d9380_400x.jpg?v=1643267227",
+        review:"3 reviews",mrp:"MRP ₹ 1,089.00",del:"₹1,170.00" },
+        {id:17, name:"Hair Therapy Combo",
+        image:"https://cdn.shopify.com/s/files/1/0034/7901/1441/products/Hair_20Therapy_20Combo_904x1156_b00dbc67-db3b-4719-8d6a-fdb1fd5922fc_400x.jpg?v=1642793845",
+        image2:"https://cdn.shopify.com/s/files/1/0034/7901/1441/products/Hair_20Therapy_20Combo_904x1156_b00dbc67-db3b-4719-8d6a-fdb1fd5922fc_400x.jpg?v=1642793845",
+        review:"1 review",mrp:"MRP ₹ 1,289.00",del:"₹1,380.00" },
+        {id:18, name:"Pore Tightening Combo",
+        image:"https://cdn.shopify.com/s/files/1/0034/7901/1441/products/Pore_20Tightening_20Combo_400x.jpg?v=1641031568",
+        image2:"https://cdn.shopify.com/s/files/1/0034/7901/1441/products/Pore_20Tightening_20Combo_400x.jpg?v=1641031568",
+        review:"5 reviews",mrp:"MRP ₹ 1,169.00",del:"₹1,350.00" },
+        {id:19, name:"Best Sellers' Hamper",
+        image:"https://cdn.shopify.com/s/files/1/0034/7901/1441/products/BestSellerHamper_1_5de02744-3cb4-4aba-bcc1-231f68d182c8_400x.jpg?v=1642794126",
+        image2:"https://cdn.shopify.com/s/files/1/0034/7901/1441/products/BestSellerHamper_1_5de02744-3cb4-4aba-bcc1-231f68d182c8_400x.jpg?v=1642794126",
+        review:"2 reviews",mrp:"MRP ₹ 3,129.00",del:"₹3,280.00" },
+        {id:20, name:"Anti-Ageing Kit",
+        image:"https://cdn.shopify.com/s/files/1/0034/7901/1441/products/AntiAgeingKit_906x1156_65d454f3-7557-4683-8c34-79bfc5ff0819_400x.jpg?v=1643267449",
+        image2:"https://cdn.shopify.com/s/files/1/0034/7901/1441/products/AntiAgeingKit_906x1156_65d454f3-7557-4683-8c34-79bfc5ff0819_400x.jpg?v=1643267449",
+        review:"1 review",mrp:"MRP ₹ 1,939.00",del:"₹2,060.00" },
+        {id:21, name:"Adequate Skin Hydrators Combo",
+        image:"https://cdn.shopify.com/s/files/1/0034/7901/1441/products/AdequateSkinhydratorscombo_906x1156_05790e93-eee7-457b-b1e2-705dd95bcb91_400x.jpg?v=1643267024",
+        image2:"https://cdn.shopify.com/s/files/1/0034/7901/1441/products/AdequateSkinhydratorscombo_906x1156_05790e93-eee7-457b-b1e2-705dd95bcb91_400x.jpg?v=1643267024",
+        review:"",mrp:"MRP ₹ 920.00",del:"₹1,080.00" },
+        {id:22, name:"Rose Glow Kit",
+        image:"https://cdn.shopify.com/s/files/1/0034/7901/1441/products/Rose_20Glow_20kit_400x.jpg?v=1641031581",
+        image2:"https://cdn.shopify.com/s/files/1/0034/7901/1441/products/Rose_20Glow_20kit_400x.jpg?v=1641031581",
+        review:"1 review",mrp:"MRP ₹ 3,500.00",del:"₹3,800.00" },
+        {id:23, name:"Babycare Combo",
+        image:"https://cdn.shopify.com/s/files/1/0034/7901/1441/products/Babycare_20Combo_400x.jpg?v=1641031397",
+        image2:"https://cdn.shopify.com/s/files/1/0034/7901/1441/products/Babycare_20Combo_400x.jpg?v=1641031397",
+        review:"",mrp:"MRP ₹ 899.00",del:"₹940.00" },
+        {id:1, name:"Treat Yourself - Gift Card",
+        image:"https://cdn.shopify.com/s/files/1/0034/7901/1441/products/1-02_27_1800x1080_c3fe52b1-4fff-4709-ba3f-f7d7ad844818_400x.jpg?v=1641031484",
+        image2:"https://cdn.shopify.com/s/files/1/0034/7901/1441/products/1-02_27_1800x1080_c3fe52b1-4fff-4709-ba3f-f7d7ad844818_400x.jpg?v=1641031484",
+        review:"",mrp:"MRP ₹ 500.00",del:"" },
+        {id:1, name:"Beetroot Lip Balm",offer:"14% Off",
+        image:"https://cdn.shopify.com/s/files/1/0034/7901/1441/products/904_0003_Beetroot_07aa7e6f-c52b-42d1-8839-a4678e5b2ef3_400x.jpg?v=1641838454",
+        image2:"https://cdn.shopify.com/s/files/1/0034/7901/1441/products/02-in-and-out_400x.jpg?v=1645614549",
+        review:"1961 reviews",mrp:"MRP ₹ 249.00",del:"₹290.00" },
+        {id:2, name:"Almond Milk Body Lotion",offer:"29% Off",
+        image:"https://cdn.shopify.com/s/files/1/0034/7901/1441/products/Untitled-11_400x.jpg?v=1641111206",
+        image2:"https://cdn.shopify.com/s/files/1/0034/7901/1441/products/Untitled-1_400x.jpg?v=1641111206",
+        review:"17 reviews",mrp:"MRP ₹ 390.00",del:"₹550.00" },
+        {id:3, name:"Under Eye Cream",offer:"19% Off",
+        image:"https://cdn.shopify.com/s/files/1/0034/7901/1441/products/904_0002_undereye_400x.jpg?v=1641464118",
+        image2:"https://cdn.shopify.com/s/files/1/0034/7901/1441/products/01_10_e879376e-30f0-4f54-ac6d-9bc950f07bd7_400x.jpg?v=1647416613",
+        review:"53 reviews",mrp:"MRP ₹ 480.00",del:"₹590.00" },
+        {id:4, name:"Charcoal Bath Bar",offer:"15% Off",
+        image:"https://cdn.shopify.com/s/files/1/0034/7901/1441/products/ICONS-05_400x.jpg?v=1648210587",
+        image2:"https://cdn.shopify.com/s/files/1/0034/7901/1441/products/Charcoal-soap_400x.jpg?v=1648210587",
+        review:"566 reviews",mrp:"MRP ₹ 349.00",del:"₹410.00" },
+        {id:5, name:"Hair Growth Oil",offer:"9% Off",
+        image:"https://cdn.shopify.com/s/files/1/0034/7901/1441/products/Hairgrowth_400x.jpg?v=1647928745",
+        image2:"https://cdn.shopify.com/s/files/1/0034/7901/1441/products/01_11_1a8b25f0-9c3b-4804-8f8c-191012cf3399_400x.jpg?v=1647928745",
+        review:"291 reviews",mrp:"MRP ₹ 549.00",del:"₹600.00" },
+        {id:6, name:"Rose & Mulethi Skin Brightening Pack",offer:"9% Off",
+        image:"https://cdn.shopify.com/s/files/1/0034/7901/1441/products/r_m_400x.jpg?v=1648210466",
+        image2:"https://cdn.shopify.com/s/files/1/0034/7901/1441/products/J8A6253_400x.jpg?v=1648210466",
+        review:"217 reviews",mrp:"MRP ₹ 499.00",del:"₹550.00" },
+        {id:7, name:"Foot Butter",offer:"11% Off",
+        image:"https://cdn.shopify.com/s/files/1/0034/7901/1441/products/FOOT_20BUTTER_400x.jpg?v=1641031475",
+        image2:"https://cdn.shopify.com/s/files/1/0034/7901/1441/products/J8A5661_400x.jpg?v=1641031475",
+        review:"50 reviews",mrp:"MRP ₹ 490.00",del:"₹550.00" },
+        {id:8, name:"Nourished Lips Combo",offer:"17% Off",
+        image:"https://cdn.shopify.com/s/files/1/0034/7901/1441/products/Nourished_20Lips_20Combo_20_1_904x1156_1_400x.jpg?v=1641839189",
+        image2:"https://cdn.shopify.com/s/files/1/0034/7901/1441/products/Nourished_20Lips_20Combo_904x1156_1_400x.jpg?v=1641839189",
+        review:"31 reviews",mrp:"MRP ₹ 479.00",del:"₹580.00" },
+        {id:9, name:"Vanilla Body Lotion",offer:"29% Off",
+        image:"https://cdn.shopify.com/s/files/1/0034/7901/1441/products/J8A5445_e221da18-db47-4eef-9ee4-f4b62a0767e0_400x.jpg?v=1641111680",
+        image2:"https://cdn.shopify.com/s/files/1/0034/7901/1441/products/J8A5424_5a3acf3b-7eda-415b-b5de-09932c683c25_400x.jpg?v=1641111679",
+        review:"5 reviews",mrp:"MRP ₹ 390.00",del:"₹550.00" },
+        {id:10, name:"Unscented Body Lotion",offer:"29% Off",
+        image:"https://cdn.shopify.com/s/files/1/0034/7901/1441/products/J8A5314_d2d40f9a-7de0-4dcb-ace6-e6cb6795cd9e_400x.jpg?v=1641111921",
+        image2:"https://cdn.shopify.com/s/files/1/0034/7901/1441/products/UnscentedWBG_400x.jpg?v=1641111921",
+        review:"1 review",mrp:"MRP ₹ 390.00",del:"₹550.00" },
+        {id:11, name:"Soft Lip Combo",offer:"17% Off",
+        image:"https://cdn.shopify.com/s/files/1/0034/7901/1441/products/softlipscombo_1_400x.jpg?v=1641839230",
+        image2:"https://cdn.shopify.com/s/files/1/0034/7901/1441/products/Soft_20Lips_20Combo_904x1156_904x1156_4a160e99-2c4c-4e66-a63a-3b7b881f369d_400x.jpg?v=1642443278",
+        review:"16 reviews",mrp:"MRP ₹ 479.00",del:"₹580.00" },
+        {id:12, name:"Strawberry Lip Scrub",offer:"14% Off",
+        image:"https://cdn.shopify.com/s/files/1/0034/7901/1441/products/Strawberry_400x.jpg?v=1647863204",
+        image2:"https://cdn.shopify.com/s/files/1/0034/7901/1441/products/J8A5980_400x.jpg?v=1647863204",
+        review:"62 reviews",mrp:"MRP ₹ 249.00",del:"₹290.00" },
+        {id:13, name:"Mint Lip Scrub",offer:"14% Off",
+        image:"https://cdn.shopify.com/s/files/1/0034/7901/1441/products/Mint_400x.jpg?v=1647863062",
+        image2:"https://cdn.shopify.com/s/files/1/0034/7901/1441/products/J8A6498_400x.jpg?v=1647863062",
+        review:"8 reviews",mrp:"MRP ₹ 249.00",del:"₹290.00" },
+        {id:14, name:"Shea Butter Lip Balm",offer:"14% Off",
+        image:"https://cdn.shopify.com/s/files/1/0034/7901/1441/products/05_400x.jpg?v=1642512099",
+        image2:"https://cdn.shopify.com/s/files/1/0034/7901/1441/products/J8A5188_b352b249-6408-4003-bd92-e9f4be1f8dbc_400x.jpg?v=1642512099",
+        review:"4 reviews",mrp:"MRP ₹ 249.00",del:"₹290.00" },
+        {id:15, name:"Chocolate Lip Balm",offer:"14% Off",
+        image:"https://cdn.shopify.com/s/files/1/0034/7901/1441/products/01_1_400x.jpg?v=1642512000",
+        image2:"https://cdn.shopify.com/s/files/1/0034/7901/1441/products/J8A5383_400x.jpg?v=1642512000",
+        review:"6 reviews",mrp:"MRP ₹ 249.00",del:"₹290.00" },
+        {id:16, name:"Vanilla Lip Balm",offer:"",
+        image:"https://cdn.shopify.com/s/files/1/0034/7901/1441/products/06_400x.jpg?v=1642512175",
+        image2:"https://cdn.shopify.com/s/files/1/0034/7901/1441/products/J8A5224_400x.jpg?v=1642512175",
+        review:"6 reviews",mrp:"MRP ₹ 249.00",del:"₹290.00" },
+        {id:1, name:"Beetroot Lip Balm", image:"https://cdn.shopify.com/s/files/1/0034/7901/1441/products/904_0003_Beetroot_07aa7e6f-c52b-42d1-8839-a4678e5b2ef3_400x.jpg?v=1641838454",image2:"https://cdn.shopify.com/s/files/1/0034/7901/1441/products/02-in-and-out_400x.jpg?v=1645614549",review:"1961 reviews",mrp:"MRP ₹ 249.00",del:"₹290.00" },
+      {id:2, name:"Aloe Vera Gel", image:"https://cdn.shopify.com/s/files/1/0034/7901/1441/products/Aloe-vera-Gel_1_400x.jpg?v=1647947302",image2:"https://cdn.shopify.com/s/files/1/0034/7901/1441/products/01_1_b105980f-cffc-485c-a18e-b80dbdab8056_400x.jpg?v=1647947302",review:"1961 reviews",mrp:"MRP ₹ 390.00",del:"₹490.00" },
+      {id:3, name:"Charcoal Bath Bar", image:"https://cdn.shopify.com/s/files/1/0034/7901/1441/products/ICONS-05_400x.jpg?v=1648210587",image2:"https://cdn.shopify.com/s/files/1/0034/7901/1441/products/Charcoal-soap_400x.jpg?v=1648210587",review:"1961 reviews",mrp:"MRP ₹ 349.00",del:"₹410.00" },
+      {id:4, name:"Rose & Mulethi Skin Brightening Pack", image:"https://cdn.shopify.com/s/files/1/0034/7901/1441/products/r_m_400x.jpg?v=1648210466",image2:"https://cdn.shopify.com/s/files/1/0034/7901/1441/products/J8A6253_400x.jpg?v=1648210466",review:"1961 reviews",mrp:"MRP ₹ 499.00",del:"₹550.00" },
+      {id:5, name:"Under Eye Mask", image:"https://cdn.shopify.com/s/files/1/0034/7901/1441/products/J8A5711_400x.jpg?v=1641468153",image2:"https://cdn.shopify.com/s/files/1/0034/7901/1441/products/J8A5707_400x.jpg?v=1641468153",review:"76 reviews",mrp:"MRP ₹ 550.00",del:"₹600.00" },
+      {id:6, name:"Beautifying Serum", image:"https://cdn.shopify.com/s/files/1/0034/7901/1441/products/Beautifying_400x.jpg?v=1647864671",image2:"https://cdn.shopify.com/s/files/1/0034/7901/1441/products/J8A5707_400x.jpg?v=1641468153",review:"95 reviews",mrp:"MRP ₹ 730.00",del:"" },
+      {id:7, name:"Strawberry Lip Scrub", image:"https://cdn.shopify.com/s/files/1/0034/7901/1441/products/Strawberry_600x.jpg?v=1647863204",image2:"https://cdn.shopify.com/s/files/1/0034/7901/1441/products/J8A5707_400x.jpg?v=1641468153",review:"62 reviews",mrp:"MRP ₹ 249.00",del:"₹290.00" },
+      {id:8, name:"Tea Tree Facial Tone", image:"https://cdn.shopify.com/s/files/1/0034/7901/1441/products/Teatree_400x.jpg?v=1647862414",image2:"https://cdn.shopify.com/s/files/1/0034/7901/1441/products/J8A5707_400x.jpg?v=1641468153",review:"69 reviews",mrp:"MRP ₹ 440.00",del:"₹490.00" },
+      {id:9, name:"Face & Body Exfoliator", image:"https://cdn.shopify.com/s/files/1/0034/7901/1441/products/Exfoliator_400x.jpg?v=1647862853",image2:"https://cdn.shopify.com/s/files/1/0034/7901/1441/products/J8A5707_400x.jpg?v=1641468153",review:"49 reviews",mrp:"MRP ₹ 450.00",del:"" },
+      {id:10, name:"Neem Seed Oil", image:"https://cdn.shopify.com/s/files/1/0034/7901/1441/products/Neemseed_400x.jpg?v=1647864887",image2:"https://cdn.shopify.com/s/files/1/0034/7901/1441/products/J8A5707_400x.jpg?v=1641468153",review:"51 reviews",mrp:"MRP ₹ 290.00",del:"₹" },
+      {id:11, name:"Rose Water Toner", image:"https://cdn.shopify.com/s/files/1/0034/7901/1441/products/Rose_400x.jpg?v=1647862302",image2:"https://cdn.shopify.com/s/files/1/0034/7901/1441/products/J8A5707_400x.jpg?v=1641468153",review:"34 reviews",mrp:"MRP ₹ 449.00",del:"₹490.00" },
+      {id:12, name:"Foot Butter", image:"https://cdn.shopify.com/s/files/1/0034/7901/1441/products/FOOT_20BUTTER_400x.jpg?v=1641031475",image2:"https://cdn.shopify.com/s/files/1/0034/7901/1441/products/J8A5707_400x.jpg?v=1641468153",review:"50 reviews",mrp:"MRP ₹ 490.00",del:"₹550.00" },
+      {id:13, name:"Orange & Almond Face Pack", image:"https://cdn.shopify.com/s/files/1/0034/7901/1441/products/Orange-Almond_400x.jpg?v=1648206968",image2:"https://cdn.shopify.com/s/files/1/0034/7901/1441/products/J8A5707_400x.jpg?v=1641468153",review:"20 reviews",mrp:"MRP ₹ 550.00",del:"" },
+      {id:14, name:"Spirulina Matcha Face Pack", image:"https://cdn.shopify.com/s/files/1/0034/7901/1441/products/Spirulina-matcha_400x.jpg?v=1647947345",image2:"https://cdn.shopify.com/s/files/1/0034/7901/1441/products/J8A5707_400x.jpg?v=1641468153",review:"38 reviews",mrp:"MRP ₹ 550.00",del:"" },
+      {id:15, name:"Charcoal Face Pack", image:"https://cdn.shopify.com/s/files/1/0034/7901/1441/products/Charcoal-1_400x.jpg?v=1647862565",image2:"https://cdn.shopify.com/s/files/1/0034/7901/1441/products/J8A5707_400x.jpg?v=1641468153",review:"15 reviews",mrp:"MRP ₹ 550.00",del:"" },
+      {id:16, name:"Eyebrow Growth Oil", image:"https://cdn.shopify.com/s/files/1/0034/7901/1441/products/Eye_20Brow_20Growth_20oil_400x.jpg?v=1641031468",image2:"https://cdn.shopify.com/s/files/1/0034/7901/1441/products/J8A5707_400x.jpg?v=1641468153",review:"14 reviews",mrp:"MRP ₹ 730.00",del:"" },
+      {id:17, name:"Tanner's Cassia Face Pack", image:"https://cdn.shopify.com/s/files/1/0034/7901/1441/products/J8A7869_3c64ea1e-910f-4e83-8f0f-0bd9099185e9_400x.jpg?v=1645878093",image2:"https://cdn.shopify.com/s/files/1/0034/7901/1441/products/J8A5707_400x.jpg?v=1641468153",review:"12 reviews",mrp:"MRP ₹ 450.00",del:"" },
+      {id:18, name:"Rose Glow Serum", image:"https://cdn.shopify.com/s/files/1/0034/7901/1441/products/Rose-Glow_400x.jpg?v=1647864704",image2:"https://cdn.shopify.com/s/files/1/0034/7901/1441/products/J8A5707_400x.jpg?v=1641468153",review:"17 reviews",mrp:"MRP ₹ 730.00",del:"" },
+      {id:19, name:"Shea Saffron Bath Bar", image:"https://cdn.shopify.com/s/files/1/0034/7901/1441/products/SheaSaffronBathBar_400x.jpg?v=1647864001",image2:"https://cdn.shopify.com/s/files/1/0034/7901/1441/products/J8A5707_400x.jpg?v=1641468153",review:"21 reviews",mrp:"MRP ₹ 390.00",del:"" },
+      {id:20, name:"Turmeric Healing Face Mask", image:"https://cdn.shopify.com/s/files/1/0034/7901/1441/products/Turmerichealing_400x.jpg?v=1647864335",image2:"https://cdn.shopify.com/s/files/1/0034/7901/1441/products/J8A5707_400x.jpg?v=1641468153",review:"23 reviews",mrp:"MRP ₹ 600.00",del:"" },
+      {id:21, name:"Body Scrub", image:"https://cdn.shopify.com/s/files/1/0034/7901/1441/products/BodyScrub_400x.jpg?v=1647862779",image2:"https://cdn.shopify.com/s/files/1/0034/7901/1441/products/J8A5707_400x.jpg?v=1641468153",review:"9 reviews",mrp:"MRP ₹ 450.00",del:"" },
+      {id:22, name:"Rose & Geranium Body Butter", image:"https://cdn.shopify.com/s/files/1/0034/7901/1441/products/ROSE_20__20GERANIUM_20BODY_20BUTTER_400x.jpg?v=1641031579",image2:"https://cdn.shopify.com/s/files/1/0034/7901/1441/products/J8A5707_400x.jpg?v=1641468153",review:"24 reviews",mrp:"MRP ₹ 550.00",del:"" },
+      {id:23, name:"Basil Toner", image:"https://cdn.shopify.com/s/files/1/0034/7901/1441/products/Basil_400x.jpg?v=1647862013",image2:"https://cdn.shopify.com/s/files/1/0034/7901/1441/products/J8A5707_400x.jpg?v=1641468153",review:"25 reviews",mrp:"MRP ₹ 490.00",del:"" },
+      {id:24, name:"Rose Pink Clay Bath bar", image:"https://cdn.shopify.com/s/files/1/0034/7901/1441/products/RosePinkClayBathbar_400x.jpg?v=1647863958",image2:"https://cdn.shopify.com/s/files/1/0034/7901/1441/products/J8A5707_400x.jpg?v=1641468153",review:"16 reviews",mrp:"MRP ₹ 320.00",del:"₹370.00" },
+      {id:25, name:"Rose Scrub", image:"https://cdn.shopify.com/s/files/1/0034/7901/1441/products/Rose_1_400x.jpg?v=16478631678",image2:"https://cdn.shopify.com/s/files/1/0034/7901/1441/products/J8A5707_400x.jpg?v=1641468153",review:"9 reviews",mrp:"MRP ₹ 570.00",del:"" },
+      {id:26, name:"Neem and Turmeric Bath Bar", image:"https://cdn.shopify.com/s/files/1/0034/7901/1441/products/NeemandTurmericBathBar_400x.jpg?v=1647863923",image2:"https://cdn.shopify.com/s/files/1/0034/7901/1441/products/J8A5707_400x.jpg?v=1641468153",review:"10 reviews",mrp:"MRP ₹ 270.00",del:"₹320.00" },
+      {id:27, name:"Anti Aging Serum", image:"https://cdn.shopify.com/s/files/1/0034/7901/1441/products/Anti-Ageing_400x.jpg?v=1647864574",image2:"https://cdn.shopify.com/s/files/1/0034/7901/1441/products/J8A5707_400x.jpg?v=1641468153",review:"11 reviews",mrp:"MRP ₹ 730.00",del:"" },
+      {id:28, name:"Tea Tree Essential Oil", image:"https://cdn.shopify.com/s/files/1/0034/7901/1441/products/TeaTree_1_400x.jpg?v=1647865211",image2:"https://cdn.shopify.com/s/files/1/0034/7901/1441/products/J8A5707_400x.jpg?v=1641468153",review:"13 reviews",mrp:"MRP ₹ 350.00",del:"" },
+      {id:29, name:"Charcoal Detox Face Mask", image:"https://cdn.shopify.com/s/files/1/0034/7901/1441/products/Charcoal-Detoxmas_400x.jpg?v=1647862612",image2:"https://cdn.shopify.com/s/files/1/0034/7901/1441/products/J8A5707_400x.jpg?v=1641468153",review:"7 reviews",mrp:"MRP ₹ 600.00",del:"" },
+      {id:30, name:"Mint Lip Scrub", image:"https://cdn.shopify.com/s/files/1/0034/7901/1441/products/Mint_400x.jpg?v=1647863062",image2:"https://cdn.shopify.com/s/files/1/0034/7901/1441/products/J8A5707_400x.jpg?v=1641468153",review:"8 reviews",mrp:"MRP ₹ 249.00",del:"₹290.00" },
+      {id:31, name:"Chocolate Body Butter", image:"https://cdn.shopify.com/s/files/1/0034/7901/1441/products/CHOCOLATE_20BODY_20BUTTER_400x.jpg?v=1641031450",image2:"https://cdn.shopify.com/s/files/1/0034/7901/1441/products/J8A5707_400x.jpg?v=1641468153",review:"7 reviews",mrp:"MRP ₹ 550.00",del:"" },
+      {id:32, name:"Lemon Mist", image:"https://cdn.shopify.com/s/files/1/0034/7901/1441/products/Lemon_400x.jpg?v=1647862222",image2:"https://cdn.shopify.com/s/files/1/0034/7901/1441/products/J8A5707_400x.jpg?v=1641468153",review:"9 reviews",mrp:"MRP ₹ 490.00",del:"" },
+      {id:33, name:"Vanilla Dust Powder (Talc Free)", image:"https://cdn.shopify.com/s/files/1/0034/7901/1441/products/Vanilla_400x.jpg?v=1647863822",image2:"https://cdn.shopify.com/s/files/1/0034/7901/1441/products/J8A5707_400x.jpg?v=1641468153",review:"4 reviews",mrp:"MRP ₹ 600.00",del:"" },
+      {id:34, name:"Multi-Flower Glow Face Mask", image:"https://cdn.shopify.com/s/files/1/0034/7901/1441/products/MultiFlowerGlow_400x.jpg?v=1647864299",image2:"https://cdn.shopify.com/s/files/1/0034/7901/1441/products/J8A5707_400x.jpg?v=1641468153",review:"4 reviews",mrp:"MRP ₹ 600.00",del:"" },
+      {id:35, name:"Rose Powder (Talc Free)", image:"https://cdn.shopify.com/s/files/1/0034/7901/1441/products/Rose_2_400x.jpg?v=1647863738",image2:"https://cdn.shopify.com/s/files/1/0034/7901/1441/products/J8A5707_400x.jpg?v=1641468153",review:"7 reviews",mrp:"MRP ₹ 600.00",del:"" },
+      {id:36, name:"Shea Butter Lip Balm", image:"https://cdn.shopify.com/s/files/1/0034/7901/1441/products/05_400x.jpg?v=1642512099",image2:"https://cdn.shopify.com/s/files/1/0034/7901/1441/products/J8A5707_400x.jpg?v=1641468153",review:"4 reviews",mrp:"MRP ₹ 249.00",del:"₹290.00" },
+      {id:37, name:"Foot Scrub", image:"https://cdn.shopify.com/s/files/1/0034/7901/1441/products/Foot-Scrub_400x.jpg?v=1648207080",image2:"https://cdn.shopify.com/s/files/1/0034/7901/1441/products/J8A5707_400x.jpg?v=1641468153",review:"2 reviews",mrp:"MRP ₹ 550.00",del:"₹" },
+      {id:38, name:"Vanilla Lip Balm", image:"https://cdn.shopify.com/s/files/1/0034/7901/1441/products/06_400x.jpg?v=1642512175",image2:"https://cdn.shopify.com/s/files/1/0034/7901/1441/products/J8A5707_400x.jpg?v=1641468153",review:"6 reviews",mrp:"MRP ₹ 249.00",del:"290.00" },
+      {id:39, name:"Chocolate Lip Balm", image:"https://cdn.shopify.com/s/files/1/0034/7901/1441/products/01_1_400x.jpg?v=1642512000",image2:"https://cdn.shopify.com/s/files/1/0034/7901/1441/products/J8A5707_400x.jpg?v=1641468153",review:"6 reviews",mrp:"MRP ₹ 249.00",del:"₹290.00" },
+      {id:40, name:"Rosehip Seed Oil", image:"https://cdn.shopify.com/s/files/1/0034/7901/1441/products/Rosehip_20Seed_20Oil_2030ml_400x.jpg?v=1641031590",image2:"https://cdn.shopify.com/s/files/1/0034/7901/1441/products/J8A5707_400x.jpg?v=1641468153",review:"5 reviews",mrp:"MRP ₹ 550.00",del:"" },
+      {id:41, name:"Ylang Ylang Mist", image:"https://cdn.shopify.com/s/files/1/0034/7901/1441/products/Ylangylang_400x.jpg?v=1647862456",image2:"https://cdn.shopify.com/s/files/1/0034/7901/1441/products/J8A5707_400x.jpg?v=1641468153",review:"1 reviews",mrp:"MRP ₹ 490.00",del:"" },
+      {id:42, name:"Lavender Essential Oil", image:"https://cdn.shopify.com/s/files/1/0034/7901/1441/products/Lavender_400x.jpg?v=1647865052",image2:"https://cdn.shopify.com/s/files/1/0034/7901/1441/products/J8A5707_400x.jpg?v=1641468153",review:"4 reviews",mrp:"MRP ₹ 330.00",del:"" },
+      {id:43, name:"Jasmine Facial Toner", image:"https://cdn.shopify.com/s/files/1/0034/7901/1441/products/Jasmin_400x.jpg?v=1647862163",image2:"https://cdn.shopify.com/s/files/1/0034/7901/1441/products/J8A5707_400x.jpg?v=1641468153",review:"1 reviews",mrp:"MRP ₹ 490.00",del:"" },
+      {id:44, name:"Moringa Oil", image:"https://cdn.shopify.com/s/files/1/0034/7901/1441/products/Moringa_400x.jpg?v=1647864850",image2:"https://cdn.shopify.com/s/files/1/0034/7901/1441/products/J8A5707_400x.jpg?v=1641468153",review:"1 reviews",mrp:"MRP ₹ 550.00",del:"" },
+      {id:45, name:"Turmeric Essential Oil", image:"https://cdn.shopify.com/s/files/1/0034/7901/1441/products/Turmeric_400x.jpg?v=1647865273",image2:"https://cdn.shopify.com/s/files/1/0034/7901/1441/products/J8A5707_400x.jpg?v=1641468153",review:"2 reviews",mrp:"MRP ₹ 340.00",del:"" },
+      {id:46, name:"Eucalyptus Essential Oil", image:"https://cdn.shopify.com/s/files/1/0034/7901/1441/products/Eucalyptus_400x.jpg?v=1647865020",image2:"https://cdn.shopify.com/s/files/1/0034/7901/1441/products/J8A5707_400x.jpg?v=1641468153",review:"1 reviews",mrp:"MRP ₹ 250.00",del:"" },
+      {id:47, name:"Sweet Orange Essential Oil", image:"https://cdn.shopify.com/s/files/1/0034/7901/1441/products/SweetOrange_400x.jpg?v=1647865162",image2:"https://cdn.shopify.com/s/files/1/0034/7901/1441/products/J8A5707_400x.jpg?v=1641468153",review:"1 reviews",mrp:"MRP ₹ 270.00",del:"" },
+      {id:48, name:"Lady Body Powder", image:"https://cdn.shopify.com/s/files/1/0034/7901/1441/products/Lady_400x.jpg?v=1647863656",image2:"https://cdn.shopify.com/s/files/1/0034/7901/1441/products/J8A5707_400x.jpg?v=1641468153",review:"1 reviews",mrp:"MRP ₹ 600.00",del:"" },
+
+    ]
+
+
+  // console.log(searchArr.length)
+
+   //let name1 = "Scrub";
+    
+//    document.getElementById('searchbyname').addEventListener("keypress",()=>{
+//        jimmy(event);
+//    })
+
+//    let jimmy = (e)=>{
+//        if(e.code=="Enter"){
+
+       
+   
+
+//     let name1 = document.getElementById('searchbyname').value;
+   
+   
+
+// //    ;
+
+
+
+//   let searchItems1 = searchArr.filter((el)=>{
+//       //let lower = el.name.toLowerCase();
+//        return el.name.includes(name1)
+//    })  
+
+   //console.log(searchItems)
+   let searchItems = JSON.parse(localStorage.getItem("searchData")) || []
+let parent=document.querySelector("#middle_container")
+
+let cartProductsArr = JSON.parse(localStorage.getItem("cart")) || [];
+
+function displaydata(searchItems){
+parent.innerHTML=null;
+
+searchItems.forEach(function(elem){
+    
+
+    let div=document.createElement("div")
+    div.setAttribute("class",("upper_container"))
+
+    let myDiv = document.createElement("div")
+    myDiv.setAttribute("id","gotoparticulatpage")
+    // myDiv.addEventListener("click",()=>{
+    //     hey(elem)
+    // })
+
+    myDiv.addEventListener("click",()=>{
+        
+        productInfo(elem)
+        window.location.href="./particularProduct.html"
+    })
+
+
+    let names=document.createElement("p")
+    names.setAttribute("class","namess")
+    
+  
+
+    
+   
+    names.innerText=elem.name;
+    names.style.fontSize="17px";
+    names.style.color="#000000";
+    
+    //console.log(elem.name)
+
+    let imgs=document.createElement("img")
+    imgs.src=elem.image;
+    imgs.setAttribute("id","pic")
+ 
+    $(imgs).hover(function () {
+           
+           imgs.src = elem.image2;
+               }, function () {
+                   // out
+                    imgs.src = elem.image;
+               }
+            );
+           $("#pic").hover(function () {
+    //stuff to do on mouse enter
+    imgs.src = elem.image2;
+}, 
+function () {
+    //stuff to do on mouse leave
+    imgs.src = elem.image;
+});
+    let div1=document.createElement("div")
+     div1.setAttribute("id","stardiv")
+   
+ 
+    let wish=document.createElement("i")
+    wish.setAttribute("class","fa fa-heart-o")
+    wish.setAttribute("id","suraj")
+    wish.style.fontSize="28px";
+     wish.style.border="1px solid white"
+    //  wish.addEventListener("click",()=>{
+    //      window.location.href = "./../blogpage.html"
+    //  });
+     
+    // wish.style.color="white"
+
+
+
+    let reiv=document.createElement("div")
+    reiv.innerText=elem.review;
+    reiv.style.marginLeft="2px";
+    
+    let rate=document.createElement("span")
+    rate.setAttribute("class","fa fa-star checked");
+
+    let rate2=document.createElement("span")
+    rate2.setAttribute("class","fa fa-star checked");
+
+    let rate3=document.createElement("span")
+    rate3.setAttribute("class","fa fa-star checked");
+
+    let rate4=document.createElement("span")
+    rate4.setAttribute("class","fa fa-star checked");
+
+    let rate5=document.createElement("span")
+    rate5.setAttribute("class","fa fa-star checked");
+
+    let div2=document.createElement("div")
+    div2.setAttribute("id","priceAndDel")
+    
+
+    let mrp=document.createElement("div")
+    mrp.setAttribute("id","price")
+    mrp.innerText=elem.mrp;
+
+    let del=document.createElement("del")
+    del.innerText=elem.del;
+    del.style.marginLeft="20px";
+
+    let cart=document.createElement("button");
+    cart.innerText="Add To Cart";
+    cart.setAttribute("class","cart_button")
+    cart.addEventListener("click",()=>{
+        addToCartFunction(elem);
+        window.location.href="./cartPage2.html"
+    })
+    
+    
+   // divwish.append(wish)
+    div1.append(rate,rate2,rate3,rate4,rate5,reiv)
+    
+    div2.append(mrp,del)
+    myDiv.append(imgs,wish,names,div1,div2)
+    div.append(myDiv,cart)
+    // div.append(imgs,wish,names,div1,div2,cart)
+    parent.append(div)
+})
+}
+
+displaydata(searchItems)
+
+
+
+
+let count = 1;
+let productInfo = (elem)=>{
+    
+     localStorage.setItem("qty",count)
+    localStorage.setItem("particularPro",JSON.stringify(elem));
+}
+
+
+function sortItems(){
+    var sorting = document.querySelector("#cars").value;
+    //console.log(sorting)
+
+   if(sorting=="Puja"){
+        searchItems.sort((a, b) => {
+            let fa = a.name.toLowerCase(),
+            fb = b.name.toLowerCase();
+
+            if (fa < fb) {
+                return -1;
+            }
+            if (fa > fb) {
+                return 1;
+            }
+            return 0;
+        });
+        displaydata(searchItems);
+   }
+
+   if(sorting=="Ajay"){
+        searchItems.sort((a, b) => {
+            let fa = a.name.toLowerCase(),
+            fb = b.name.toLowerCase();
+
+            if (fa < fb) {
+                return 1;
+            }
+            if (fa > fb) {
+                return -1;
+            }
+            return 0;
+        });
+        displaydata(searchItems);
+   }
+    
+   if(sorting=="Mohit"){
+        function swap(searchItems,a,b){
+        let temp = searchItems[a]
+        searchItems[a] = searchItems[b];
+        searchItems[b] = temp
+        }
+
+        for(let i=0;i<searchItems.length;i++){
+        for(let j=0;j<searchItems.length-i-1;j++){
+        
+            let a = +searchItems[j].mrp.slice(6,searchItems[j].mrp.length-2)
+            let b = +searchItems[j+1].mrp.slice(6,searchItems[j+1].mrp.length-2)
+            
+            if(a>b){
+            
+            swap(searchItems,j,j+1)
+            }
+           }
+        }
+        //console.log(searchItems)
+        //console.log(arr);
+
+        displaydata(searchItems);
+   }
+   if(sorting=="Shubham"){
+        function swap(searchItems,a,b){
+        let temp = searchItems[a]
+        searchItems[a] = searchItems[b];
+        searchItems[b] = temp
+        }
+
+        for(let i=0;i<searchItems.length;i++){
+        for(let j=0;j<searchItems.length-i-1;j++){
+        
+            let a = +searchItems[j].mrp.slice(6,searchItems[j].mrp.length-2)
+            let b = +searchItems[j+1].mrp.slice(6,searchItems[j+1].mrp.length-2)
+            
+            if(a<b){
+            
+            swap(searchItems,j,j+1)
+            }
+           }
+        }
+        //console.log(searchItems)
+        //console.log(arr);
+
+        displaydata(searchItems);
+   }
+   
+   if(sorting=="Suraj"){
+        function swap(searchItems,a,b){
+        let temp = searchItems[a]
+        searchItems[a] = searchItems[b];
+        searchItems[b] = temp
+        }
+
+        for(let i=0;i<searchItems.length;i++){
+        for(let j=0;j<searchItems.length-i-1;j++){
+        
+            let a = +searchItems[j].review.slice(0,searchItems[j].review.length-7)
+            let b = +searchItems[j+1].review.slice(0,searchItems[j+1].review.length-7)
+            
+            if(a<b){
+            
+            swap(searchItems,j,j+1)
+            }
+           }
+        }
+        //console.log(searchItems)
+        //console.log(arr);
+
+        displaydata(searchItems);
+   }
+};
+
+
+
+function addToCartFunction(elem){
+     let maintainDuplicateArr = JSON.parse(localStorage.getItem("cart")) || [];
+     //if(maintainDuplicateArr.inc)
+     let flag = false;
+     for(let i=0;i<maintainDuplicateArr.length;i++){
+         if(elem.id==maintainDuplicateArr[i].id){
+             flag=true;
+         }
+     }
+
+     if(flag==false){
+
+        //old
+        elem.quantity = 1;
+        //console.log(elem.quantity);
+
+        cartProductsArr.push(elem);
+        localStorage.setItem("cart",JSON.stringify(cartProductsArr));
+     }
+}
+
+
+    //    }
+
+
+    //    window.location.href="./dataForSearch.html"
+    // }
+
+
+</script>
+
+
+
+

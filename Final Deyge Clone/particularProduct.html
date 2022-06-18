@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Particular product Page</title>
+    <link rel="stylesheet" href="./styles/navbar_footer.css">
+    <link rel="stylesheet" href="./styles/particularProduct.css">
+    <style>
+        #stickyImages{
+         margin-left: 97.5%;
+         position: sticky;
+         /* right: 0; */
+         top: 40%;
+         /* margin-top: -50%; */
+        
+         }
+         #stickyImages>img{
+             width: 33px;
+             height: 32px;
+             border-radius: 50%;
+             display: block;
+             margin-top: 3px;
+         }
+         #stickyImages>img:last-child{
+             width: 45px;
+             height: 45px;
+             margin-left: -6px;
+             margin-top: -5px;
+         }
+         #connectthreepages{
+             margin-top: -10%;
+         }
+         </style>
+</head>
+<body>
+    <div id="navbar"></div>
+    <div id="stickyImages">
+        <img src="https://lh3.googleusercontent.com/stk7qIhvTn-6p1x3eYOfqnNCdIkNjyIoZPlZtwiDCzdhxEYc8Gsm1obY0zYdR13NfW_UkF4=s88" alt=""/>
+        <img src="https://lh3.googleusercontent.com/7GC8KgKN3PBmRKrqYOpBvozvAkrDknIwHhpDyMlDhEo_xEEEmHN81MTm7dNQvMyg4CcZ=s87" alt=""/>
+        <img src="https://lh3.googleusercontent.com/viOmLsqBaf_hyffXvvUFInfNNDwwQp6UpqQkPQU6uQFK-eE2MJnRGVdetr2Df6Q1twm85w=s87" alt=""/>
+        <img src="https://lh3.googleusercontent.com/AGtkZJFXY39I8G7s0dXFAGzgVuvr_m5Li-5v2TDlpqWdQtXOmf9WG13REwpOBuKKDXD70A=s87" alt=""/>
+        <img src="https://cdn.shopify.com/s/files/1/0034/7901/1441/t/139/assets/ping-svg2.svg?v=1619612966" alt=""/>
+    </div>
+    <div id="connectthreepages">
+        <div id="gharjao">Home  >  </div>
+        <div>Skin Care >  </div>
+        <div id="productName"></div>
+    </div>
+    <div id="particularDiv">
+        <div id="particularLeft"></div>
+        <div id="particularRight"></div>
+    </div>
+    <div id="footer"></div>
+    
+</body>
+</html>
+
+<script type="module">
+
+    import {navbar,footer} from "./components/navbar.js"
+    document.getElementById('navbar').innerHTML=navbar();
+    document.getElementById('footer').innerHTML = footer();
+
+    import {navbarJs} from "./scripts/navbarJsPart.js"
+    navbarJs();
+
+     document.querySelector("#connectthreepages>div:nth-child(2)").addEventListener("click",()=>{
+         window.location.href="./skincare.html"
+     })
+
+</script>
+
+<script type="module">
+    
+    let particularPro = JSON.parse(localStorage.getItem("particularPro"));
+
+    document.getElementById('productName').innerText = particularPro.name;
+
+    let imagesArr = [particularPro.image,particularPro.image2];
+     
+    let particularImg = document.createElement("img");
+    particularImg.src = imagesArr[0];
+
+    
+
+   
+    particularImg.setAttribute("id","image")
+    document.getElementById("particularLeft").append(particularImg)
+   
+    let i=1;       
+    setInterval(function(){
+    
+        if(i===imagesArr.length){
+            i=0;
+        }
+        let image = imagesArr[i];
+        
+        let img = document.getElementById("image");
+        img.src=image;
+        
+        i++;
+    },1000);
+     
+
+    let title = document.createElement("div");
+    title.innerText = particularPro.name;
+
+    let ratingDiv = document.createElement("div");
+
+    let rate=document.createElement("img")
+    rate.src="https://cdn.iconscout.com/icon/free/png-64/star-bookmark-favorite-shape-rank-16-28621.png"
+    let rate1=document.createElement("img")
+    rate1.src="https://cdn.iconscout.com/icon/free/png-64/star-bookmark-favorite-shape-rank-16-28621.png"
+    let rate2=document.createElement("img")
+    rate2.src="https://cdn.iconscout.com/icon/free/png-64/star-bookmark-favorite-shape-rank-16-28621.png"
+    let rate3=document.createElement("img")
+    rate3.src="https://cdn.iconscout.com/icon/free/png-64/star-bookmark-favorite-shape-rank-16-28621.png"
+    let rate4=document.createElement("img")
+    rate4.src="https://cdn.iconscout.com/icon/free/png-64/star-bookmark-favorite-shape-rank-16-28621.png"
+
+    let review = document.createElement("div");
+    review.innerText=particularPro.review
+
+    ratingDiv.append(rate,rate1,rate2,rate3,rate4,review)
+
+    let view = document.createElement("div");
+    view.innerText = "View Transformation"
+
+    let priceDivMain = document.createElement("div");
+     let price = document.createElement("div");
+     price.innerText = particularPro.mrp;
+     let dele = document.createElement("del");
+     dele.innerText = particularPro.del;
+     priceDivMain.append(price,dele);
+
+     let qtyDiv = document.createElement("div");
+     let qtydec = document.createElement("div");
+     qtydec.innerText = "-"
+    
+     
+
+     let qtyreal = document.createElement("div");
+     qtyreal.innerText = localStorage.getItem("qty");
+     let qtyinc = document.createElement("div");
+     qtyinc.innerText = "+"
+      
+     
+     //let inc = localStorage.getItem("qty")
+     qtyinc.addEventListener("click",()=>{
+         let inc = +localStorage.getItem("qty");
+         
+         qtyreal.innerText = inc+1;
+         inc=Number(inc)+1
+         localStorage.setItem("qty",inc);
+        // console.log(inc)
+         
+     })
+     //inc--;
+    
+     //let dec = localStorage.getItem("qty")
+     qtydec.addEventListener("click",()=>{
+          let dec = +(localStorage.getItem("qty"));
+         if(dec>=2){
+            qtyreal.innerText = dec-1;
+            dec=Number(dec)-1;
+            localStorage.setItem("qty",dec);
+         }
+         
+        })
+        
+        qtyDiv.append(qtydec,qtyreal,qtyinc)
+
+        let freeshippingDiv = document.createElement("div");
+        freeshippingDiv.innerText = "FREE shipping on domestic prepaid orders over Rs.999"
+        
+        let cartbtn = document.createElement("button");
+        cartbtn.innerText = "Add to cart";
+    
+        let buybtn = document.createElement("button");
+        buybtn.innerText = "Buy it now"
+
+   document.getElementById('particularRight').append(title,ratingDiv,view,priceDivMain,qtyDiv,freeshippingDiv,cartbtn,buybtn)
+</script>
+
+
+
+<script type="module">
+    document.getElementById('navbar1').addEventListener("click",()=>{
+        window.location.href = "./skincare.html"
+    })
+
+    document.querySelector("#navbar00>div:first-child").addEventListener("click",()=>{
+        window.location.href = "./LoginPage.html"
+    })
+    document.querySelector("#navbar00>div:last-child").addEventListener("click",()=>{
+        window.location.href = "./SignupPage.html"
+    })
+    document.querySelector("#navbar00>div:nth-child(2)").addEventListener("click",()=>{
+        window.location.href = "./whishlist.html"
+    })
+    document.getElementById("GoToIngredients").addEventListener("click",()=>{
+        window.location.href = "./Ingredients.html"
+    })
+    document.getElementById("GpToBlog").addEventListener("click",()=>{
+        window.location.href="./blogpage.html"
+    })
+
+    document.getElementById('navbar2').addEventListener("click",()=>{
+        window.location.href = "./haircare.html"
+    })
+    document.getElementById('navbar3').addEventListener("click",()=>{
+        window.location.href = "./bathbody.html"
+    })
+    document.getElementById('navbar4').addEventListener("click",()=>{
+        window.location.href = "./oralcare.html"
+    })
+    document.getElementById('navbar5').addEventListener("click",()=>{
+        window.location.href = "./wellness.html"
+    })
+    document.getElementById('navbar6').addEventListener("click",()=>{
+        window.location.href = "./babycare.html"
+    })
+    document.getElementById('navbar7').addEventListener("click",()=>{
+        window.location.href = "./men.html"
+    })
+    document.getElementById('navbar8').addEventListener("click",()=>{
+        window.location.href = "./combo.html"
+    })
+    document.getElementById('navbar9').addEventListener("click",()=>{
+        window.location.href = "./gifting.html"
+    })
+    document.getElementById('navbar10').addEventListener("click",()=>{
+        window.location.href = "./offers.html"
+    })
+
+   document.getElementById("gotoalwayshome").addEventListener("click",()=>{
+       window.location.href="./index.html"
+   })
+//gharjao
+document.getElementById("gharjao").addEventListener("click",()=>{
+       window.location.href="./index.html"
+   })
+</script>
+
+
+
+
+
+
+

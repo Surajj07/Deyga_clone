@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Combo Page</title>
+    <link rel="stylesheet" href="./styles/navbar_footer.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="./styles/products.css">
+    <link rel="stylesheet" href="./styles/card.css">
+
+   
+    <script src="https://code.jquery.com/jquery-3.5.0.js"></script>
+    <style>
+        #stickyImages{
+         margin-left: 97.5%;
+         position: sticky;
+         /* right: 0; */
+         top: 40%;
+         /* margin-top: -50%; */
+        
+         }
+         #stickyImages>img{
+             width: 33px;
+             height: 32px;
+             border-radius: 50%;
+             display: block;
+             margin-top: 3px;
+         }
+         #stickyImages>img:last-child{
+             width: 45px;
+             height: 45px;
+             margin-left: -6px;
+             margin-top: -5px;
+         }
+         #backhome{
+             margin-top: -11.5%;
+         }
+         </style>
+</head>
+<body>
+    
+    <div id="navbar"></div>
+    <div id="stickyImages">
+        <img src="https://lh3.googleusercontent.com/stk7qIhvTn-6p1x3eYOfqnNCdIkNjyIoZPlZtwiDCzdhxEYc8Gsm1obY0zYdR13NfW_UkF4=s88" alt=""/>
+        <img src="https://lh3.googleusercontent.com/7GC8KgKN3PBmRKrqYOpBvozvAkrDknIwHhpDyMlDhEo_xEEEmHN81MTm7dNQvMyg4CcZ=s87" alt=""/>
+        <img src="https://lh3.googleusercontent.com/viOmLsqBaf_hyffXvvUFInfNNDwwQp6UpqQkPQU6uQFK-eE2MJnRGVdetr2Df6Q1twm85w=s87" alt=""/>
+        <img src="https://lh3.googleusercontent.com/AGtkZJFXY39I8G7s0dXFAGzgVuvr_m5Li-5v2TDlpqWdQtXOmf9WG13REwpOBuKKDXD70A=s87" alt=""/>
+        <img src="https://cdn.shopify.com/s/files/1/0034/7901/1441/t/139/assets/ping-svg2.svg?v=1619612966" alt=""/>
+    </div>
+    <div id="backhome"><a href="index.html">Home > Combo</a></div>
+     <div class="upperimage">
+         <h2 class="title">Combo</h1>
+        
+     </div>
+ 
+     <hr style="margin-bottom: 5%;">
+     <div class="short">
+         <select name="cars" id="cars" onchange="sortItems()">
+             <option value="Kalyani">Sort</option>
+             <option value="Suraj">Best Seller </option>
+             <option value="Puja">Alphabetically A-Z</option>
+             <option value="Ajay">Alphabetically Z-A</option>
+             <option value="Shubham">Price-High to Low</option>
+             <option value="Mohit">Price-Low to High</option>
+           </select>
+     </div>
+     <hr>
+    
+ <div id="middle_container"></div>
+
+ <hr>
+ <div id="middle_container1">Recently viewed</div>
+
+ <div id="slider">
+    <div id="sliderappend">
+        <div id="one"></div>
+        <div id="two"></div>
+    </div>
+    <!-- <div id="indicator"> -->
+        <button id="btn1"><</button>
+        <button id="btn2">></button>
+    <!-- </div> -->
+</div>
+
+ <div id="footer"></div>
+</body>
+</html>
+<script type="module">
+
+    import {navbar,footer} from "./components/navbar.js"
+    document.getElementById('navbar').innerHTML=navbar();
+    document.getElementById('footer').innerHTML = footer();
+
+    import {navbarJs} from "./scripts/navbarJsPart.js"
+    navbarJs();
+    
+    
+</script>
+<script>
+    
+   let cardarry = [
+        {id:1, name:"Nourished Lips Combo",
+        image:"https://cdn.shopify.com/s/files/1/0034/7901/1441/products/Nourished_20Lips_20Combo_20_1_904x1156_1_400x.jpg?v=1641839189",
+        image2:"https://cdn.shopify.com/s/files/1/0034/7901/1441/products/Nourished_20Lips_20Combo_904x1156_1_400x.jpg?v=1641839189",
+        review:"31 reviews",mrp:"MRP ₹ 479.00",del:"₹580.00" },
+        {id:2, name:"Clear Skin Combo",
+        image:"https://cdn.shopify.com/s/files/1/0034/7901/1441/products/Clear_20Skin_20Combo_20_1_904x11562_400x.jpg?v=1642793784",
+        image2:"https://cdn.shopify.com/s/files/1/0034/7901/1441/products/ClearSkinCombo_400x.jpg?v=1642793784",
+        review:"48 reviews",mrp:"MRP ₹ 729.00",del:"₹800.00" },
+        {id:3, name:"Hydro Boosting Combo",
+        image:"https://cdn.shopify.com/s/files/1/0034/7901/1441/products/NightCombo-edited_400x.jpg?v=1644841165",
+        image2:"https://cdn.shopify.com/s/files/1/0034/7901/1441/products/NightCombo-edited_400x.jpg?v=1644841165",
+        review:"4 reviews",mrp:"MRP ₹ 780.00",del:"₹980.00" },
+        {id:4, name:"Hair Strengthening Combo",
+        image:"https://cdn.shopify.com/s/files/1/0034/7901/1441/products/Hair_20Strengthening_20Combo_20_1_400x.jpg?v=1641031502",
+        image2:"https://cdn.shopify.com/s/files/1/0034/7901/1441/products/Hair_20Strengthening_20Combo_400x.jpg?v=1641031502",
+        review:"9 reviews",mrp:"MRP ₹ 1,249.00",del:"₹1,330.00" },
+        {id:5, name:"Healthy Glow Combo",
+        image:"https://cdn.shopify.com/s/files/1/0034/7901/1441/products/Healthy_20Glow_20Combo_20_1_400x.jpg?v=1641031512",
+        image2:"https://cdn.shopify.com/s/files/1/0034/7901/1441/products/Healthy_20Glow_20Combo_400x.jpg?v=1641031512",
+        review:"9 reviews",mrp:"MRP ₹ 899.00",del:"₹1,040.00" },
+        {id:6, name:"Mini Foot Spa Combo",
+        image:"https://cdn.shopify.com/s/files/1/0034/7901/1441/products/Mini_20Foot_20Spa_20Combo_20_1_400x.jpg?v=1641031541",
+        image2:"https://cdn.shopify.com/s/files/1/0034/7901/1441/products/Mini_20Foot_20Spa_20Combo_400x.jpg?v=1641031541",
+        review:"4 reviews",mrp:"MRP ₹ 969.00",del:"₹1,000.00" },
+        {id:7, name:"Acne Relief Combo",
+        image:"https://cdn.shopify.com/s/files/1/0034/7901/1441/products/acnereliefcombo_400x.jpg?v=1641034398",
+        image2:"https://cdn.shopify.com/s/files/1/0034/7901/1441/products/Acne_20Relief_20Combo_400x.jpg?v=1641034398",
+        review:"10 reviews",mrp:"MRP ₹ 969.00",del:"₹1,000.00" },
+        {id:8, name:"Soft Lip Combo",
+        image:"https://cdn.shopify.com/s/files/1/0034/7901/1441/products/softlipscombo_1_400x.jpg?v=1641839230",
+        image2:"https://cdn.shopify.com/s/files/1/0034/7901/1441/products/Soft_20Lips_20Combo_904x1156_904x1156_4a160e99-2c4c-4e66-a63a-3b7b881f369d_400x.jpg?v=1642443278",
+        review:"16 reviews",mrp:"MRP ₹ 479.00",del:"₹580.00" },
+        {id:9, name:"Anti Acne kit",
+        image:"https://cdn.shopify.com/s/files/1/0034/7901/1441/products/antiacnefinal_400x.jpg?v=1642793257",
+        image2:"https://cdn.shopify.com/s/files/1/0034/7901/1441/products/antiacnefinalwbg_400x.jpg?v=1642793257",
+        review:"33 reviews",mrp:"MRP ₹ 2,329.00",del:"₹2,480.00" },
+        {id:10, name:"Acne Vanishing Combo",
+        image:"https://cdn.shopify.com/s/files/1/0034/7901/1441/products/AcneVanishingCombo_1_712c3057-1cbf-45d2-a85e-3067339fd080_400x.jpg?v=1642792028",
+        image2:"https://cdn.shopify.com/s/files/1/0034/7901/1441/products/AcneVanishingCombo_1_712c3057-1cbf-45d2-a85e-3067339fd080_400x.jpg?v=1642792028",
+        review:"15 reviews",mrp:"MRP ₹ 1,290.00",del:"" },
+        {id:11, name:"Hair Care Kit",
+        image:"https://cdn.shopify.com/s/files/1/0034/7901/1441/products/Hair_20Care_20Kit_400x.jpg?v=1641031490",
+        image2:"https://cdn.shopify.com/s/files/1/0034/7901/1441/products/Hair_20Care_20Kit_400x.jpg?v=1641031490",
+        review:"4 reviews",mrp:"MRP ₹ 2,159.00",del:"₹2,270.00" },
+        {id:12, name:"Skin Brightening Kit",
+        image:"https://cdn.shopify.com/s/files/1/0034/7901/1441/products/Skin_20brightening_20Kit_400x.jpg?v=1641031621",
+        image2:"https://cdn.shopify.com/s/files/1/0034/7901/1441/products/Skin_20brightening_20Kit_400x.jpg?v=1641031621",
+        review:"4 reviews",mrp:"MRP ₹ 2,039.00",del:"₹2,140.00" },
+        {id:13, name:"Face Care Essentials Combo",
+        image:"https://cdn.shopify.com/s/files/1/0034/7901/1441/products/Facecare_20Essentials_20Combo_904x1156_412f8dc6-1d12-4f05-8495-68ac8068d9f4_400x.jpg?v=1641839035",
+        image2:"https://cdn.shopify.com/s/files/1/0034/7901/1441/products/Facecare_20Essentials_20Combo_904x1156_412f8dc6-1d12-4f05-8495-68ac8068d9f4_400x.jpg?v=1641839035",
+        review:"4 reviews",mrp:"MRP ₹ 1,029.00",del:"₹1,130.00" },
+        {id:14, name:"Super Cleanser Combo",
+        image:"https://cdn.shopify.com/s/files/1/0034/7901/1441/products/Super_20cleanser_20combo_400x.jpg?v=1641031646",
+        image2:"https://cdn.shopify.com/s/files/1/0034/7901/1441/products/Super_20cleanser_20combo_400x.jpg?v=1641031646",
+        review:"10 reviews",mrp:"MRP ₹ 720.00",del:"₹860.00" },
+        {id:15, name:"Tan Removal Kit",
+        image:"https://cdn.shopify.com/s/files/1/0034/7901/1441/products/Tan_20removal_20kit_400x.jpg?v=1641031655",
+        image2:"https://cdn.shopify.com/s/files/1/0034/7901/1441/products/Tan_20removal_20kit_400x.jpg?v=1641031655",
+        review:"4 reviews",mrp:"MRP ₹ 1,349.00",del:"₹1,460.00" },
+        {id:16, name:"Daily Essentials Combo",
+        image:"https://cdn.shopify.com/s/files/1/0034/7901/1441/products/DailyEssentialsCombo-1_906x1156_e0e1de17-c51b-40ae-ab44-63dc9c4d9380_400x.jpg?v=1643267227",
+        image2:"https://cdn.shopify.com/s/files/1/0034/7901/1441/products/DailyEssentialsCombo-1_906x1156_e0e1de17-c51b-40ae-ab44-63dc9c4d9380_400x.jpg?v=1643267227",
+        review:"3 reviews",mrp:"MRP ₹ 1,089.00",del:"₹1,170.00" },
+        {id:17, name:"Hair Therapy Combo",
+        image:"https://cdn.shopify.com/s/files/1/0034/7901/1441/products/Hair_20Therapy_20Combo_904x1156_b00dbc67-db3b-4719-8d6a-fdb1fd5922fc_400x.jpg?v=1642793845",
+        image2:"https://cdn.shopify.com/s/files/1/0034/7901/1441/products/Hair_20Therapy_20Combo_904x1156_b00dbc67-db3b-4719-8d6a-fdb1fd5922fc_400x.jpg?v=1642793845",
+        review:"1 review",mrp:"MRP ₹ 1,289.00",del:"₹1,380.00" },
+        {id:18, name:"Pore Tightening Combo",
+        image:"https://cdn.shopify.com/s/files/1/0034/7901/1441/products/Pore_20Tightening_20Combo_400x.jpg?v=1641031568",
+        image2:"https://cdn.shopify.com/s/files/1/0034/7901/1441/products/Pore_20Tightening_20Combo_400x.jpg?v=1641031568",
+        review:"5 reviews",mrp:"MRP ₹ 1,169.00",del:"₹1,350.00" },
+        {id:19, name:"Best Sellers' Hamper",
+        image:"https://cdn.shopify.com/s/files/1/0034/7901/1441/products/BestSellerHamper_1_5de02744-3cb4-4aba-bcc1-231f68d182c8_400x.jpg?v=1642794126",
+        image2:"https://cdn.shopify.com/s/files/1/0034/7901/1441/products/BestSellerHamper_1_5de02744-3cb4-4aba-bcc1-231f68d182c8_400x.jpg?v=1642794126",
+        review:"2 reviews",mrp:"MRP ₹ 3,129.00",del:"₹3,280.00" },
+        {id:20, name:"Anti-Ageing Kit",
+        image:"https://cdn.shopify.com/s/files/1/0034/7901/1441/products/AntiAgeingKit_906x1156_65d454f3-7557-4683-8c34-79bfc5ff0819_400x.jpg?v=1643267449",
+        image2:"https://cdn.shopify.com/s/files/1/0034/7901/1441/products/AntiAgeingKit_906x1156_65d454f3-7557-4683-8c34-79bfc5ff0819_400x.jpg?v=1643267449",
+        review:"1 review",mrp:"MRP ₹ 1,939.00",del:"₹2,060.00" },
+        {id:21, name:"Adequate Skin Hydrators Combo",
+        image:"https://cdn.shopify.com/s/files/1/0034/7901/1441/products/AdequateSkinhydratorscombo_906x1156_05790e93-eee7-457b-b1e2-705dd95bcb91_400x.jpg?v=1643267024",
+        image2:"https://cdn.shopify.com/s/files/1/0034/7901/1441/products/AdequateSkinhydratorscombo_906x1156_05790e93-eee7-457b-b1e2-705dd95bcb91_400x.jpg?v=1643267024",
+        review:"",mrp:"MRP ₹ 920.00",del:"₹1,080.00" },
+        {id:22, name:"Rose Glow Kit",
+        image:"https://cdn.shopify.com/s/files/1/0034/7901/1441/products/Rose_20Glow_20kit_400x.jpg?v=1641031581",
+        image2:"https://cdn.shopify.com/s/files/1/0034/7901/1441/products/Rose_20Glow_20kit_400x.jpg?v=1641031581",
+        review:"1 review",mrp:"MRP ₹ 3,500.00",del:"₹3,800.00" },
+        {id:23, name:"Babycare Combo",
+        image:"https://cdn.shopify.com/s/files/1/0034/7901/1441/products/Babycare_20Combo_400x.jpg?v=1641031397",
+        image2:"https://cdn.shopify.com/s/files/1/0034/7901/1441/products/Babycare_20Combo_400x.jpg?v=1641031397",
+        review:"",mrp:"MRP ₹ 899.00",del:"₹940.00" },
+        
+   ]
+   let parent=document.querySelector("#middle_container");
+
+let cartProductsArr = JSON.parse(localStorage.getItem("cart")) || [];
+let  IwishData = JSON.parse(localStorage.getItem("wishData"))  || [];
+
+function displaydata(cardarry){
+parent.innerHTML=null;
+
+cardarry.forEach(function(elem){
+    
+
+    let div=document.createElement("div")
+    div.setAttribute("class",("upper_container"))
+
+    let myDiv = document.createElement("div")
+    myDiv.setAttribute("id","gotoparticulatpage")
+    // myDiv.addEventListener("click",()=>{
+    //     hey(elem)
+    // })
+
+    // myDiv.addEventListener("click",()=>{
+        
+    //     productInfo(elem)
+    //     window.location.href="./../particularProduct.html"
+    // })
+
+    names=document.createElement("p")
+    names.setAttribute("class","namess") 
+   
+    names.innerText=elem.name;
+    names.style.fontSize="17px";
+    names.style.color="#000000";
+    
+    let imgs=document.createElement("img")
+    imgs.src=elem.image;
+    imgs.setAttribute("id","pic")
+ 
+    $(imgs).hover(function () {
+           
+           imgs.src = elem.image2;
+               }, function () {
+                   // out
+                    imgs.src = elem.image;
+               }
+            );
+           $("#pic").hover(function () {
+    //stuff to do on mouse enter
+    imgs.src = elem.image2;
+}, 
+function () {
+    //stuff to do on mouse leave
+    imgs.src = elem.image;
+});
+    let div1=document.createElement("div")
+     div1.setAttribute("id","stardiv")
+   
+ 
+    let wish=document.createElement("i")
+    wish.setAttribute("class","fa fa-heart-o")
+    wish.setAttribute("id","suraj")
+    wish.style.fontSize="28px";
+     wish.style.border="1px solid white"
+     wish.addEventListener("click",()=>{
+          wish.style.backgroundColor = "#A17C5F"
+           whishlistFunction(elem);
+     });
+
+
+    let reiv=document.createElement("div")
+    reiv.innerText=elem.review;
+    reiv.style.marginLeft="2px";
+    
+    let rate=document.createElement("span")
+    rate.setAttribute("class","fa fa-star checked");
+
+    let rate2=document.createElement("span")
+    rate2.setAttribute("class","fa fa-star checked");
+
+    let rate3=document.createElement("span")
+    rate3.setAttribute("class","fa fa-star checked");
+
+    let rate4=document.createElement("span")
+    rate4.setAttribute("class","fa fa-star checked");
+
+    let rate5=document.createElement("span")
+    rate5.setAttribute("class","fa fa-star checked");
+
+    let div2=document.createElement("div")
+    div2.setAttribute("id","priceAndDel")
+    
+
+    let mrp=document.createElement("div")
+    mrp.setAttribute("id","price")
+    mrp.innerText=elem.mrp;
+
+    let del=document.createElement("del")
+    del.innerText=elem.del;
+    del.style.marginLeft="20px";
+
+    let cart=document.createElement("button");
+    cart.innerText="Add To Cart";
+    cart.setAttribute("class","cart_button")
+    cart.addEventListener("click",()=>{
+        addToCartFunction(elem);
+        window.location.href="./../cartPage2.html"
+    })
+    
+   // divwish.append(wish)
+    div1.append(rate,rate2,rate3,rate4,rate5,reiv)
+    
+    div2.append(mrp,del)
+    myDiv.append(imgs,wish,names,div1,div2)
+    div.append(myDiv,cart)
+    // div.append(imgs,wish,names,div1,div2,cart)
+    parent.append(div)
+})
+}
+
+displaydata(cardarry)
+
+
+// let count = 1;
+// let productInfo = (elem)=>{
+    
+//      localStorage.setItem("qty",count)
+//     localStorage.setItem("particularPro",JSON.stringify(elem));
+// }
+
+
+function sortItems(){
+    var sorting = document.querySelector("#cars").value;
+    //console.log(sorting)
+
+   if(sorting=="Puja"){
+        cardarry.sort((a, b) => {
+            let fa = a.name.toLowerCase(),
+            fb = b.name.toLowerCase();
+
+            if (fa < fb) {
+                return -1;
+            }
+            if (fa > fb) {
+                return 1;
+            }
+            return 0;
+        });
+        displaydata(cardarry);
+   }
+
+   if(sorting=="Ajay"){
+        cardarry.sort((a, b) => {
+            let fa = a.name.toLowerCase(),
+            fb = b.name.toLowerCase();
+
+            if (fa < fb) {
+                return 1;
+            }
+            if (fa > fb) {
+                return -1;
+            }
+            return 0;
+        });
+        displaydata(cardarry);
+   }
+    
+   if(sorting=="Mohit"){
+        function swap(cardarry,a,b){
+        let temp = cardarry[a]
+        cardarry[a] = cardarry[b];
+        cardarry[b] = temp
+        }
+
+        for(let i=0;i<cardarry.length;i++){
+        for(let j=0;j<cardarry.length-i-1;j++){
+        
+            let a = +cardarry[j].mrp.slice(6,cardarry[j].mrp.length-2)
+            let b = +cardarry[j+1].mrp.slice(6,cardarry[j+1].mrp.length-2)
+            
+            if(a>b){
+            
+            swap(cardarry,j,j+1)
+            }
+           }
+        }
+
+        displaydata(cardarry);
+   }
+   if(sorting=="Shubham"){
+        function swap(cardarry,a,b){
+        let temp = cardarry[a]
+        cardarry[a] = cardarry[b];
+        cardarry[b] = temp
+        }
+
+        for(let i=0;i<cardarry.length;i++){
+        for(let j=0;j<cardarry.length-i-1;j++){
+        
+            let a = +cardarry[j].mrp.slice(6,cardarry[j].mrp.length-2)
+            let b = +cardarry[j+1].mrp.slice(6,cardarry[j+1].mrp.length-2)
+            
+            if(a<b){
+            
+            swap(cardarry,j,j+1)
+            }
+           }
+        }
+
+        displaydata(cardarry);
+   }
+   
+   if(sorting=="Suraj"){
+        function swap(cardarry,a,b){
+        let temp = cardarry[a]
+        cardarry[a] = cardarry[b];
+        cardarry[b] = temp
+        }
+
+        for(let i=0;i<cardarry.length;i++){
+        for(let j=0;j<cardarry.length-i-1;j++){
+        
+            let a = +cardarry[j].review.slice(0,cardarry[j].review.length-7)
+            let b = +cardarry[j+1].review.slice(0,cardarry[j+1].review.length-7)
+            
+            if(a<b){
+            
+            swap(cardarry,j,j+1)
+            }
+           }
+        }
+        //console.log(cardarry)
+        //console.log(arr);
+
+        displaydata(cardarry);
+   }
+};
+
+
+
+function addToCartFunction(elem){
+     let maintainDuplicateArr = JSON.parse(localStorage.getItem("cart")) || [];
+     //if(maintainDuplicateArr.inc)
+     let flag = false;
+     for(let i=0;i<maintainDuplicateArr.length;i++){
+         if(elem.id==maintainDuplicateArr[i].id){
+             flag=true;
+         }
+     }
+
+     if(flag==false){
+
+        //old
+        elem.quantity = 1;
+        //console.log(elem.quantity);
+
+        cartProductsArr.push(elem);
+        localStorage.setItem("cart",JSON.stringify(cartProductsArr));
+     }
+}
+
+let  whishlistFunction = (elem)=>{
+    let maintainWhishlistDuplicateArr = JSON.parse(localStorage.getItem("wishData")) || [];
+     //if(maintainWhishlistDuplicateArr.inc)
+     let flag = false;
+     for(let i=0;i<maintainWhishlistDuplicateArr.length;i++){
+         if(elem.id==maintainWhishlistDuplicateArr[i].id){
+             flag=true;
+         }
+     }
+
+     if(flag==false){
+        alert("Item Added to Whishlist!");
+       IwishData.push(elem);
+       localStorage.setItem("wishData",JSON.stringify(IwishData));
+     }
+
+}
+
+</script>
+<script src="./scripts/card.js"></script>
+
+<script type="module">
+    document.getElementById('navbar1').addEventListener("click",()=>{
+        window.location.href = "./skincare.html"
+    })
+
+    document.querySelector("#navbar00>div:first-child").addEventListener("click",()=>{
+        window.location.href = "./LoginPage.html"
+    })
+    document.querySelector("#navbar00>div:last-child").addEventListener("click",()=>{
+        window.location.href = "./SignupPage.html"
+    })
+    document.querySelector("#navbar00>div:nth-child(2)").addEventListener("click",()=>{
+        window.location.href = "./whishlist.html"
+    })
+    document.getElementById("GoToIngredients").addEventListener("click",()=>{
+        window.location.href = "./Ingredients.html"
+    })
+    document.getElementById("GpToBlog").addEventListener("click",()=>{
+        window.location.href="./blogpage.html"
+    })
+
+    document.getElementById('navbar2').addEventListener("click",()=>{
+        window.location.href = "./haircare.html"
+    })
+    document.getElementById('navbar3').addEventListener("click",()=>{
+        window.location.href = "./bathbody.html"
+    })
+    document.getElementById('navbar4').addEventListener("click",()=>{
+        window.location.href = "./oralcare.html"
+    })
+    document.getElementById('navbar5').addEventListener("click",()=>{
+        window.location.href = "./wellness.html"
+    })
+    document.getElementById('navbar6').addEventListener("click",()=>{
+        window.location.href = "./babycare.html"
+    })
+    document.getElementById('navbar7').addEventListener("click",()=>{
+        window.location.href = "./men.html"
+    })
+    document.getElementById('navbar8').addEventListener("click",()=>{
+        window.location.href = "./combo.html"
+    })
+    document.getElementById('navbar9').addEventListener("click",()=>{
+        window.location.href = "./gifting.html"
+    })
+    document.getElementById('navbar10').addEventListener("click",()=>{
+        window.location.href = "./offers.html"
+    })
+
+   document.getElementById("gotoalwayshome").addEventListener("click",()=>{
+       window.location.href="./index.html"
+   })
+
+</script>
+
+

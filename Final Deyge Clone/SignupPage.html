@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Signup Page</title>
+    <!-- <link rel="stylesheet" href="./styles/navbar_footer.css"> -->
+    <link rel="stylesheet" href="./styles/navbar_footer copy.css">
+    <style>
+        #stickyImages{
+         margin-left: 97.5%;
+         position: sticky;
+         /* right: 0; */
+         top: 40%;
+         /* margin-top: -50%; */
+        
+         }
+         #stickyImages>img{
+             width: 33px;
+             height: 32px;
+             border-radius: 50%;
+             display: block;
+             margin-top: 3px;
+         }
+         #stickyImages>img:last-child{
+             width: 45px;
+             height: 45px;
+             margin-left: -6px;
+             margin-top: -5px;
+         }
+         #LoginHomeLogin{
+             margin-top: -10.5%;
+         }
+         </style>
+</head>
+<body>
+    <div id="navbar"></div>
+    <div id="stickyImages">
+        <img src="https://lh3.googleusercontent.com/stk7qIhvTn-6p1x3eYOfqnNCdIkNjyIoZPlZtwiDCzdhxEYc8Gsm1obY0zYdR13NfW_UkF4=s88" alt=""/>
+        <img src="https://lh3.googleusercontent.com/7GC8KgKN3PBmRKrqYOpBvozvAkrDknIwHhpDyMlDhEo_xEEEmHN81MTm7dNQvMyg4CcZ=s87" alt=""/>
+        <img src="https://lh3.googleusercontent.com/viOmLsqBaf_hyffXvvUFInfNNDwwQp6UpqQkPQU6uQFK-eE2MJnRGVdetr2Df6Q1twm85w=s87" alt=""/>
+        <img src="https://lh3.googleusercontent.com/AGtkZJFXY39I8G7s0dXFAGzgVuvr_m5Li-5v2TDlpqWdQtXOmf9WG13REwpOBuKKDXD70A=s87" alt=""/>
+        <img src="https://cdn.shopify.com/s/files/1/0034/7901/1441/t/139/assets/ping-svg2.svg?v=1619612966" alt=""/>
+    </div>
+    <div id="LoginHomeLogin">
+        <div id="gohome">Home</div>
+        <div>></div>
+        <div>Create Account</div>
+    </div>
+    <div id="LoginContainer" style="margin-top: 20px;">
+        <div>Register</div>
+        <div>
+            <div>
+                <img style="margin-right: 10px; ;" src="https://cdn-icons-png.flaticon.com/128/5968/5968764.png" alt=""/>
+                <div>Sign in with Facebook</div>
+            </div>
+        </div>
+        <div>
+            <div>
+                <img src="https://lh3.googleusercontent.com/am_RTh5nj7mPg0kgNaaGDoAUMv7GEqyJVqR6KgZTSl6LBTx2oJ5d9oTxdoF1wGS9sVll=s111" alt=""/>
+                <div>Sign in with Google</div>
+            </div>
+        </div>
+        <div>Please fill in the information below:</div>
+        <input type="text" placeholder="First name" id="puja1"/>
+        <input type="text" placeholder="Last name" class="signupInput" id="puja2"/>
+        <input type="email" placeholder="Email" class="signupInput" name="email" id="puja3"/>
+        <input type="password" placeholder="Password" class="signupInput" id="puja4"/>
+        <button id="resisterbtn">Create My Account</button>
+        
+    </div>
+
+    <div id="footer"></div>
+    
+</body>
+</html>
+
+<script type="module">
+
+    import {navbar,footer} from "./components/navbar.js"
+    document.getElementById('navbar').innerHTML=navbar();
+    document.getElementById('footer').innerHTML = footer();
+
+    import {navbarJs} from "./scripts/navbarJsPart.js"
+    navbarJs();
+    
+   
+</script>
+
+<script type="module">
+
+    let signupArr = JSON.parse(localStorage.getItem("signup")) || [];
+
+    document.getElementById('resisterbtn').addEventListener("click",()=>{
+
+
+        let fname = document.getElementById("puja1").value;
+        let lname = document.getElementById("puja2").value;
+        let email = document.getElementById("puja3").value;
+        let password = document.getElementById("puja4").value;
+
+        let obj = {
+            fname,
+            lname,
+            email,
+            password
+        }
+
+        signupArr.push(obj);
+        localStorage.setItem("signup",JSON.stringify(signupArr));
+        window.location.href="./LoginPage.html"
+
+    })
+    console.log(signupArr);
+    
+</script>
+
+
+<script type="module">
+    document.getElementById('navbar1').addEventListener("click",()=>{
+        window.location.href = "./skincare.html"
+    })
+
+    document.querySelector("#navbar00>div:first-child").addEventListener("click",()=>{
+        window.location.href = "./LoginPage.html"
+    })
+    document.querySelector("#navbar00>div:last-child").addEventListener("click",()=>{
+        window.location.href = "./SignupPage.html"
+    })
+    document.querySelector("#navbar00>div:nth-child(2)").addEventListener("click",()=>{
+        window.location.href = "./whishlist.html"
+    })
+    document.getElementById("GoToIngredients").addEventListener("click",()=>{
+        window.location.href = "./Ingredients.html"
+    })
+    document.getElementById("GpToBlog").addEventListener("click",()=>{
+        window.location.href="./blogpage.html"
+    })
+
+    document.getElementById('navbar2').addEventListener("click",()=>{
+        window.location.href = "./haircare.html"
+    })
+    document.getElementById('navbar3').addEventListener("click",()=>{
+        window.location.href = "./bathbody.html"
+    })
+    document.getElementById('navbar4').addEventListener("click",()=>{
+        window.location.href = "./oralcare.html"
+    })
+    document.getElementById('navbar5').addEventListener("click",()=>{
+        window.location.href = "./wellness.html"
+    })
+    document.getElementById('navbar6').addEventListener("click",()=>{
+        window.location.href = "./babycare.html"
+    })
+    document.getElementById('navbar7').addEventListener("click",()=>{
+        window.location.href = "./men.html"
+    })
+    document.getElementById('navbar8').addEventListener("click",()=>{
+        window.location.href = "./combo.html"
+    })
+    document.getElementById('navbar9').addEventListener("click",()=>{
+        window.location.href = "./gifting.html"
+    })
+    document.getElementById('navbar10').addEventListener("click",()=>{
+        window.location.href = "./offers.html"
+    })
+
+   document.getElementById("gotoalwayshome").addEventListener("click",()=>{
+       window.location.href="./index.html"
+   })
+   document.getElementById("gohome").addEventListener("click",()=>{
+       window.location.href="./index.html"
+   })
+
+</script>
+
+
+

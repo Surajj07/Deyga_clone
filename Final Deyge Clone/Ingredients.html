@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ingredients</title>
+    <!-- <link rel="stylesheet" href="./styles/navbar_footer.css"> -->
+    <link rel="stylesheet" href="./styles/navbar_footer copy.css">
+    <style>
+       
+        .zoomImage{
+           
+            transform: scale(1);
+            transition: 1s ease-in-out;
+           
+        }
+        .zoomImage:hover{
+           
+            transform: scale(1.15);
+        }
+    
+    </style>
+</head>
+<body>
+    <div id="navbar"></div>
+    <div id="stickyImages">
+        <img src="https://lh3.googleusercontent.com/stk7qIhvTn-6p1x3eYOfqnNCdIkNjyIoZPlZtwiDCzdhxEYc8Gsm1obY0zYdR13NfW_UkF4=s88" alt=""/>
+        <img src="https://lh3.googleusercontent.com/7GC8KgKN3PBmRKrqYOpBvozvAkrDknIwHhpDyMlDhEo_xEEEmHN81MTm7dNQvMyg4CcZ=s87" alt=""/>
+        <img src="https://lh3.googleusercontent.com/viOmLsqBaf_hyffXvvUFInfNNDwwQp6UpqQkPQU6uQFK-eE2MJnRGVdetr2Df6Q1twm85w=s87" alt=""/>
+        <img src="https://lh3.googleusercontent.com/AGtkZJFXY39I8G7s0dXFAGzgVuvr_m5Li-5v2TDlpqWdQtXOmf9WG13REwpOBuKKDXD70A=s87" alt=""/>
+        <img src="https://cdn.shopify.com/s/files/1/0034/7901/1441/t/139/assets/ping-svg2.svg?v=1619612966" alt=""/>
+    </div>
+    <img id="IngredientsImage" src="https://cdn.shopify.com/s/files/1/0034/7901/1441/files/Ingredients-v2_x800.jpg?v=1601912763" alt=""/>
+    <div id="IngredientsDiv2">
+        <div>Our Ingredient are pure, natural and safe.</div>
+        <div>The goodness of the succulent aloe vera plant can help treat burns, acne and dry skin. It is nature's very own hydrant that helps you attain flawless skin and hair.</div>
+    </div>
+    <div id="IngredientsHoverDiv">
+        <div>
+            <button>ALL</button>
+            <button id="acne">ACNE</button>
+            <button>AGEING SKIN</button>
+            <button>BALDNESS</button>
+            <button>CHAPPED LIPS</button>
+            <button>CRACKED FOOT</button>
+            <button>CRACKED LIPS</button>
+            <button>DAMAGED HAIR</button>
+            <button>DANDRUFF</button>
+            <button>DARK SPOT</button>
+            <button>DULL SKIN</button>
+        </div>
+        <div>
+            <button>FACIAL PIGMENTATION</button>
+            <button>FRIZZY HAIR</button>
+            <button>GREY HAIR</button>
+            <button>HAIR FALL</button>
+            <button>MELASMA</button>
+            <button>OPEN PORES</button>
+            <button>SPLIT END</button>
+            <button>WRINKLES</button>
+        </div>
+    </div>
+    <div id="IngredientsContainer"></div>
+    
+    <div id="footer"></div>
+    
+</body>
+</html>
+
+<script type="module">   // Navbar & Footer
+
+    import {navbar,footer} from "./components/navbar.js"
+    document.getElementById('navbar').innerHTML=navbar();
+    document.getElementById('footer').innerHTML = footer();
+
+    import {navbarJs} from "./scripts/navbarJsPart.js"
+    navbarJs();
+    
+    
+</script>
+
+<script type="module">
+    let IngredientsData = [
+        {id:1,image_url:"http://cdn.shopify.com/s/files/1/0034/7901/1441/files/Untitled_design_44_974cf404-7c5b-4a67-9230-0b0cb55e6dd6.png?v=1599736388",name:"Jojoba"},
+        {id:2,image_url:"http://cdn.shopify.com/s/files/1/0034/7901/1441/files/Untitled_design_43_2f96aa75-ef16-44dd-a659-cd4b4987128d.png?v=1599735048",name:"Indigo"},
+        {id:3,image_url:"http://cdn.shopify.com/s/files/1/0034/7901/1441/files/Untitled_design_42.png?v=1599734954",name:"Himalayan Pink Salt"},
+        {id:4,image_url:"http://cdn.shopify.com/s/files/1/0034/7901/1441/files/Untitled_design_41.png?v=1599734841",name:"Hibiscus"},
+        {id:5,image_url:"http://cdn.shopify.com/s/files/1/0034/7901/1441/files/Untitled_design_40_55e901f8-b285-4feb-865f-414cd8aa9381.png?v=1599734748",name:"Henna"},
+        {id:6,image_url:"http://cdn.shopify.com/s/files/1/0034/7901/1441/files/Untitled_design_39_2a97d927-6ac4-47dc-b5eb-85019510effd.png?v=1599734605",name:"Hemp seeds"},
+        {id:7,image_url:"http://cdn.shopify.com/s/files/1/0034/7901/1441/files/Untitled_design_38_efbe8591-59c9-4f63-8fe3-913a338a276b.png?v=1599734506",name:"Haritaki"},
+        {id:8,image_url:"http://cdn.shopify.com/s/files/1/0034/7901/1441/files/Untitled_design_37.png?v=1599734400",name:"Grapeseed"},
+        {id:9,image_url:"http://cdn.shopify.com/s/files/1/0034/7901/1441/files/Untitled_design_36_b143b459-26d8-414f-ba2a-3c73499b84ac.png?v=1599734263",name:"Granulated Sugar"},
+        {id:10,image_url:"http://cdn.shopify.com/s/files/1/0034/7901/1441/files/Untitled_design_35.png?v=1599656116",name:"Geranium"},
+        {id:11,image_url:"http://cdn.shopify.com/s/files/1/0034/7901/1441/files/Untitled_design_34_40709f8f-f1f8-469b-8bc5-19bf0d334bcb.png?v=1599656016",name:"French clay"},
+        {id:12,image_url:"http://cdn.shopify.com/s/files/1/0034/7901/1441/files/Untitled_design_33_a7b65074-bf00-464e-bc9f-c51adee45832.png?v=1599655902",name:"Flax Seed"},
+        {id:13,image_url:"http://cdn.shopify.com/s/files/1/0034/7901/1441/files/Untitled_design_32_7584c776-ea2e-470e-878e-f09c17f18d4f.png?v=1599655797",name:"Fenugreek"},
+        {id:14,image_url:"http://cdn.shopify.com/s/files/1/0034/7901/1441/files/Untitled_design_31_fd1553ec-a676-43ec-bd1c-5c651fc9981a.png?v=1599655686",name:"Olives"},
+        {id:15,image_url:"http://cdn.shopify.com/s/files/1/0034/7901/1441/files/Untitled_design_30_cd4bdabf-c539-401a-ad89-4be5444ef1ac.png?v=1599655586",name:"Eucalyptus"},
+        {id:16,image_url:"http://cdn.shopify.com/s/files/1/0034/7901/1441/files/Untitled_design_29.png?v=1599655464",name:"Cucumber"},
+        {id:17,image_url:"http://cdn.shopify.com/s/files/1/0034/7901/1441/files/Untitled_design_28.png?v=1599655370",name:"Coconut"},
+        {id:18,image_url:"http://cdn.shopify.com/s/files/1/0034/7901/1441/files/Untitled_design_27_f9048f0d-e1ab-4675-bbc6-f49aa21987d2.png?v=1599655259",name:"Cocoa"},
+        {id:19,image_url:"http://cdn.shopify.com/s/files/1/0034/7901/1441/files/Untitled_design_26.png?v=1599655146",name:"Cloves"},
+        {id:20,image_url:"http://cdn.shopify.com/s/files/1/0034/7901/1441/files/Untitled_design_25_5a531994-5bc5-4863-a692-34125d5fb854.png?v=1599654884",name:"Citronella"},
+        {id:21,image_url:"http://cdn.shopify.com/s/files/1/0034/7901/1441/files/Untitled_design_24_c0e58979-bf12-4bd3-813b-7c1110c07371.png?v=1599654766",name:"Cinnamon"},
+        {id:22,image_url:"http://cdn.shopify.com/s/files/1/0034/7901/1441/files/Untitled_design_23_ba0fcd33-1e1a-4b14-8b87-6db317051e1e.png?v=1599654669",name:"Chamomile"},
+        {id:23,image_url:"http://cdn.shopify.com/s/files/1/0034/7901/1441/files/Untitled_design_22_8742b33f-5307-4376-83d0-a27bf7b7fadc.png?v=1599654558",name:"Castor"},
+        {id:24,image_url:"http://cdn.shopify.com/s/files/1/0034/7901/1441/files/Untitled_design_21_0002cee2-4db5-4dad-9745-654bb63f0c21.png?v=1599654439",name:"Cassia"},
+        {id:25,image_url:"http://cdn.shopify.com/s/files/1/0034/7901/1441/files/Untitled_design_20_4126ac9b-e074-4016-bab3-43425b1f5ce7.png?v=1599654346",name:"Carrotseed"},
+        {id:26,image_url:"http://cdn.shopify.com/s/files/1/0034/7901/1441/files/Untitled_design_19_8e39a723-6442-4d04-8ea9-c171cb89a8da.png?v=1599654077",name:"Calendula"},
+        {id:27,image_url:"http://cdn.shopify.com/s/files/1/0034/7901/1441/files/Untitled_design_18_55ba8277-1e91-4e26-80dc-4f24402946d2.png?v=1599653984",name:"Bhringaraj"},
+        {id:28,image_url:"http://cdn.shopify.com/s/files/1/0034/7901/1441/files/Untitled_design_17.png?v=1599653884",name:"Berry"},
+        {id:29,image_url:"http://cdn.shopify.com/s/files/1/0034/7901/1441/files/Untitled_design_15_83970b81-b38f-428b-af86-38b85f900f04.png?v=1599653606",name:"Bentonite Clay"},
+        {id:30,image_url:"http://cdn.shopify.com/s/files/1/0034/7901/1441/files/Untitled_design_14_3828f1d3-201e-4e7c-8168-08248f014036.png?v=1599653515",name:"Benne"},
+        {id:31,image_url:"http://cdn.shopify.com/s/files/1/0034/7901/1441/files/Untitled_design_13_03322f23-f939-4b20-90be-b67a0a186c6b.png?v=1599653415",name:"Beetroot"},
+        {id:32,image_url:"http://cdn.shopify.com/s/files/1/0034/7901/1441/files/Untitled_design_12_83b74d1a-75d1-44a8-a584-0de4cd34820b.png?v=1599647455",name:"Beeswax"},
+        {id:33,image_url:"http://cdn.shopify.com/s/files/1/0034/7901/1441/files/Untitled_design_11_d8698bd9-7bd6-4a29-bef2-a8d1d7a14bf1.png?v=1599647299",name:"Baobab"},
+        {id:34,image_url:"http://cdn.shopify.com/s/files/1/0034/7901/1441/files/Untitled_design_10.png?v=1599647122",name:"Baking Soda"},
+        {id:35,image_url:"http://cdn.shopify.com/s/files/1/0034/7901/1441/files/Untitled_design_9_41cbcfee-f737-4e39-820f-d725051abd45.png?v=1599646985",name:"Avocado"},
+        {id:36,image_url:"http://cdn.shopify.com/s/files/1/0034/7901/1441/files/Untitled_design_8_dd36737d-b11a-4906-855e-602a9a1ea0ea.png?v=1599646726",name:"Argan"},
+        {id:37,image_url:"http://cdn.shopify.com/s/files/1/0034/7901/1441/files/Untitled_design_7_c48258cd-1972-4342-9dbc-a3c8697aab45.png?v=1599646386%20alt=",name:"Pineapple"},
+        {id:38,image_url:"http://cdn.shopify.com/s/files/1/0034/7901/1441/files/Untitled_design_1_21ca1d87-d933-4a2a-b026-ac7bdd9908c1.png?v=1640587418",name:"Aloevera"},
+        {id:39,image_url:"http://cdn.shopify.com/s/files/1/0034/7901/1441/files/Untitled_design_4_ca00cfd4-4e30-42a5-bbbf-93278bc1bf92.png?v=1599383452",name:"Almonds"},
+        {id:40,image_url:"http://cdn.shopify.com/s/files/1/0034/7901/1441/files/Untitled_design_6_034fba75-5470-4fb7-b002-839831efb49d.png?v=1599646227",name:"Amla"},
+        {id:41,image_url:"http://cdn.shopify.com/s/files/1/0034/7901/1441/files/Untitled_design_5_c307e7ad-23b4-45de-9315-b9babbd1a8db.png?v=1599645514?v=1599646227",name:"Charcoal"},
+    ]
+
+    const IngredientsDisplay = (IngredientsData)=>{
+
+        document.querySelector("#IngredientsContainer").innerHTML = null;
+
+        IngredientsData.map((el)=>{
+            let box = document.createElement("div");
+
+            let image = document.createElement("img");
+            image.src = el.image_url;
+            image.setAttribute("class","zoomImage")
+
+            let title = document.createElement("div");
+            title.innerText = el.name;
+
+            box.append(image,title);
+            document.querySelector("#IngredientsContainer").append(box)
+        })
+    }
+
+    IngredientsDisplay(IngredientsData);
+
+</script>
+
+
+
+<script type="module">
+    document.getElementById('navbar1').addEventListener("click",()=>{
+        window.location.href = "./skincare.html"
+    })
+
+    document.querySelector("#navbar00>div:first-child").addEventListener("click",()=>{
+        window.location.href = "./LoginPage.html"
+    })
+    document.querySelector("#navbar00>div:last-child").addEventListener("click",()=>{
+        window.location.href = "./SignupPage.html"
+    })
+    document.querySelector("#navbar00>div:nth-child(2)").addEventListener("click",()=>{
+        window.location.href = "./whishlist.html"
+    })
+    document.getElementById("GoToIngredients").addEventListener("click",()=>{
+        window.location.href = "./Ingredients.html"
+    })
+    document.getElementById("GpToBlog").addEventListener("click",()=>{
+        window.location.href="./blogpage.html"
+    })
+
+    document.getElementById('navbar2').addEventListener("click",()=>{
+        window.location.href = "./haircare.html"
+    })
+    document.getElementById('navbar3').addEventListener("click",()=>{
+        window.location.href = "./bathbody.html"
+    })
+    document.getElementById('navbar4').addEventListener("click",()=>{
+        window.location.href = "./oralcare.html"
+    })
+    document.getElementById('navbar5').addEventListener("click",()=>{
+        window.location.href = "./wellness.html"
+    })
+    document.getElementById('navbar6').addEventListener("click",()=>{
+        window.location.href = "./babycare.html"
+    })
+    document.getElementById('navbar7').addEventListener("click",()=>{
+        window.location.href = "./men.html"
+    })
+    document.getElementById('navbar8').addEventListener("click",()=>{
+        window.location.href = "./combo.html"
+    })
+    document.getElementById('navbar9').addEventListener("click",()=>{
+        window.location.href = "./gifting.html"
+    })
+    document.getElementById('navbar10').addEventListener("click",()=>{
+        window.location.href = "./offers.html"
+    })
+
+   document.getElementById("gotoalwayshome").addEventListener("click",()=>{
+       window.location.href="./index.html"
+   })
+
+</script>
+<script type="module">
+    document.getElementById("acne").addEventListener("click",()=>{
+        window.location.href="./acne.html"
+    })
+</script>
+
+
+
+
+
+
+
+
+
+
